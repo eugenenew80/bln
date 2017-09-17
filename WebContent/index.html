@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="appController">
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+		<base href="/bln/">
+		
+	    <title>{{data.app.header}}</title>
+	
+	    <link href="content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	 	<link href="content/angular-material/angular-material.min.css" rel="stylesheet">
+	    <link href="content/css/main.css" rel="stylesheet">
+	    <link href="content/css/login.css" rel="stylesheet">
+	    
+	    <script src="content/bootstrap/js/jquery-1.12.3.min.js"></script>
+	    <script src="content/bootstrap/js/bootstrap.min.js"></script>
+	    <script src="content/angular/angular.min.js"></script>
+	    <script src="content/angular/angular-resource.js"></script>
+	    <script src="content/angular/angular-route.min.js"></script>
+	    <script src="content/angular/angular-animate.min.js"></script>
+	    <script src="content/angular/angular-touch.js"></script>
+	    <script src="content/angular/angular-aria.min.js"></script>
+	    <script src="content/angular/angular-messages.min.js"></script>
+	    <script src="content/angular/angular-cookies.min.js"></script>
+	    
+	    <script src="content/angular-material/angular-material.min.js">
+	    
+	    
+		<!--common modules -->
+	    <script src="common/common.js"></script>
+	    
+	    <!--filters -->
+	    <script src="common/filters/filters.js"></script>	    
+	    
+	    <!--directives -->
+	    <script src="common/directives/complexFormControl/complexFormControl.js"></script>
+	    <script src="common/directives/complexFormControl/control/control.js"></script>	    
+	    	    
+	    <script src="common/directives/breadcrumb/breadcrumb.js"></script>
+	    <script src="common/directives/complexForm/complexForm.js"></script>
+	    	    	
+				
+		<!--services -->
+	    <script src="common/services/stateService.js"></script>
+	    <script src="common/services/builderService.js"></script>
+	    <script src="common/services/descriptionServiceHelper.js"></script>
+	    
+	    	    
+	    <!--app module-->
+	    <script src="app.js"></script>
+	    <script src="appController.js"></script>
+		<script src="auth/authenticationService.js"></script>
+		
+			    	
+	    <!--dict module -->
+	  	<script src="dict/dictApp.js"></script>
+	    <script src="dict/dictController.js"></script>	    
+	   	<script src="dict/services/dictDataServiceFactory.js"></script>	    
+	    <script src="dict/features/dictDefault/controllers/dictDefaultListCtrl.js"></script>
+	    <script src="dict/features/dictDefault/controllers/dictDefaultEditCtrl.js"></script>
+	    <script src="dict/features/dictUnit/models/dictUnitDescriptionService.js"></script>
+	    <script src="dict/features/dictRegion/models/dictRegionDescriptionService.js"></script>
+	    <script src="dict/features/dictEnergyZone/models/dictEnergyZoneDescriptionService.js"></script>
+	    <script src="dict/features/dictEnergyNode/models/dictEnergyNodeDescriptionService.js"></script>
+	    <script src="dict/features/dictDataSource/models/dictDataSourceDescriptionService.js"></script>
+	    <script src="dict/features/dictMeterType/models/dictMeterTypeDescriptionService.js"></script>
+	    <script src="dict/features/dictCurrentTransType/models/dictCurrentTransTypeDescriptionService.js"></script>
+	    <script src="dict/features/dictVoltageTransType/models/dictVoltageTransTypeDescriptionService.js"></script>
+	    <script src="dict/features/dictCompany/models/dictCompanyDescriptionService.js"></script>
+	    <script src="dict/features/dictMeter/models/dictMeterDescriptionService.js"></script>
+	    <script src="dict/features/dictCurrentTrans/models/dictCurrentTransDescriptionService.js"></script>
+	    <script src="dict/features/dictVoltageTrans/models/dictVoltageTransDescriptionService.js"></script>
+	    <script src="dict/features/dictEnergySourceType/models/dictEnergySourceTypeDescriptionService.js"></script>
+	    <script src="dict/features/dictSubstation/models/dictSubstationDescriptionService.js"></script>
+	    <script src="dict/features/dictEnergySource/models/dictEnergySourceDescriptionService.js"></script>
+	    <script src="dict/features/dictMeteringType/models/dictMeteringTypeDescriptionService.js"></script>
+	    <script src="dict/features/dictSubstationType/models/dictSubstationTypeDescriptionService.js"></script>
+	    <script src="dict/features/dictAccountingType/models/dictAccountingTypeDescriptionService.js"></script>
+	    <script src="dict/features/dictMeteringPointType/models/dictMeteringPointTypeDescriptionService.js"></script>
+	    <script src="dict/features/dictMeteringPoint/models/dictMeteringPointDescriptionService.js"></script>
+	    
+		
+		<!--adm module -->
+	  	<script src="adm/admApp.js"></script>
+	    <script src="adm/admController.js"></script>	    
+	    <script src="adm/features/admDefault/controllers/admDefaultListCtrl.js"></script>
+	    <script src="adm/features/admDefault/controllers/admDefaultEditCtrl.js"></script>
+	    <script src="adm/features/admDefault/models/admDataServices.js"></script>	    
+		<script src="adm/features/admFunc/models/admFuncDescriptionService.js"></script>
+		<script src="adm/features/admRole/models/admRoleDescriptionService.js"></script>
+		<script src="adm/features/admUser/models/admUserDescriptionService.js"></script>
+		
+		
+		<!--info module -->
+	  	<script src="info/infoApp.js"></script>
+	    <script src="info/infoController.js"></script>	
+	    
+	    		
+		
+		<script type="text/javascript">		
+			if (!String.prototype.startsWith) {
+			  String.prototype.startsWith = function(searchString, position) {
+			    position = position || 0;
+			    return this.indexOf(searchString, position) === position;
+			  };
+			}		
+		</script>   	    		
+	</head>
+
+	<body>
+
+		<div id="wrapper">
+
+			<div ng-if="!data.auth.isAuth">
+				<div class="panel panel-primary" >
+
+					<!-- Applivation Header -->
+					<div class="panel-heading">
+						{{data.app.header}}
+					</div>
+				</div>
+
+				<div class="panel panel-body" >
+					<form class="form-signin" ng-show="!data.auth.isAuth" >
+				  <h2 class="form-signin-heading">Вход в систему</h2>
+
+				  <input
+					type="text"
+					class="form-control"
+					name="username"
+					placeholder="Учетная запись"
+					required=""
+					autofocus=""
+					ng-model="data.auth.user"
+				  />
+				  <br/>
+
+				  <input
+					type="password"
+					class="form-control"
+					name="password"
+					placeholder="Пароль"
+					required=""
+					ng-model="data.auth.pass"
+				  />
+				  <br/>
+				  <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login()">Вход</button>
+
+				  <br/>
+				  <div class="alert alert-danger" ng-show="data.error">
+					{{data.error.errMsg}}
+				  </div>
+				</form>
+				</div>
+			</div>
+
+		    <div ng-if="data.auth.isAuth" style="background: #eeeeee">
+			    <div class="panel panel-primary" style="margin-bottom: 0;">
+
+					<div class="panel-heading">
+			            {{data.app.header}}
+						<span>
+							<a id="cmdFullScreen" ng-click="data.fullScreen=!data.fullScreen" class="btn btn-primary btn-sm pull-right">
+								<span ng-class="data.fullScreen ? 'glyphicon glyphicon-option-horizontal' : 'glyphicon glyphicon-fullscreen'"
+			                             uib-tooltip="Полноэкранный режим" tooltip-placement="bottom">
+								</span>
+							</a> 
+						</span>
+			        </div>
+			
+			        <div class="panel-body" ng-show="!data.fullScreen">
+				      	<span class="badge">
+				      		Текущий пользователь: {{data.auth.user}} <br/>
+				      	</span>
+						
+				      	<span class="badge">
+				      		Текущие полномочия: {{data.auth.currentResp.name}} <br/>
+				      	</span>
+
+						<button class="btn btn-primary pull-right btn-sm RbtnMargin" type="button" ng-click="logout()">Выход</button>
+			        </div>
+			    </div>
+
+				<md-content class="md-padding" ng-show="!data.fullScreen" style="margin-top: 5px; border: thin solid lightgray;">
+				  <md-nav-bar
+				    md-selected-nav-item="data.app.current"
+				    nav-bar-aria-label="Меню приложения">
+
+					<md-nav-item md-nav-click="goto(item.name)" name="{{item.name}}" ng-repeat="item in data.app.topMenu">
+						<span style="white-space: pre-wrap">{{item.desc}}</span>
+					</md-nav-item>
+
+				  </md-nav-bar>
+				</md-content>
+
+				
+				<div ng-if="data.app.current=='info'" style="background: #eeeeee; margin-top: 5px;">
+					<div layout="row" ng-controller="infoController">
+						Главная страница					  
+					</div>
+				</div>	
+				
+
+				<div ng-if="data.app.current=='dict'" style="background: #eeeeee; margin-top: 5px;">
+					<div layout="row" ng-controller="dictController">
+					  
+					  <div flex="20" ng-show="!data.fullScreen" style="margin-right: 10px; border: thin solid lightgray;">
+					    <md-content>
+					      <md-list flex>
+					        <md-list-item class="md-3-line" ng-repeat="item in menu.nodes" ng-click="onSelectedMenu(item.name)">
+					          <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.desc}}" />
+					          <div class="md-list-item-text" layout="column">
+					            <h3>{{item.desc}}</h3>
+					            <p>{{item.notes}}</p>
+					          </div>
+					        </md-list-item>						        
+					      </md-list>
+					    </md-content>					  
+					  </div>
+					  
+					  <div flex="data.fullScreen ? '100': '20'" style="border: thin solid lightgray;">
+			          	<div ng-view class="ngFade" autoscroll="true"></div>
+					  </div>				
+					</div>
+				</div>		
+				
+
+				<div ng-if="data.app.current=='adm'" style="background: #eeeeee; margin-top: 5px;">
+					<div layout="row" ng-controller="admController">
+					  
+					  <div flex="20" ng-show="!data.fullScreen" style="margin-right: 10px; border: thin solid lightgray;">
+					    <md-content>
+					      <md-list flex>
+					        <md-list-item class="md-3-line" ng-repeat="item in menu.nodes" ng-click="onSelectedMenu(item.name)">
+					          <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.desc}}" />
+					          <div class="md-list-item-text" layout="column">
+					            <h3>{{item.desc}}</h3>
+					            <p>{{item.notes}}</p>
+					          </div>
+					        </md-list-item>						        
+					      </md-list>
+					    </md-content>					  
+					  </div>
+					  
+					  <div flex="data.fullScreen ? '100': '20'" style="border: thin solid lightgray;">
+			          	<div ng-view class="ngFade" autoscroll="true"></div>
+					  </div>				
+					</div>
+				</div>	
+										
+		    </div>
+		</div>
+		
+	</body>
+</html>
