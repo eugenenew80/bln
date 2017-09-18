@@ -1,89 +1,28 @@
 angular.module("app")
-    .controller("appController", function ($scope, $rootScope, $http, $location, authenticationService) {
+    .controller("appController", function ($scope, $rootScope, $http, $location, $http, metaBaseUrl, authenticationService) {
         
-    	$scope.data = {};
-        $scope.data.app = {
-    		header: "Информационная система Билинг",
-    		current: "info",
-    		topMenu: [
-	        	{
-	        		name:  "info",
-	        		desc:   "Главная",
-	        		url:   "#",
-	        		active: true
-	        	},
-	        	
-	        	{
-	        		name:  "dict",
-	        		desc:   "НСИ",
-	        		url:   "#",
-	        		active: false
-	        	},
-	        	
-	        	{
-	        		name:  "adm",
-	        		desc:   "Администрирование",
-	        		url:   "#",
-	        		active: false
-	        	},
-	        	
-	        	{
-	        		name:  "data",
-	        		desc:   "Данные ",
-	        		url:   "#",
-	        		active: false
-	        	},
-	        	
-	        	{
-	        		name:  "calc",
-	        		desc:   "Расчёты",
-	        		url:   "#",
-	        		active: false
-	        	},   	        	        	
-	        	
-	        	{
-	        		name:  "report",
-	        		desc:   "Отчёты",
-	        		url:   "#",
-	        		active: false
-	        	},   	        	        	
-	        	
-	        	{
-	        		name:  "fin",
-	        		desc:   "Финансы",
-	        		url:   "#",
-	        		active: false
-	        	},
-	        	
-	        	{
-	        		name:  "edoc",
-	        		desc:   "Документооборот",
-	        		url:   "#",
-	        		active: false
-	        	},
-	        	
-	        	{
-	        		name:  "client",
-	        		desc:   "Личный кабинет",
-	        		url:   "#",
-	        		active: false
-	        	}, 
-	        	
-	        	{
-	        		name:  "rfc",
-	        		desc:   "РФЦ",
-	        		url:   "#",
-	        		active: false
-	        	} 	        	
-	        ]        			
-        };
-        
-        
-		
-        $scope.data.auth = {
-          isAuth: false,
-          user: ""          
-        };
+    	$scope.data = {
+    		app: {
+	    		header: "Информационная система Билинг",
+	    		current: "INFO",
+	    		topMenu: []    			
+    		},
+    		
+    		auth: {
+    			isAuth: false,
+    			user: ""          
+    		}
+    	};
+
+    	
+        $scope.$watch("data.auth.isAuth", function() {
+        	if ($scope.data.auth.isAuth) {
+                $http({method: "GET", url: metaBaseUrl + "module"}).then(
+            		function successCallback(response) { $scope.data.app.topMenu = response.data }, 
+            		function errorCallback(error) {}
+                );   	
+        	}
+        });
         
         
         authenticationService.clearCredentials();

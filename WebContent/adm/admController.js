@@ -1,11 +1,11 @@
 angular.module("admApp")
-    .controller("admController", function ($scope, $location, $http, appSettings) {        
+    .controller("admController", function ($scope, $location, $http, metaBaseUrl) {        
     	$scope.menu = {
 			name: "root",
 			nodes: []
 	    };
     	    	
-    	$http({method: "GET", url: appSettings.baseUrl + "blnApi/webapi/meta/adm"}).then(
+    	$http({method: "GET", url: metaBaseUrl + "adm"}).then(
     		function successCallback(response) { $scope.menu.nodes = response.data }, 
     		function errorCallback(error) {}
     	);      	

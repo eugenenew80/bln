@@ -182,26 +182,21 @@
 			    </div>
 
 				<md-content class="md-padding" ng-show="!data.fullScreen" style="margin-top: 5px; border: thin solid lightgray;">
-				  <md-nav-bar
-				    md-selected-nav-item="data.app.current"
-				    nav-bar-aria-label="Меню приложения">
-
-					<md-nav-item md-nav-click="goto(item.name)" name="{{item.name}}" ng-repeat="item in data.app.topMenu">
-						<span style="white-space: pre-wrap">{{item.desc}}</span>
+				  <md-nav-bar md-selected-nav-item="data.app.current">
+					<md-nav-item md-nav-click="goto(item.code)" name="{{item.code}}" ng-repeat="item in data.app.topMenu">
+						<span style="white-space: pre-wrap">{{item.shortName}}</span>
 					</md-nav-item>
-
 				  </md-nav-bar>
 				</md-content>
 
 				
-				<div ng-if="data.app.current=='info'" style="background: #eeeeee; margin-top: 5px;">
+				<div ng-if="data.app.current=='INFO'" style="background: #eeeeee; margin-top: 5px;">
 					<div layout="row" ng-controller="infoController">
-						Главная страница					  
 					</div>
 				</div>	
 				
 
-				<div ng-if="data.app.current=='dict'" style="background: #eeeeee; margin-top: 5px;">
+				<div ng-if="data.app.current=='DICT'" style="background: #eeeeee; margin-top: 5px;">
 					<div layout="row" ng-controller="dictController">
 					  
 					  <div flex="20" ng-show="!data.fullScreen" style="margin-right: 10px; border: thin solid lightgray;">
@@ -225,7 +220,7 @@
 				</div>		
 				
 
-				<div ng-if="data.app.current=='adm'" style="background: #eeeeee; margin-top: 5px;">
+				<div ng-if="data.app.current=='ADM'" style="background: #eeeeee; margin-top: 5px;">
 					<div layout="row" ng-controller="admController">
 					  
 					  <div flex="20" ng-show="!data.fullScreen" style="margin-right: 10px; border: thin solid lightgray;">

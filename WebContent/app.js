@@ -85,4 +85,8 @@ angular.module("app", ["ngCookies", "ngMaterial", "common", "dictApp", "admApp",
 	
 	.factory("authBaseUrl", function(appSettings) {
     	return appSettings.baseUrl + "blnApi/webapi/"
+    })
+
+	.factory("metaBaseUrl", function(appSettings) {
+    	return appSettings.baseUrl + "blnApi/webapi/meta/"
     });

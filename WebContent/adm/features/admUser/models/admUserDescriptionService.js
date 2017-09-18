@@ -3,22 +3,22 @@
         .factory("admUserDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
 			var serviceName = "admUser";
-			var serviceDescPural = "Роли";
-			var serviceDescSingular = "Роль";
+			var serviceDescPural = "Пользователи";
+			var serviceDescSingular = "Пользователь";
 
 			//List fields description for search
 			var searchFieldsDef = [
 				
 				fieldBuilder.build({
 					name: "code",
-					labelDesc: "Код",
+					labelDesc: "Учётная запись",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-2"
 				}),
 				
 				fieldBuilder.build({
 					name: "name",
-					labelDesc: "Наименование",
+					labelDesc: "ФИО",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
 				}),	
@@ -76,13 +76,13 @@
 
   	            responsiveTableFieldBuilder.build({
 		            name: "code",
-		            desc: "Код",
+		            desc: "Учётная запись",
 		            headerStyle: "width: 20%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
-		            desc: "Наименование",
+		            desc: "ФИО",
 		            headerStyle: "width: 70%",
 	            }) 
 			];
@@ -267,7 +267,7 @@
 
             				fieldBuilder.build({
             					name: "code",
-            					labelDesc: "Код",
+            					labelDesc: "Учётная запись",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
                                 required: true,
@@ -277,7 +277,7 @@
             				
             				fieldBuilder.build({
             					name: "name",
-            					labelDesc: "Наименование",
+            					labelDesc: "ФИО",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 required: true,
