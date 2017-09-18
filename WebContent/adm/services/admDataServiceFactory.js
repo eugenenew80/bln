@@ -5,7 +5,7 @@
                 newInstance: function (path) {
 
                     return $resource(
-                    	admBaseUrl + path + "/" + ":entityId",
+                    		admBaseUrl + path + "/" + ":entityId",
 
                         {entityId: "@id"},
 
@@ -91,18 +91,5 @@
 
                 }
             }
-        })
-    
-
-        .factory("admFuncDataService", function (admDataServiceFactory, admResourceFactory) {
-            return admDataServiceFactory.newInstance(admResourceFactory.newInstance("func"));
-        })
-        
-        .factory("admRoleDataService", function (admDataServiceFactory, admResourceFactory) {
-            return admDataServiceFactory.newInstance(admResourceFactory.newInstance("role"));
-        })    
-        
-        .factory("admUserDataService", function (dictDataServiceFactory, dictResourceFactory) {
-            return dictDataServiceFactory.newInstance(dictResourceFactory.newInstance("user"));
-        })    
+        });
 })();

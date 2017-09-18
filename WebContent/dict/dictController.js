@@ -1,11 +1,11 @@
 angular.module("dictApp")
-    .controller("dictController", function ($scope, $location, $http, dictBaseUrl) {        
+    .controller("dictController", function ($scope, $location, $http, appSettings) {        
     	$scope.menu = {
 			name: "root",
 			nodes: []
 	    };
     	    	
-    	$http({method: "GET", url: dictBaseUrl + "meta"}).then(
+    	$http({method: "GET", url: appSettings.baseUrl + "blnApi/webapi/meta/dict"}).then(
     		function successCallback(response) { $scope.menu.nodes = response.data }, 
     		function errorCallback(error) {}
     	);      	

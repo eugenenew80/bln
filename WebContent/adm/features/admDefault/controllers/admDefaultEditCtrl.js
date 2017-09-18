@@ -1,6 +1,8 @@
 angular.module("admApp")
-	.controller("admDefaultEditCtrl", function ($scope, $mdDialog, dataService, descriptionService, form, currentElement) {
+	.controller("admDefaultEditCtrl", function ($scope, $mdDialog, $mdToast, descriptionService, form, currentElement) {
 
+		dataService=descriptionService.dataService;
+		
 		$scope.data = {};
         $scope.descriptionService = descriptionService;
         $scope.form = form;
@@ -29,22 +31,12 @@ angular.module("admApp")
 					if (action=="create")
 						dataService.getElements().push(newItem);
 					
+					$scope.showToast('Запись успешно сохранена!');
 					$mdDialog.hide();
 				},
 
 				function(error) {
-					
-		            $mdDialog.show(
-	                    $mdDialog.alert()
-	                      .multiple(true)
-	                      .clickOutsideToClose(true)
-	                      .title('Ошибка!')
-	                      .textContent(error.data.errMsg)
-	                      .ariaLabel('Уведомление об ошибке')
-	                      .ok('Ok')
-		            );
-					
-					$scope.data.error=error;
+					$scope.showMessage("Ошибка!", error.data.errMsg);;
 				}
 			);
         }        
@@ -53,4 +45,28 @@ angular.module("admApp")
         $scope.actions.cancel = function () {
         	$mdDialog.hide();
         }
+
+	
+		$scope.showMessage = function(title, message) {
+	        $mdDialog.show(
+	            $mdDialog.alert()
+	              .multiple(true)
+	              .clickOutsideToClose(true)
+	              .title(title)
+	              .textContent(message)
+	              .ok('Ok')
+	        	);		
+		}
+		
+
+		$scope.showToast = function(message) {
+            var parentEl = angular.element("#list");
+            $mdToast.show(
+            	$mdToast.simple()
+                  .textContent(message)
+                  .position("top right")
+                  .hideDelay(3000)
+                  .parent(parentEl)
+            );		
+		}		
 	});	

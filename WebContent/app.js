@@ -10,11 +10,16 @@ angular.module("app", ["ngCookies", "ngMaterial", "common", "dictApp", "admApp",
     })
 
     
-	.factory("dataServices", function (dictDataServiceFactory, dictResourceFactory, dictNodes) {
+	.factory("dataServices", function (dictDataServiceFactory, dictResourceFactory, admDataServiceFactory, admResourceFactory, dictNodes, admNodes) {
 	    var dataServices = [];	    
 	    angular.forEach(dictNodes, function(node) {
 	    	dataServices[node] = dictDataServiceFactory.newInstance(dictResourceFactory.newInstance(node));
 	    })
+	    
+	    angular.forEach(admNodes, function(node) {
+	    	dataServices[node] =admDataServiceFactory.newInstance(admResourceFactory.newInstance(node));
+	    })
+	    
 		return dataServices;
 	})
 
@@ -39,7 +44,12 @@ angular.module("app", ["ngCookies", "ngMaterial", "common", "dictApp", "admApp",
 		    dictSubstationTypeDescriptionService,
 		    dictAccountingTypeDescriptionService,
 		    dictMeteringPointTypeDescriptionService,
-		    dictMeteringPointDescriptionService
+		    dictMeteringPointDescriptionService,
+		    
+		    admFuncDescriptionService,
+		    admRoleDescriptionService,
+		    admUserDescriptionService,
+		    admModuleDescriptionService
 	
 	) {
 	    var descriptionServices = [];
@@ -63,6 +73,11 @@ angular.module("app", ["ngCookies", "ngMaterial", "common", "dictApp", "admApp",
 	    descriptionServices["dictAccountingType"] = dictAccountingTypeDescriptionService;
 	    descriptionServices["dictMeteringPointType"] = dictMeteringPointTypeDescriptionService;
 	    descriptionServices["dictMeteringPoint"] = dictMeteringPointDescriptionService;
+	    
+	    descriptionServices["admFunc"] = admFuncDescriptionService;
+	    descriptionServices["admRole"] = admRoleDescriptionService;
+	    descriptionServices["admUser"] = admUserDescriptionService;
+	    descriptionServices["admModule"] = admModuleDescriptionService;
 	    
 		return descriptionServices;
 	})	

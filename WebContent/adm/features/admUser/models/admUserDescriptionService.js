@@ -1,6 +1,10 @@
 (function () {
     angular.module("admApp")
-        .factory("admUserDescriptionService", function ($filter, stateService, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
+        .factory("admUserDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
+
+			var serviceName = "admUser";
+			var serviceDescPural = "Роли";
+			var serviceDescSingular = "Роль";
 
 			//List fields description for search
 			var searchFieldsDef = [
@@ -145,14 +149,32 @@
 						tooltip: "Изменить запись",
 						glyphicon: "glyphicon-pencil"
 					})
-                }	                
+                },
+
+				{
+                    action: "remove",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "remove"
+                    },	
+                    
+                    trigger: "button",
+					button: buttonBuilder.build({
+						caption: "Удалить",
+						tooltip: "Удалить запись",
+						glyphicon: "glyphicon-remove"
+					})
+				},
+	                
             ];
             
 
             //return description service
             return {
-                name: "admUser",
-                desc: "Пользователи системы",
+                name: serviceName,
+                desc: serviceDescPural,
+                dataService: dataServices[serviceName],
                 
                 sections: {
                 	
@@ -160,7 +182,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", "Пользователи системы"],			
+                			items: ["НСИ", serviceDescPural],			
                 		}
                 	},
 
@@ -171,7 +193,7 @@
                 		//Search form
                 		search: {
                 			type: "form",
-                			templateURL: "common/directives/form/formTemplate.html",
+                			templateURL: "common/directives/complexForm/complexFormTemplate.html",
                 			header: "Панель фильтров",
                             fields:  searchFieldsDef,
                             actions: searchActionsDef,
@@ -205,7 +227,6 @@
 		                    	text: "Панель фильтров"
 		                    },
 		                    
-		                    
 		                    //fields
 		                    fields: tableFieldsDef,
 
@@ -233,7 +254,7 @@
                         type: "modalForm",
                         templateURL: "adm/features/admDefault/views/edit.html",
                         controller: "admDefaultEditCtrl",
-                        header: "Пользователь системы",
+                        header: serviceDescSingular,
                         
                         panels: [
                         	{
@@ -249,6 +270,7 @@
             					labelDesc: "Код",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
+                                required: true,
                                 panel: "base",
                                 editable: true
             				}),
@@ -258,9 +280,10 @@
             					labelDesc: "Наименование",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
+                                required: true,
                                 panel: "base",
                                 editable: true
-            				})
+            				})	
                         ],
                         
                         

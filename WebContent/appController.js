@@ -25,7 +25,56 @@ angular.module("app")
 	        		desc:   "Администрирование",
 	        		url:   "#",
 	        		active: false
-	        	}  	        	        	
+	        	},
+	        	
+	        	{
+	        		name:  "data",
+	        		desc:   "Данные ",
+	        		url:   "#",
+	        		active: false
+	        	},
+	        	
+	        	{
+	        		name:  "calc",
+	        		desc:   "Расчёты",
+	        		url:   "#",
+	        		active: false
+	        	},   	        	        	
+	        	
+	        	{
+	        		name:  "report",
+	        		desc:   "Отчёты",
+	        		url:   "#",
+	        		active: false
+	        	},   	        	        	
+	        	
+	        	{
+	        		name:  "fin",
+	        		desc:   "Финансы",
+	        		url:   "#",
+	        		active: false
+	        	},
+	        	
+	        	{
+	        		name:  "edoc",
+	        		desc:   "Документооборот",
+	        		url:   "#",
+	        		active: false
+	        	},
+	        	
+	        	{
+	        		name:  "client",
+	        		desc:   "Личный кабинет",
+	        		url:   "#",
+	        		active: false
+	        	}, 
+	        	
+	        	{
+	        		name:  "rfc",
+	        		desc:   "РФЦ",
+	        		url:   "#",
+	        		active: false
+	        	} 	        	
 	        ]        			
         };
         

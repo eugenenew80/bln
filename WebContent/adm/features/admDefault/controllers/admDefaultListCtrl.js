@@ -1,6 +1,8 @@
 angular.module("admApp")
-	.controller("admDefaultListCtrl", function ($scope, $routeParams, $location, $mdDialog, stateService, descriptionService, dataService) {
-
+	.controller("admDefaultListCtrl", function ($scope, $routeParams, $location, $mdDialog, $mdToast, stateService, descriptionService) {
+			
+		var dataService = descriptionService.dataService;
+		
         //Save route parameters
         angular.forEach($routeParams, function(value, key) {
             stateService.getRouteParams()[key]=value;
@@ -20,7 +22,7 @@ angular.module("admApp")
 
             $scope.data.elements.$promise.then(
                 function(data) { $scope.showToast('Запрос успешно выполнен!'); },
-                function(error) { $scope.showMessage("Ошибка!", error.data.message); }
+                function(error) { $scope.showMessage("Ошибка!", error.data.errMsg); }
             );
             $scope.data.state.selectedPage = 1;
         }
@@ -52,7 +54,7 @@ angular.module("admApp")
 		                        $scope.showToast('Запись успешно удалена!');
 		                    },
 
-		                    function(error) { $scope.showMessage("Ошибка!", error.data.message); }
+		                    function(error) { $scope.showMessage("Ошибка!", error.data.errMsg); }
 		                );
 		    	}, 
 		    	function() {}
@@ -103,13 +105,15 @@ angular.module("admApp")
 				//clone of current element
 				if (action.form.data=="@cloneElement")
 					resolvedItem = angular.copy(item);
+								
+				if (resolvedItem.$get)
+					resolvedItem.$get();
 					
 				//open dialog
 	        	$mdDialog.show({
 	                templateUrl: form.templateURL,
 	                controller: form.controller,
 	                locals: {
-	                	dataService: dataService,  
 	                	descriptionService: descriptionService, 
 	                	form: form, 
 	                	currentElement: resolvedItem

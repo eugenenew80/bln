@@ -1,16 +1,12 @@
-<div>
+<div id="list">
 	<breadcrumb paths="data.path" style="margin-bottom: 0"></breadcrumb>
-
-	<div class="alert alert-danger"  ng-if="data.error">
-		Error: {{data.error.status}}: {{data.error.statusText}} <br>
-		Details:  {{data.error.data.messsage || 'Oops! Request error!'}}
-	</div>
 
 	<!-- Search -->
 	<div ng-if="data.state.searchPanel" style="margin-top: 5px;">
 		<complex-form model="data.state.searchModel" config="descriptionService.sections.main.search" handle="handle">
 		</complex-form>
 	</div>
+
 
 	<md-toolbar class="md-hue-2" md-colors="{background: 'Grey-200'}">
 		<div class="md-toolbar-tools">
@@ -36,7 +32,7 @@
 
 
 	<div style="margin-bottom: 15px;" class="btn-group" ng-show="data.elements.length>data.state.rowsPerPage">
-		<a ng-repeat= "page in data.elements | liveSearchFilter:data.liveSearch | paginationFilter:data.state.selectedPage:data.state.rowsPerPage" ng-click="data.state.selectedPage=page" class="btn btn-default" ng-class="getPageClass(page)">
+		<a ng-repeat= "page in data.elements | liveSearchFilter:data.liveSearch | paginationFilter:data.state.selectedPage:data.state.rowsPerPage" ng-click="data.state.selectedPage=page" class="btn btn-default" ng-class="data.state.selectedPage == page ? 'btn-info' : ''">
 			{{page}}
 		</a>
 	</div>
@@ -84,7 +80,7 @@
 	
 					<td>
 						<div class="btn-group">
-							<a class="btn dropdown-toggle" data-toggle="dropdown" uib-tooltip="Список действий" href="">
+							<a class="btn dropdown-toggle" data-toggle="dropdown" href="">
 						        <span class="caret"></span>
 						    </a>
 		
@@ -96,7 +92,7 @@
 											ng-click="handleAction('row', action, item)"
 											ng-disabled="{{action.button.disabled}}"
 									>
-										<span class="{{action.button.glyphicon}}"></span>
+										<span class="{{action.button.glyphicon}}" style="margin-right:10px;"></span>
 										{{action.button.caption}}
 									</a>
 								</li>

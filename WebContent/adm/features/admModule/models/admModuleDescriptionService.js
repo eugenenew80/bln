@@ -1,10 +1,10 @@
 (function () {
     angular.module("admApp")
-        .factory("admRoleDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
+        .factory("admModuleDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
-			var serviceName = "admRole";
-			var serviceDescPural = "Роли";
-			var serviceDescSingular = "Роль";
+			var serviceName = "admModule";
+			var serviceDescPural = "Модули";
+			var serviceDescSingular = "Модуль";
 
 			//List fields description for search
 			var searchFieldsDef = [
@@ -283,7 +283,17 @@
                                 required: true,
                                 panel: "base",
                                 editable: true
-            				})	
+            				}),
+            				
+            				fieldBuilder.build({
+            					name: "shortName",
+            					labelDesc: "Краткое наименование",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                required: true,
+                                panel: "base",
+                                editable: true
+            				})	            				
                         ],
                         
                         
