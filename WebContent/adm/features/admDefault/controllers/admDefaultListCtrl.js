@@ -1,5 +1,5 @@
 angular.module("admApp")
-	.controller("admDefaultListCtrl", function ($scope, $routeParams, $location, $mdDialog, $mdToast, stateService, descriptionService) {
+	.controller("admDefaultListCtrl", function ($scope, $routeParams, $location, $mdDialog, $mdToast, $http, stateService, descriptionService, admRoleModuleDescriptionService, admRoleFuncDescriptionService) {
 			
 		var dataService = descriptionService.dataService;
 		
@@ -14,6 +14,11 @@ angular.module("admApp")
         $scope.setSelectedRow=function(newRowIndex) { selectedRowIndex=newRowIndex;};
         $scope.getSelectedRow=function() { return selectedRowIndex; };
 
+        //Selected row index
+        var selectedRowIndexChild;
+        $scope.setSelectedRowChild=function(newRowIndexChild) { selectedRowIndexChild=newRowIndexChild;};
+        $scope.getSelectedRowChild=function() { return selectedRowIndexChild; };        
+        
         
         //Apply search button
         $scope.applySearch = function() {            
@@ -36,6 +41,53 @@ angular.module("admApp")
 		}
 
 		
+        //Show modules
+        $scope.showModules = function(item) {   
+        	$scope.childDescriptionService=admRoleModuleDescriptionService;
+            $scope.data.childs=$scope.childDescriptionService.dataService.findAll({roleId: 1});
+
+            $scope.data.childs.$promise.then(
+                function(data) { 
+                	$scope.data.isChilds = true;
+                	$scope.showToast('Запрос успешно выполнен!'); 
+                },
+                function(error) { $scope.showMessage("Ошибка!", error.data.errMsg); }
+            );        	
+        	
+            
+            
+        	/*
+        	$http({method: "GET", url: "/blnApi/webapi/adm/admRole/1/admRoleModule"}).then(
+        		function successCallback(response) {  
+        			$scope.data.childs = response.data;
+        			$scope.childDescriptionService=admRoleModuleDescriptionService;
+        			$scope.data.isChilds = true;
+        		}, 
+        		function errorCallback(error) {}
+        	);
+        	*/         	
+        }
+        
+        
+        //Show funcs
+        $scope.showFuncs = function(item) {    
+        	$http({method: "GET", url: "/blnApi/webapi/adm/admRole/1/admRoleFunc"}).then(
+        		function successCallback(response) {  
+        			$scope.data.childs = response.data;
+        			$scope.childDescriptionService=admRoleFuncDescriptionService;
+        			$scope.data.isChilds = true;
+        		}, 
+        		function errorCallback(error) {}
+        	);          	
+        }
+        
+        
+        //go back
+        $scope.goBack = function(item) {  
+        	$scope.data.isChilds = false;
+        }
+        
+        
 		//delete record
 		$scope.remove = function(item) {
 		    var confirm = $mdDialog.confirm()
@@ -51,6 +103,33 @@ angular.module("admApp")
 		                    function(data) {
 		                        var index = $scope.data.elements.indexOf(item);
 		                        $scope.data.elements.splice(index, 1);		                       
+		                        $scope.showToast('Запись успешно удалена!');
+		                    },
+
+		                    function(error) { $scope.showMessage("Ошибка!", error.data.errMsg); }
+		                );
+		    	}, 
+		    	function() {}
+		    );		
+		}
+		
+		
+		
+		//delete record
+		$scope.removeChild = function(item) {
+		    var confirm = $mdDialog.confirm()
+		          .title('Удалить?')
+		          .textContent('Вы уверены, что хотите удалить запись?')
+		          .ariaLabel('Подтведить удаление')
+		          .ok('Удалить')
+		          .cancel('Отмена');
+
+		    $mdDialog.show(confirm).then(
+		    	function() {
+		    		$scope.childDescriptionService.dataService.remove(item.roleId, item.moduleId).$promise.then(
+		                    function(data) {
+		                        var index = $scope.data.childs.indexOf(item);
+		                        $scope.data.childs.splice(index, 1);		                       
 		                        $scope.showToast('Запись успешно удалена!');
 		                    },
 
@@ -91,21 +170,31 @@ angular.module("admApp")
         	
         	//open dialog
         	if (action.typeAction == "form" && action.form) {
-	        	var form = descriptionService.forms[action.form.name];        	
+        		var resolvedDescriptionService = descriptionService;
+        		if ($scope.data.isChilds)
+        			resolvedDescriptionService = $scope.childDescriptionService;
+        		
+	        	var form = resolvedDescriptionService.forms[action.form.name];        	
 	        	var resolvedItem = {};
 	        	
 				//new empty element
-				if (action.form.data=="@newElement") 
+				if (action.form.data=="@newElement") {
 					resolvedItem={};
+					resolvedItem["#status#"] = "create";
+				}
 				
 				//current element
-				if (action.form.data=="@currentElement") 
+				if (action.form.data=="@currentElement") {
 					resolvedItem = item;
-	
+					resolvedItem["#status#"] = "update";
+				}
+				
 				//clone of current element
-				if (action.form.data=="@cloneElement")
+				if (action.form.data=="@cloneElement") {
 					resolvedItem = angular.copy(item);
-								
+					resolvedItem["#status#"] = "create";
+				}
+				
 				if (resolvedItem.$get)
 					resolvedItem.$get();
 					
@@ -114,7 +203,7 @@ angular.module("admApp")
 	                templateUrl: form.templateURL,
 	                controller: form.controller,
 	                locals: {
-	                	descriptionService: descriptionService, 
+	                	descriptionService: resolvedDescriptionService, 
 	                	form: form, 
 	                	currentElement: resolvedItem
 	                }

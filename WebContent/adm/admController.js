@@ -5,7 +5,7 @@ angular.module("admApp")
 			nodes: []
 	    };
     	    	
-    	$http({method: "GET", url: metaBaseUrl + "adm"}).then(
+    	$http({method: "GET", url: metaBaseUrl + "metaAdm"}).then(
     		function successCallback(response) { $scope.menu.nodes = response.data }, 
     		function errorCallback(error) {}
     	);      	

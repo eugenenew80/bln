@@ -1,73 +1,18 @@
 (function () {
     angular.module("admApp")
-        .factory("admRoleDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
+        .factory("admRoleFuncDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
-			var serviceName = "admRole";
-			var serviceDescPural = "Роли";
-			var serviceDescSingular = "Роль";
+			var serviceName = "admRoleFunc";
+			var serviceDescPural = "Бизнес-функции";
+			var serviceDescSingular = "Бизнес-функция";
 
 			//List fields description for search
 			var searchFieldsDef = [
-				
-				fieldBuilder.build({
-					name: "code",
-					labelDesc: "Код",
-                    labelClass: "col-sm-2",
-                    controlClass: "col-sm-2"
-				}),
-				
-				fieldBuilder.build({
-					name: "name",
-					labelDesc: "Наименование",
-                    labelClass: "col-sm-2",
-                    controlClass: "col-sm-4"
-				}),	
 			];
         	
         	
 			//List actions for search
 			var searchActionsDef = [
-				{
-                    action: "applySearch",
-                    typeAction: "controllerMethod",
-
-                    controllerMethod: {
-                        name: "applySearch"
-                    },
-                    
-                    trigger: "button",
-					button: {
-						desc: "Применить",
-						tooltip: "Применить",
-						classes: "btn btn-primary btn-xs pull-left",
-						style: "margin-left: 3px;",
-						glyphicon: "glyphicon glyphicon-search",
-						disabled: false
-					}
-				},
-
-				{
-					filter: {
-						roles: ["expert", "user"]
-					},
-
-                    action: "resetSearch",
-                    typeAction: "controllerMethod",
-
-                    controllerMethod: {
-                        name: "resetSearch"
-                    },					
-                    
-                    trigger: "button",
-					button: {
-						desc: "Сбросить",
-						tooltip: "Сбросить",
-						classes: "btn btn-warning btn-xs pull-left",
-						style: "margin-left: 3px;",
-						glyphicon: "glyphicon glyphicon-off",
-						disabled: false
-					}
-				}			                        
 			];    
 			
 			
@@ -75,16 +20,24 @@
 			var tableFieldsDef = [
 
   	            responsiveTableFieldBuilder.build({
-		            name: "code",
-		            desc: "Код",
-		            headerStyle: "width: 20%",
+		            name: "funcName",
+		            desc: "Бизнес-функция",
+		            headerStyle: "width: 70%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "name",
-		            desc: "Наименование",
-		            headerStyle: "width: 70%",
-	            }) 
+		            name: "startDate",
+		            desc: "Дата с",
+		            headerStyle: "width: 10%",
+		            dataType: "date"
+	            }),
+	            
+  	            responsiveTableFieldBuilder.build({
+		            name: "endDate",
+		            desc: "Дата по",
+		            headerStyle: "width: 10%",
+		            dataType: "date"
+	            }) 	            
 			];
 			
 		
@@ -111,14 +64,34 @@
 
 					trigger: "button",
 					button: {
-						desc: "Создать",
-						tooltip: "Создать новую запись",
+						desc: "Добавить",
+						tooltip: "Добавить новую запись",
 						classes: "btn btn-primary btn-xs",
 						style: "",
 						glyphicon: "glyphicon",
 						disabled: false
 					}
-				},            	
+				},
+				
+				
+				{
+                    action: "back",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "goBack"
+                    },	
+                    
+                    trigger: "button",
+					button: {
+						desc: "Назад",
+						tooltip: "Вернуться назад",
+						classes: "btn btn-primary btn-xs",
+						style: "",
+						glyphicon: "glyphicon",
+						disabled: false
+					}
+				},				
             ];
 			
             
@@ -166,38 +139,7 @@
 						glyphicon: "glyphicon-remove"
 					})
 				},
-
-				{
-                    action: "modules",
-                    typeAction: "controllerMethod",
-
-                    controllerMethod: {
-                        name: "showModules"
-                    },	
-                    
-                    trigger: "button",
-					button: buttonBuilder.build({
-						caption: "Модули",
-						tooltip: "Открыть список модулей",
-						glyphicon: "glyphicon-list-alt"
-					})
-				},
-				
-				{
-                    action: "funcs",
-                    typeAction: "controllerMethod",
-
-                    controllerMethod: {
-                        name: "showFuncs"
-                    },	
-                    
-                    trigger: "button",
-					button: buttonBuilder.build({
-						caption: "Бизнес-функции",
-						tooltip: "Открыть список бизнес-функций",
-						glyphicon: "glyphicon-tasks"
-					})
-				},					
+	                
             ];
             
 
@@ -297,24 +239,35 @@
                         fields: [
 
             				fieldBuilder.build({
-            					name: "code",
-            					labelDesc: "Код",
+            					name: "funcId",
+            					labelDesc: "Бизнес-функция",
                                 labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                required: true,
+                                controlClass: "col-sm-8",
+                                dictName: "admFunc",
                                 panel: "base",
                                 editable: true
             				}),
             				
             				fieldBuilder.build({
-            					name: "name",
-            					labelDesc: "Наименование",
+            					name: "startDate",
+            					labelDesc: "Дата с",
                                 labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
+                                controlClass: "col-sm-4",
                                 required: true,
+                                controlDataType: "date",
                                 panel: "base",
                                 editable: true
-            				})	
+            				}),
+            				
+            				fieldBuilder.build({
+            					name: "endDate",
+            					labelDesc: "Дата по",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-4",
+                                controlDataType: "date",
+                                panel: "base",
+                                editable: true
+            				})	            				
                         ],
                         
                         

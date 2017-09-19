@@ -5,15 +5,38 @@ angular.module("admApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "c
     .factory("admBaseUrl", function(appSettings) {
     	return appSettings.baseUrl + "blnApi/webapi/adm/"
     })
+
+    .factory("metaBaseUrl", function(appSettings) {
+    	return appSettings.baseUrl + "blnApi/webapi/meta/"
+    })
+    
     
     .factory("admNodes", function() {
     	return [
-    		"admModule",
     		"admFunc",
 			"admRole",
 			"admUser"
     	];
     })
+    
+    
+    .factory("admChildNodes", function() {
+    	return [
+    		"admRoleModule",
+			"admRoleFunc",
+			"admUserRole"
+    	];
+    })
+    
+    
+    .factory("metaNodes", function() {
+    	return [
+    		"metaModule",
+			"metaDict",
+			"metaAdm"
+    	];
+    })
+    
     
     .config(function ($routeProvider) {    	
 		$routeProvider.when("/adm/:adm/list", {

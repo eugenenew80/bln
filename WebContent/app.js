@@ -1,4 +1,4 @@
-angular.module("app", ["ngCookies", "ngMaterial", "common", "dictApp", "admApp", "infoApp"])
+angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dictApp", "admApp", "infoApp"])
 
     .config(function ($httpProvider, $locationProvider) {
         //$locationProvider.html5Mode(true);
@@ -10,17 +10,25 @@ angular.module("app", ["ngCookies", "ngMaterial", "common", "dictApp", "admApp",
     })
 
     
-	.factory("dataServices", function (dictDataServiceFactory, dictResourceFactory, admDataServiceFactory, admResourceFactory, dictNodes, admNodes) {
+	.factory("dataServices", function (dictDataServiceFactory, dictResourceFactory, admDataServiceFactory, admResourceFactory, metaDataServiceFactory, metaResourceFactory, admRoleModuleDataServiceFactory, admRoleModuleResourceFactory, dictNodes, admNodes, admChildNodes, metaNodes) {
 	    var dataServices = [];	    
 	    angular.forEach(dictNodes, function(node) {
 	    	dataServices[node] = dictDataServiceFactory.newInstance(dictResourceFactory.newInstance(node));
 	    })
 	    
 	    angular.forEach(admNodes, function(node) {
-	    	dataServices[node] =admDataServiceFactory.newInstance(admResourceFactory.newInstance(node));
+	    	dataServices[node] = admDataServiceFactory.newInstance(admResourceFactory.newInstance(node));
 	    })
 	    
-		return dataServices;
+	    angular.forEach(metaNodes, function(node) {
+	    	dataServices[node] = metaDataServiceFactory.newInstance(metaResourceFactory.newInstance(node));
+	    })
+	    
+	    angular.forEach(admChildNodes, function(node) {
+	    	dataServices[node] = admRoleModuleDataServiceFactory.newInstance(admRoleModuleResourceFactory.newInstance(node));
+	    })
+	    
+	    return dataServices;
 	})
 
 

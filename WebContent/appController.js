@@ -17,7 +17,7 @@ angular.module("app")
     	
         $scope.$watch("data.auth.isAuth", function() {
         	if ($scope.data.auth.isAuth) {
-                $http({method: "GET", url: metaBaseUrl + "module"}).then(
+                $http({method: "GET", url: metaBaseUrl + "metaModule"}).then(
             		function successCallback(response) { $scope.data.app.topMenu = response.data }, 
             		function errorCallback(error) {}
                 );   	

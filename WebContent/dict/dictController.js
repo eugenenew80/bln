@@ -5,7 +5,7 @@ angular.module("dictApp")
 			nodes: []
 	    };
     	    	
-    	$http({method: "GET", url: metaBaseUrl + "dict"}).then(
+    	$http({method: "GET", url: metaBaseUrl + "metaDict"}).then(
     		function successCallback(response) { $scope.menu.nodes = response.data }, 
     		function errorCallback(error) {}
     	);      	
