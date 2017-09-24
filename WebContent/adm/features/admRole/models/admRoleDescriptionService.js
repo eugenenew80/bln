@@ -123,7 +123,7 @@
 			
             
             //List actions for row
-            var rowActionsDef = [     
+            var rowActionsDef = [
 				
                 {
                     action: "edit",
@@ -172,8 +172,12 @@
                     typeAction: "controllerMethod",
 
                     controllerMethod: {
-                        name: "showModules"
+                        name: "showChilds"
                     },	
+                    
+                    controllerMethodParams: {
+                        child: "admRoleModule"
+                    },
                     
                     trigger: "button",
 					button: buttonBuilder.build({
@@ -188,7 +192,11 @@
                     typeAction: "controllerMethod",
 
                     controllerMethod: {
-                        name: "showFuncs"
+                        name: "showChilds"
+                    },	
+                    
+                    controllerMethodParams: {
+                    	child: "admRoleFunc"
                     },	
                     
                     trigger: "button",
@@ -197,7 +205,27 @@
 						tooltip: "Открыть список бизнес-функций",
 						glyphicon: "glyphicon-tasks"
 					})
-				},					
+				},
+				
+				{
+                    action: "dicts",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "showChilds"
+                    },	
+                    
+                    controllerMethodParams: {
+                    	child: "admRoleDict"
+                    },	
+                    
+                    trigger: "button",
+					button: buttonBuilder.build({
+						caption: "Справочники",
+						tooltip: "Открыть список справочников",
+						glyphicon: "glyphicon-book"
+					})
+				},
             ];
             
 
@@ -213,7 +241,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", serviceDescPural],			
+                			items: ["Администрирование", serviceDescPural],			
                 		}
                 	},
 

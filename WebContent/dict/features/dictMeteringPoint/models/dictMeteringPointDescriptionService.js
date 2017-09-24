@@ -339,19 +339,7 @@
                                 panel: "base",
                                 column: 2,
                                 editable: true
-            				}),   
-            				
-              				fieldBuilder.build({
-            					name: "energyObjectId",
-            					labelDesc: "Объект",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",					
-            					dictName: "dictEnergyObject",
-            					required: true,
-                                panel: "object",
-                                column: 1,
-                                editable: true            						
-            				}),	      
+            				}),      
             				
               				fieldBuilder.build({
             					name: "firstCompanyId",

@@ -83,8 +83,8 @@
                         }, 
                         
                         
-                        remove: function (id) {
-                            return resource.remove({entityId: id});
+                        remove: function (entity) {
+                            return resource.remove(entity);
                         }
                     }
 
@@ -92,13 +92,13 @@
             }
         })
         
-        .factory('admRoleModuleResourceFactory', function ($resource, admBaseUrl) {
+        .factory('admParentChildResourceFactory', function ($resource, admBaseUrl) {
             return {
                 newInstance: function (path) {
 
                     return $resource(
-                    	admBaseUrl + "admRole/" + ":roleId/" + path + "/" + ":entityId",
-                        {roleId: "@roleId", entityId: "@moduleId"},
+                    	admBaseUrl + path + "/" + ":entityId",
+                        {parentId: "@parentId", entityId: "@entityId"},
 
                         {
                             findAll: {
@@ -112,7 +112,7 @@
                             
                             create: {
                                 method: "POST",
-                                url:	admBaseUrl + path	
+                                url:	admBaseUrl + path,	
                             },
 
                             update: {
@@ -128,14 +128,13 @@
             }
         })
         
-        .factory("admRoleModuleDataServiceFactory", function ($filter) {
+        .factory("admParentChildDataServiceFactory", function ($filter) {
             return {
                 newInstance: function (resource) {
 
                     var elements = null;
 
                     return {
-
                     	getElements: function () {
                             if (elements==null)
                             	elements = resource.findAll();
@@ -146,18 +145,11 @@
                     	findAll: function (params) {
                             elements = resource.findAll(params);
                             return elements;
-                        },
-                        
+                        },                        
 
                         findById: function (id) {
                             return resource.findById({entityId: id});
-                        },
-
-                        
-                        findByName: function (name) {
-                            return resource.findByName({entityName: name});
                         },                        
-                        
 
                         create: function (entity) {
                             return resource.create(entity);
@@ -169,8 +161,8 @@
                         }, 
                         
                         
-                        remove: function (roleId, id) {
-                            return resource.remove({roleId: roleId, entityId: id});
+                        remove: function (entity) {
+                            return resource.remove(entity);
                         }
                     }
 

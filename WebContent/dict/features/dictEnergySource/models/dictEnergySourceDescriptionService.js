@@ -166,7 +166,47 @@
 						glyphicon: "glyphicon-remove"
 					})
 				},
-	                
+       
+				{
+                    action: "companies",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "showChilds"
+                    },	
+                    
+                    controllerMethodParams: {
+                        child: "dictEnergySourceCompany"
+                    },
+                    
+                    trigger: "button",
+					button: buttonBuilder.build({
+						caption: "Компании",
+						tooltip: "Открыть список компаний",
+						glyphicon: "glyphicon-list-alt"
+					})
+				},	  
+				
+				{
+                    action: "meteringPoints",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "showChilds"
+                    },	
+                    
+                    controllerMethodParams: {
+                        child: "dictEnergySourceMeteringPoint"
+                    },
+                    
+                    trigger: "button",
+					button: buttonBuilder.build({
+						caption: "Точки учёта",
+						tooltip: "Открыть список точек учёта",
+						glyphicon: "glyphicon-list-alt"
+					})
+				},	  
+				
             ];
             
 
@@ -252,7 +292,7 @@
                     //Form edit user
                     edit: {
                         type: "modalForm",
-                        templateURL: "common/directives/complexForm/complexFormTemplate.html",
+                        templateURL: "dict/features/dictDefault/views/edit.html",
                         controller: "dictDefaultEditCtrl",
                         header: serviceDescSingular,
                         

@@ -1,5 +1,5 @@
 angular.module("admApp")
-	.controller("admDefaultListCtrl", function ($scope, $routeParams, $location, $mdDialog, $mdToast, $http, stateService, descriptionService, admRoleModuleDescriptionService, admRoleFuncDescriptionService) {
+	.controller("admDefaultListCtrl", function ($scope, $routeParams, $location, $mdDialog, $mdToast, $http, stateService, descriptionService, descriptionServices, admRoleModuleDescriptionService, admRoleFuncDescriptionService) {
 			
 		var dataService = descriptionService.dataService;
 		
@@ -42,49 +42,29 @@ angular.module("admApp")
 
 		
         //Show modules
-        $scope.showModules = function(item) {   
-        	$scope.childDescriptionService=admRoleModuleDescriptionService;
-            $scope.data.childs=$scope.childDescriptionService.dataService.findAll({roleId: 1});
-
+        $scope.showChilds = function(item, params) {
+        	$scope.childDescriptionService= descriptionServices[params.child];
+        	$scope.data.currentParentElement = item;
+        	
+        	$scope.parentField = $scope.childDescriptionService.parentField;
+        	$scope.childField = $scope.childDescriptionService.childField;
+        	
+            $scope.data.childs=$scope.childDescriptionService.dataService.findAll({parentId: item.id});
             $scope.data.childs.$promise.then(
                 function(data) { 
+                	$scope.data.childPath=$scope.childDescriptionService.sections.header.path.items;
                 	$scope.data.isChilds = true;
                 	$scope.showToast('Запрос успешно выполнен!'); 
                 },
                 function(error) { $scope.showMessage("Ошибка!", error.data.errMsg); }
             );        	
-        	
-            
-            
-        	/*
-        	$http({method: "GET", url: "/blnApi/webapi/adm/admRole/1/admRoleModule"}).then(
-        		function successCallback(response) {  
-        			$scope.data.childs = response.data;
-        			$scope.childDescriptionService=admRoleModuleDescriptionService;
-        			$scope.data.isChilds = true;
-        		}, 
-        		function errorCallback(error) {}
-        	);
-        	*/         	
-        }
-        
-        
-        //Show funcs
-        $scope.showFuncs = function(item) {    
-        	$http({method: "GET", url: "/blnApi/webapi/adm/admRole/1/admRoleFunc"}).then(
-        		function successCallback(response) {  
-        			$scope.data.childs = response.data;
-        			$scope.childDescriptionService=admRoleFuncDescriptionService;
-        			$scope.data.isChilds = true;
-        		}, 
-        		function errorCallback(error) {}
-        	);          	
         }
         
         
         //go back
         $scope.goBack = function(item) {  
         	$scope.data.isChilds = false;
+        	$scope.data.currentParentElement = null;
         }
         
         
@@ -99,7 +79,7 @@ angular.module("admApp")
 
 		    $mdDialog.show(confirm).then(
 		    	function() {
-		    		dataService.remove(item.id).$promise.then(
+		    		dataService.remove( {entityId: item.id} ).$promise.then(
 		                    function(data) {
 		                        var index = $scope.data.elements.indexOf(item);
 		                        $scope.data.elements.splice(index, 1);		                       
@@ -126,7 +106,7 @@ angular.module("admApp")
 
 		    $mdDialog.show(confirm).then(
 		    	function() {
-		    		$scope.childDescriptionService.dataService.remove(item.roleId, item.moduleId).$promise.then(
+		    		$scope.childDescriptionService.dataService.remove( {parentId: item[$scope.parentField], entityId: item[$scope.childField] } ).$promise.then(
 		                    function(data) {
 		                        var index = $scope.data.childs.indexOf(item);
 		                        $scope.data.childs.splice(index, 1);		                       
@@ -180,23 +160,39 @@ angular.module("admApp")
 				//new empty element
 				if (action.form.data=="@newElement") {
 					resolvedItem={};
+					
+					if ($scope.data.currentParentElement) {
+						resolvedItem[$scope.parentField] = $scope.data.currentParentElement.id;
+						resolvedItem.parentId = resolvedItem[$scope.parentField];
+					}
+					
 					resolvedItem["#status#"] = "create";
 				}
 				
 				//current element
 				if (action.form.data=="@currentElement") {
 					resolvedItem = item;
+					if ($scope.data.currentParentElement) {
+						resolvedItem[$scope.parentField] = $scope.data.currentParentElement.id;
+						resolvedItem.parentId = resolvedItem[$scope.parentField];
+						resolvedItem.entityId = resolvedItem[$scope.childField];
+					}
 					resolvedItem["#status#"] = "update";
 				}
 				
 				//clone of current element
 				if (action.form.data=="@cloneElement") {
 					resolvedItem = angular.copy(item);
+					if ($scope.data.currentParentElement) {
+						resolvedItem[$scope.parentField] = $scope.data.currentParentElement.id;
+						resolvedItem.parentId = resolvedItem[$scope.parentField];
+						resolvedItem.entityId = resolvedItem[$scope.childField];
+					}
 					resolvedItem["#status#"] = "create";
 				}
 				
-				if (resolvedItem.$get)
-					resolvedItem.$get();
+				//if (resolvedItem.$get) 
+				//	resolvedItem.$get();
 					
 				//open dialog
 	        	$mdDialog.show({
@@ -231,7 +227,7 @@ angular.module("admApp")
 
             //call controller method
             if (action.typeAction=="controllerMethod" && action.controllerMethod)
-                $scope[action.controllerMethod.name](item);
+                $scope[action.controllerMethod.name](item, action.controllerMethodParams);
         }
 
         

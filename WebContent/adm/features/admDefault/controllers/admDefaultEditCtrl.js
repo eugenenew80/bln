@@ -1,8 +1,7 @@
 angular.module("admApp")
 	.controller("admDefaultEditCtrl", function ($scope, $mdDialog, $mdToast, descriptionService, form, currentElement) {
 
-		dataService=descriptionService.dataService;
-		
+		dataService=descriptionService.dataService;		
 		$scope.data = {};
         $scope.descriptionService = descriptionService;
         $scope.form = form;
@@ -10,6 +9,8 @@ angular.module("admApp")
         $scope.currentElement = angular.copy(currentElement);
         $scope.action = $scope.currentElement["#status#"];
         
+        
+        console.log(currentElement);
         
         angular.forEach(form.fields, function(field, key) {
         	if (field.controls[0].dataType=="date" && angular.isDefined($scope.currentElement[field.name]) )

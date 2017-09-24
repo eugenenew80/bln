@@ -1,7 +1,7 @@
 <div id="list">
-	<breadcrumb paths="data.path" style="margin-bottom: 0"></breadcrumb>
-	
-	<div ng-show="!data.isChilds">	
+	<div ng-show="!data.isChilds">
+		<breadcrumb paths="data.path" style="margin-bottom: 0"></breadcrumb>
+			
 		<!-- Search -->
 		<div ng-if="data.state.searchPanel" style="margin-top: 5px;">
 			<complex-form model="data.state.searchModel" config="descriptionService.sections.main.search" handle="handle">
@@ -130,6 +130,8 @@
 	
 	  
 	 <div ng-if="data.isChilds">
+	 	<breadcrumb paths="data.childPath" style="margin-bottom: 0"></breadcrumb>
+	 	
 		<md-toolbar class="md-hue-2" md-colors="{background: 'Grey-200'}">
 			<div class="md-toolbar-tools">
 				<md-button ng-repeat="action in childDescriptionService.sections.main.table.tableActions.items  | filter: {trigger: 'button'}"

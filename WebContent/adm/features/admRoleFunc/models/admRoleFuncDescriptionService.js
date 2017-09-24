@@ -129,7 +129,7 @@
                     typeAction: "controllerMethod",
 
                     controllerMethod: {
-                        name: "remove"
+                        name: "removeChild"
                     },	
                     
                     trigger: "button",
@@ -148,6 +148,8 @@
                 name: serviceName,
                 desc: serviceDescPural,
                 dataService: dataServices[serviceName],
+                parentField: "roleId",
+                childField: "funcId",
                 
                 sections: {
                 	
@@ -155,7 +157,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", serviceDescPural],			
+                			items: ["Администрирование", "Роли", serviceDescPural],		
                 		}
                 	},
 
@@ -253,7 +255,6 @@
             					labelDesc: "Дата с",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
-                                required: true,
                                 controlDataType: "date",
                                 panel: "base",
                                 editable: true

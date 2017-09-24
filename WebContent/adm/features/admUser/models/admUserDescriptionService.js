@@ -167,6 +167,26 @@
 					})
 				},
 	                
+				
+				{
+                    action: "roles",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "showChilds"
+                    },	
+                    
+                    controllerMethodParams: {
+                        child: "admUserRole"
+                    },
+                    
+                    trigger: "button",
+					button: buttonBuilder.build({
+						caption: "Роли",
+						tooltip: "Открыть список ролей",
+						glyphicon: "glyphicon-user"
+					})
+				},				
             ];
             
 
@@ -182,7 +202,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", serviceDescPural],			
+                			items: ["Администрирование", serviceDescPural],			
                 		}
                 	},
 

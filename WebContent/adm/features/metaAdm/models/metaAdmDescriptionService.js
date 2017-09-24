@@ -1,97 +1,31 @@
 (function () {
     angular.module("admApp")
-        .factory("admRoleModuleDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
+        .factory("metaAdmDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
-			var serviceName = "admRoleModule";
-			var serviceDescPural = "Модули";
-			var serviceDescSingular = "Модуль";
+			var serviceName = "metaAdm";
+			var serviceDescPural = "Меню модуля Администрирование";
+			var serviceDescSingular = "Меню модуля Администрирование";
 
-			//List fields description for search
-			var searchFieldsDef = [
-			];
-        	
-        	
-			//List actions for search
-			var searchActionsDef = [
-			];    
-			
-			
             //List fields description for table
 			var tableFieldsDef = [
 
   	            responsiveTableFieldBuilder.build({
-		            name: "moduleName",
-		            desc: "Модуль",
-		            headerStyle: "width: 70%",
+		            name: "code",
+		            desc: "Код",
+		            headerStyle: "width: 20%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "startDate",
-		            desc: "Дата с",
-		            headerStyle: "width: 10%",
-		            dataType: "date"
-	            }),
-	            
-  	            responsiveTableFieldBuilder.build({
-		            name: "endDate",
-		            desc: "Дата по",
-		            headerStyle: "width: 10%",
-		            dataType: "date"
-	            }) 	            
+		            name: "name",
+		            desc: "Наименование",
+		            headerStyle: "width: 70%",
+	            }) 
 			];
 			
 		
 			
             //List actions after search
-            var tableActionsDef = [
-				{
-                    action: "create",
-                    typeAction: "form",
-
-                    form: {
-                        name: "edit",
-                        data: "@newElement",
-
-                        ok: {
-                            action: "@create",
-                            data: "@element"
-                        },
-
-                        cancel: {
-                            action: "@close"
-                        }
-                    },	
-
-					trigger: "button",
-					button: {
-						desc: "Добавить",
-						tooltip: "Добавить новую запись",
-						classes: "btn btn-primary btn-xs",
-						style: "",
-						glyphicon: "glyphicon",
-						disabled: false
-					}
-				},
-				
-				
-				{
-                    action: "back",
-                    typeAction: "controllerMethod",
-
-                    controllerMethod: {
-                        name: "goBack"
-                    },	
-                    
-                    trigger: "button",
-					button: {
-						desc: "Назад",
-						tooltip: "Вернуться назад",
-						classes: "btn btn-primary btn-xs",
-						style: "",
-						glyphicon: "glyphicon",
-						disabled: false
-					}
-				},				
+            var tableActionsDef = [          	
             ];
 			
             
@@ -122,24 +56,7 @@
 						tooltip: "Изменить запись",
 						glyphicon: "glyphicon-pencil"
 					})
-                },
-
-				{
-                    action: "remove",
-                    typeAction: "controllerMethod",
-
-                    controllerMethod: {
-                        name: "removeChild"
-                    },	
-                    
-                    trigger: "button",
-					button: buttonBuilder.build({
-						caption: "Удалить",
-						tooltip: "Удалить запись",
-						glyphicon: "glyphicon-remove"
-					})
-				},
-	                
+                }
             ];
             
 
@@ -148,8 +65,6 @@
                 name: serviceName,
                 desc: serviceDescPural,
                 dataService: dataServices[serviceName],
-                parentField: "roleId",
-                childField: "moduleId",
                 
                 sections: {
                 	
@@ -157,7 +72,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["Администрирование", "Роли", serviceDescPural],		
+                			items: ["Администрирование", serviceDescPural],			
                 		}
                 	},
 
@@ -166,21 +81,7 @@
                 	main: {
                 		
                 		//Search form
-                		search: {
-                			type: "form",
-                			templateURL: "common/directives/complexForm/complexFormTemplate.html",
-                			header: "Панель фильтров",
-                            fields:  searchFieldsDef,
-                            actions: searchActionsDef,
-                            
-                            enable: false,
-                            auto: true,
-                            collapsable: true,
-                            isCollapse: true,
-                            criteria: {},
-                            entity: {}
-                		},
-                		
+                		search: {},
                 		
 		                table: {
 		                	//params
@@ -198,7 +99,7 @@
 		                    },
 		                    
 		                    search: {
-		                    	enabled: true,
+		                    	enabled: false,
 		                    	text: "Панель фильтров"
 		                    },
 		                    
@@ -241,32 +142,31 @@
                         fields: [
 
             				fieldBuilder.build({
-            					name: "moduleId",
-            					labelDesc: "Модуль",
+            					name: "code",
+            					labelDesc: "Код",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-4",
+                                required: true,
+                                panel: "base",
+                                editable: false
+            				}),
+            				
+            				fieldBuilder.build({
+            					name: "name",
+            					labelDesc: "Наименование",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
-                                dictName: "metaModule",
                                 required: true,
                                 panel: "base",
                                 editable: true
             				}),
             				
             				fieldBuilder.build({
-            					name: "startDate",
-            					labelDesc: "Дата с",
+            					name: "shortName",
+            					labelDesc: "Краткое наименование",
                                 labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                controlDataType: "date",
-                                panel: "base",
-                                editable: true
-            				}),
-            				
-            				fieldBuilder.build({
-            					name: "endDate",
-            					labelDesc: "Дата по",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                controlDataType: "date",
+                                controlClass: "col-sm-8",
+                                required: true,
                                 panel: "base",
                                 editable: true
             				})	            				

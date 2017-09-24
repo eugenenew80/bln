@@ -1,5 +1,5 @@
 angular.module("dictApp")
-	.controller("dictDefaultListCtrl", function ($scope, $routeParams, $location, $mdDialog, $mdToast, stateService, descriptionService) {
+	.controller("dictDefaultListCtrl", function ($scope, $routeParams, $location, $mdDialog, $mdToast, $http, stateService, descriptionService, descriptionServices, admRoleModuleDescriptionService, admRoleFuncDescriptionService) {
 			
 		var dataService = descriptionService.dataService;
 		
@@ -14,6 +14,11 @@ angular.module("dictApp")
         $scope.setSelectedRow=function(newRowIndex) { selectedRowIndex=newRowIndex;};
         $scope.getSelectedRow=function() { return selectedRowIndex; };
 
+        //Selected row index
+        var selectedRowIndexChild;
+        $scope.setSelectedRowChild=function(newRowIndexChild) { selectedRowIndexChild=newRowIndexChild;};
+        $scope.getSelectedRowChild=function() { return selectedRowIndexChild; };        
+        
         
         //Apply search button
         $scope.applySearch = function() {            
@@ -36,6 +41,33 @@ angular.module("dictApp")
 		}
 
 		
+        //Show modules
+        $scope.showChilds = function(item, params) {
+        	$scope.childDescriptionService= descriptionServices[params.child];
+        	$scope.data.currentParentElement = item;
+        	
+        	$scope.parentField = $scope.childDescriptionService.parentField;
+        	$scope.childField = $scope.childDescriptionService.childField;
+        	
+            $scope.data.childs=$scope.childDescriptionService.dataService.findAll({parentId: item.id});
+            $scope.data.childs.$promise.then(
+                function(data) { 
+                	$scope.data.childPath=$scope.childDescriptionService.sections.header.path.items;
+                	$scope.data.isChilds = true;
+                	$scope.showToast('Запрос успешно выполнен!'); 
+                },
+                function(error) { $scope.showMessage("Ошибка!", error.data.errMsg); }
+            );        	
+        }
+        
+        
+        //go back
+        $scope.goBack = function(item) {  
+        	$scope.data.isChilds = false;
+        	$scope.data.currentParentElement = null;
+        }
+        
+        
 		//delete record
 		$scope.remove = function(item) {
 		    var confirm = $mdDialog.confirm()
@@ -47,10 +79,37 @@ angular.module("dictApp")
 
 		    $mdDialog.show(confirm).then(
 		    	function() {
-		    		dataService.remove(item.id).$promise.then(
+		    		dataService.remove( {entityId: item.id} ).$promise.then(
 		                    function(data) {
 		                        var index = $scope.data.elements.indexOf(item);
 		                        $scope.data.elements.splice(index, 1);		                       
+		                        $scope.showToast('Запись успешно удалена!');
+		                    },
+
+		                    function(error) { $scope.showMessage("Ошибка!", error.data.errMsg); }
+		                );
+		    	}, 
+		    	function() {}
+		    );		
+		}
+		
+		
+		
+		//delete record
+		$scope.removeChild = function(item) {
+		    var confirm = $mdDialog.confirm()
+		          .title('Удалить?')
+		          .textContent('Вы уверены, что хотите удалить запись?')
+		          .ariaLabel('Подтведить удаление')
+		          .ok('Удалить')
+		          .cancel('Отмена');
+
+		    $mdDialog.show(confirm).then(
+		    	function() {
+		    		$scope.childDescriptionService.dataService.remove( {parentId: item[$scope.parentField], entityId: item[$scope.childField] } ).$promise.then(
+		                    function(data) {
+		                        var index = $scope.data.childs.indexOf(item);
+		                        $scope.data.childs.splice(index, 1);		                       
 		                        $scope.showToast('Запись успешно удалена!');
 		                    },
 
@@ -91,27 +150,56 @@ angular.module("dictApp")
         	
         	//open dialog
         	if (action.typeAction == "form" && action.form) {
-	        	var form = descriptionService.forms[action.form.name];        	
+        		var resolvedDescriptionService = descriptionService;
+        		if ($scope.data.isChilds)
+        			resolvedDescriptionService = $scope.childDescriptionService;
+        		
+	        	var form = resolvedDescriptionService.forms[action.form.name];        	
 	        	var resolvedItem = {};
 	        	
 				//new empty element
-				if (action.form.data=="@newElement") 
+				if (action.form.data=="@newElement") {
 					resolvedItem={};
+					
+					if ($scope.data.currentParentElement) {
+						resolvedItem[$scope.parentField] = $scope.data.currentParentElement.id;
+						resolvedItem.parentId = resolvedItem[$scope.parentField];
+					}
+					
+					resolvedItem["#status#"] = "create";
+				}
 				
 				//current element
-				if (action.form.data=="@currentElement") 
+				if (action.form.data=="@currentElement") {
 					resolvedItem = item;
-	
+					if ($scope.data.currentParentElement) {
+						resolvedItem[$scope.parentField] = $scope.data.currentParentElement.id;
+						resolvedItem.parentId = resolvedItem[$scope.parentField];
+						resolvedItem.entityId = resolvedItem[$scope.childField];
+					}
+					resolvedItem["#status#"] = "update";
+				}
+				
 				//clone of current element
-				if (action.form.data=="@cloneElement")
+				if (action.form.data=="@cloneElement") {
 					resolvedItem = angular.copy(item);
+					if ($scope.data.currentParentElement) {
+						resolvedItem[$scope.parentField] = $scope.data.currentParentElement.id;
+						resolvedItem.parentId = resolvedItem[$scope.parentField];
+						resolvedItem.entityId = resolvedItem[$scope.childField];
+					}
+					resolvedItem["#status#"] = "create";
+				}
+				
+				//if (resolvedItem.$get) 
+				//	resolvedItem.$get();
 					
 				//open dialog
 	        	$mdDialog.show({
 	                templateUrl: form.templateURL,
 	                controller: form.controller,
 	                locals: {
-	                	descriptionService: descriptionService, 
+	                	descriptionService: resolvedDescriptionService, 
 	                	form: form, 
 	                	currentElement: resolvedItem
 	                }
@@ -139,7 +227,7 @@ angular.module("dictApp")
 
             //call controller method
             if (action.typeAction=="controllerMethod" && action.controllerMethod)
-                $scope[action.controllerMethod.name](item);
+                $scope[action.controllerMethod.name](item, action.controllerMethodParams);
         }
 
         

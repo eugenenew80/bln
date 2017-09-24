@@ -182,7 +182,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", serviceDescPural],			
+                			items: ["Администрирование", serviceDescPural],			
                 		}
                 	},
 

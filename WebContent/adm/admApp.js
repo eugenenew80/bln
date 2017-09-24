@@ -22,9 +22,10 @@ angular.module("admApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "c
     
     .factory("admChildNodes", function() {
     	return [
-    		"admRoleModule",
-			"admRoleFunc",
-			"admUserRole"
+    		{ child: "admRoleModule", parent: "admRole" },
+    		{ child: "admRoleFunc",   parent: "admRole" },
+    		{ child: "admRoleDict",   parent: "admRole" },
+    		{ child: "admUserRole",   parent: "admUser" }
     	];
     })
     

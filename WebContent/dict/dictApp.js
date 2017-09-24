@@ -31,6 +31,17 @@ angular.module("dictApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "
     	];
     })
     
+    
+    .factory("dictChildNodes", function() {
+    	return [
+    		{ child: "dictSubstationCompany",   parent: "dictSubstation" },
+    		{ child: "dictSubstationMeteringPoint",   parent: "dictSubstation" },
+    		{ child: "dictEnergySourceCompany", parent: "dictEnergySource" },
+    		{ child: "dictEnergySourceMeteringPoint", parent: "dictEnergySource" },
+    	];
+    })
+    
+    
     .config(function ($routeProvider) {    	
 		$routeProvider.when("/dict/:dict/list", {
 			templateUrl: "dict/features/dictDefault/views/list.html",

@@ -10,10 +10,14 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
     })
 
     
-	.factory("dataServices", function (dictDataServiceFactory, dictResourceFactory, admDataServiceFactory, admResourceFactory, metaDataServiceFactory, metaResourceFactory, admRoleModuleDataServiceFactory, admRoleModuleResourceFactory, dictNodes, admNodes, admChildNodes, metaNodes) {
+	.factory("dataServices", function (dictDataServiceFactory, dictResourceFactory, dictParentChildDataServiceFactory, dictParentChildResourceFactory, admDataServiceFactory, admResourceFactory, metaDataServiceFactory, metaResourceFactory, admParentChildDataServiceFactory, admParentChildResourceFactory, dictNodes, dictChildNodes, admNodes, admChildNodes, metaNodes) {
 	    var dataServices = [];	    
 	    angular.forEach(dictNodes, function(node) {
 	    	dataServices[node] = dictDataServiceFactory.newInstance(dictResourceFactory.newInstance(node));
+	    })
+	    
+	    angular.forEach(dictChildNodes, function(node) {
+	    	dataServices[node.child] = dictParentChildDataServiceFactory.newInstance(dictParentChildResourceFactory.newInstance(node.parent + "/:parentId/" + node.child));
 	    })
 	    
 	    angular.forEach(admNodes, function(node) {
@@ -25,7 +29,7 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 	    })
 	    
 	    angular.forEach(admChildNodes, function(node) {
-	    	dataServices[node] = admRoleModuleDataServiceFactory.newInstance(admRoleModuleResourceFactory.newInstance(node));
+	    	dataServices[node.child] = admParentChildDataServiceFactory.newInstance(admParentChildResourceFactory.newInstance(node.parent + "/:parentId/" + node.child));
 	    })
 	    
 	    return dataServices;
@@ -53,12 +57,22 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 		    dictAccountingTypeDescriptionService,
 		    dictMeteringPointTypeDescriptionService,
 		    dictMeteringPointDescriptionService,
+		    dictSubstationCompanyDescriptionService,
+		    dictSubstationMeteringPointDescriptionService,
+		    dictEnergySourceCompanyDescriptionService,
+		    dictEnergySourceMeteringPointDescriptionService,
 		    
 		    admFuncDescriptionService,
 		    admRoleDescriptionService,
 		    admUserDescriptionService,
-		    admModuleDescriptionService
-	
+		    admRoleModuleDescriptionService,
+		    admRoleFuncDescriptionService,
+		    admRoleDictDescriptionService,
+		    admUserRoleDescriptionService,
+		    
+		    metaModuleDescriptionService,
+		    metaDictDescriptionService,
+		    metaAdmDescriptionService
 	) {
 	    var descriptionServices = [];
 	    descriptionServices["dictCompany"] = dictUnitDescriptionService;
@@ -81,11 +95,22 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 	    descriptionServices["dictAccountingType"] = dictAccountingTypeDescriptionService;
 	    descriptionServices["dictMeteringPointType"] = dictMeteringPointTypeDescriptionService;
 	    descriptionServices["dictMeteringPoint"] = dictMeteringPointDescriptionService;
+	    descriptionServices["dictSubstationCompany"] = dictSubstationCompanyDescriptionService;
+	    descriptionServices["dictSubstationMeteringPoint"] = dictSubstationMeteringPointDescriptionService;
+	    descriptionServices["dictEnergySourceCompany"] = dictEnergySourceCompanyDescriptionService;
+	    descriptionServices["dictEnergySourceMeteringPoint"] = dictEnergySourceMeteringPointDescriptionService;
 	    
 	    descriptionServices["admFunc"] = admFuncDescriptionService;
 	    descriptionServices["admRole"] = admRoleDescriptionService;
 	    descriptionServices["admUser"] = admUserDescriptionService;
-	    descriptionServices["admModule"] = admModuleDescriptionService;
+	    descriptionServices["admRoleModule"] = admRoleModuleDescriptionService;
+	    descriptionServices["admRoleFunc"] = admRoleFuncDescriptionService;
+	    descriptionServices["admRoleDict"] = admRoleDictDescriptionService;
+	    descriptionServices["admUserRole"] = admUserRoleDescriptionService;
+	    
+	    descriptionServices["metaModule"] = metaModuleDescriptionService;
+	    descriptionServices["metaDict"] = metaDictDescriptionService;
+	    descriptionServices["metaAdm"] = metaAdmDescriptionService;
 	    
 		return descriptionServices;
 	})	
