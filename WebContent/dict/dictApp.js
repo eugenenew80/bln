@@ -3,7 +3,7 @@ angular.module("dictApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "
     .constant("idField", "id")
 
     .factory("dictBaseUrl", function(appSettings) {
-    	return appSettings.baseUrl + "blnApi/webapi/dict/"
+    	return appSettings.baseUrl + "blnDictApi/webapi/dict/"
     })
     
     .factory("dictNodes", function() {

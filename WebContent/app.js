@@ -117,9 +117,9 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 	
 	
 	.factory("authBaseUrl", function(appSettings) {
-    	return appSettings.baseUrl + "blnApi/webapi/"
+    	return appSettings.baseUrl + "blnDictApi/webapi/"
     })
 
 	.factory("metaBaseUrl", function(appSettings) {
-    	return appSettings.baseUrl + "blnApi/webapi/meta/"
+    	return appSettings.baseUrl + "blnDictApi/webapi/meta/"
     });
