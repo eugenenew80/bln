@@ -75,7 +75,7 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 		    metaAdmDescriptionService
 	) {
 	    var descriptionServices = [];
-	    descriptionServices["dictCompany"] = dictUnitDescriptionService;
+	    descriptionServices["dictUnit"] = dictUnitDescriptionService;
 	    descriptionServices["dictRegion"] = dictRegionDescriptionService;
 	    descriptionServices["dictEnergyZone"] = dictEnergyZoneDescriptionService;
 	    descriptionServices["dictEnergyNode"] = dictEnergyNodeDescriptionService;
