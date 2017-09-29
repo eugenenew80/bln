@@ -3,11 +3,11 @@ angular.module("admApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "c
     .constant("idField", "id")
 
     .factory("admBaseUrl", function(appSettings) {
-    	return appSettings.baseUrl + "blnApi/webapi/adm/"
+    	return appSettings.baseUrl + "blnDictApi/webapi/adm/"
     })
 
     .factory("metaBaseUrl", function(appSettings) {
-    	return appSettings.baseUrl + "blnApi/webapi/meta/"
+    	return appSettings.baseUrl + "blnDictApi/webapi/meta/"
     })
     
     
