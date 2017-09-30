@@ -113,13 +113,4 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 	    descriptionServices["metaAdm"] = metaAdmDescriptionService;
 	    
 		return descriptionServices;
-	})	
-	
-	
-	.factory("authBaseUrl", function(appSettings) {
-    	return appSettings.baseUrl + "blnDictApi/webapi/"
-    })
-
-	.factory("metaBaseUrl", function(appSettings) {
-    	return appSettings.baseUrl + "blnDictApi/webapi/meta/"
-    });
+	});
