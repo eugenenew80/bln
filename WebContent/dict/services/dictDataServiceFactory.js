@@ -84,8 +84,8 @@
                         }, 
                         
                         
-                        remove: function (id) {
-                            return resource.remove({entityId: id});
+                        remove: function (entity) {
+                            return resource.remove(entity);
                         }
                     }
 
