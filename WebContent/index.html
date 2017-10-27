@@ -100,12 +100,20 @@
 		<script src="adm/features/metaModule/models/metaModuleDescriptionService.js"></script>
 		<script src="adm/features/metaDict/models/metaDictDescriptionService.js"></script>
 		<script src="adm/features/metaAdm/models/metaAdmDescriptionService.js"></script>
-		
+		<script src="adm/features/metaMedia/models/metaMediaDescriptionService.js"></script>
+
+		<!--media module -->
+	  	<script src="media/mediaApp.js"></script>
+	    <script src="media/mediaController.js"></script>
+	    <script src="media/services/mediaDataServiceFactory.js"></script>		    
+	    <script src="media/features/mediaDefault/controllers/mediaDefaultListCtrl.js"></script>
+	    <script src="media/features/mediaDefault/controllers/mediaDefaultEditCtrl.js"></script>
+		<script src="media/features/mediaGroup/models/mediaGroupDescriptionService.js"></script>
+		<script src="media/features/mediaGroupMeteringPoint/models/mediaGroupMeteringPointDescriptionService.js"></script>
+				
 		<!--info module -->
 	  	<script src="info/infoApp.js"></script>
 	    <script src="info/infoController.js"></script>	
-	    
-	    		
 		
 		<script type="text/javascript">		
 			if (!String.prototype.startsWith) {
@@ -114,7 +122,7 @@
 			    return this.indexOf(searchString, position) === position;
 			  };
 			}		
-		</script>   	    		
+		</script>
 	</head>
 
 	<body>
@@ -252,7 +260,29 @@
 					  </div>				
 					</div>
 				</div>	
-										
+				
+				<div ng-if="data.app.current=='MEDIA'" style="background: #eeeeee; margin-top: 5px;">
+					<div layout="row" ng-controller="mediaController">
+					  
+					  <div flex="20" ng-show="!data.fullScreen" style="margin-right: 10px; border: thin solid lightgray;">
+					    <md-content>
+					      <md-list flex>
+					        <md-list-item class="md-3-line" ng-repeat="item in menu.nodes" ng-click="onSelectedMenu(item.code)">
+					          <img ng-src="{{item.imagePath}}?{{$index}}" class="md-avatar" />
+					          <div class="md-list-item-text" layout="column">
+					            <h3>{{item.shortName}}</h3>
+					            <p>{{item.name}}</p>
+					          </div>
+					        </md-list-item>						        
+					      </md-list>
+					    </md-content>					  
+					  </div>
+					  
+					  <div flex="data.fullScreen ? '100': '20'" style="border: thin solid lightgray;">
+			          	<div ng-view class="ngFade" autoscroll="true"></div>
+					  </div>				
+					</div>
+				</div>	
 		    </div>
 		</div>
 		

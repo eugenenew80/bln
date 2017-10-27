@@ -1,4 +1,4 @@
-angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dictApp", "admApp", "infoApp"])
+angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dictApp", "admApp", "infoApp", "mediaApp"])
 
     .config(function ($httpProvider, $locationProvider) {
         //$locationProvider.html5Mode(true);
@@ -10,7 +10,7 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
     })
 
     
-	.factory("dataServices", function (dictDataServiceFactory, dictResourceFactory, dictParentChildDataServiceFactory, dictParentChildResourceFactory, admDataServiceFactory, admResourceFactory, metaDataServiceFactory, metaResourceFactory, admParentChildDataServiceFactory, admParentChildResourceFactory, dictNodes, dictChildNodes, admNodes, admChildNodes, metaNodes) {
+	.factory("dataServices", function (dictDataServiceFactory, dictResourceFactory, dictParentChildDataServiceFactory, dictParentChildResourceFactory, admDataServiceFactory, admResourceFactory, metaDataServiceFactory, metaResourceFactory, admParentChildDataServiceFactory, admParentChildResourceFactory, mediaDataServiceFactory, mediaResourceFactory, mediaParentChildDataServiceFactory, mediaParentChildResourceFactory, dictNodes, dictChildNodes, admNodes, admChildNodes, metaNodes, mediaNodes, mediaChildNodes) {
 	    var dataServices = [];	    
 	    angular.forEach(dictNodes, function(node) {
 	    	dataServices[node] = dictDataServiceFactory.newInstance(dictResourceFactory.newInstance(node));
@@ -20,16 +20,27 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 	    	dataServices[node.child] = dictParentChildDataServiceFactory.newInstance(dictParentChildResourceFactory.newInstance(node.parent + "/:parentId/" + node.child));
 	    })
 	    
+	    
 	    angular.forEach(admNodes, function(node) {
 	    	dataServices[node] = admDataServiceFactory.newInstance(admResourceFactory.newInstance(node));
 	    })
 	    
+	    angular.forEach(admChildNodes, function(node) {
+	    	dataServices[node.child] = admParentChildDataServiceFactory.newInstance(admParentChildResourceFactory.newInstance(node.parent + "/:parentId/" + node.child));
+	    })
+	    
+
 	    angular.forEach(metaNodes, function(node) {
 	    	dataServices[node] = metaDataServiceFactory.newInstance(metaResourceFactory.newInstance(node));
 	    })
 	    
-	    angular.forEach(admChildNodes, function(node) {
-	    	dataServices[node.child] = admParentChildDataServiceFactory.newInstance(admParentChildResourceFactory.newInstance(node.parent + "/:parentId/" + node.child));
+	    
+	    angular.forEach(mediaNodes, function(node) {
+	    	dataServices[node] = mediaDataServiceFactory.newInstance(mediaResourceFactory.newInstance(node));
+	    })
+	    
+	    angular.forEach(mediaChildNodes, function(node) {
+	    	dataServices[node.child] = mediaParentChildDataServiceFactory.newInstance(mediaParentChildResourceFactory.newInstance(node.parent + "/:parentId/" + node.child));
 	    })
 	    
 	    return dataServices;
@@ -72,7 +83,11 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 		    
 		    metaModuleDescriptionService,
 		    metaDictDescriptionService,
-		    metaAdmDescriptionService
+		    metaAdmDescriptionService,
+		    metaMediaDescriptionService,
+		    
+		    mediaGroupDescriptionService,
+		    mediaGroupMeteringPointDescriptionService
 	) {
 	    var descriptionServices = [];
 	    descriptionServices["dictUnit"] = dictUnitDescriptionService;
@@ -111,6 +126,10 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 	    descriptionServices["metaModule"] = metaModuleDescriptionService;
 	    descriptionServices["metaDict"] = metaDictDescriptionService;
 	    descriptionServices["metaAdm"] = metaAdmDescriptionService;
+	    descriptionServices["metaMedia"] = metaMediaDescriptionService;
+	    
+	    descriptionServices["mediaGroup"] = mediaGroupDescriptionService;
+	    descriptionServices["mediaGroupMeteringPoint"] = mediaGroupMeteringPointDescriptionService;
 	    
 		return descriptionServices;
 	});

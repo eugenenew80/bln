@@ -38,7 +38,8 @@ angular.module("admApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "c
     	return [
     		"metaModule",
 			"metaDict",
-			"metaAdm"
+			"metaAdm",
+			"metaMedia"
     	];
     })
     
