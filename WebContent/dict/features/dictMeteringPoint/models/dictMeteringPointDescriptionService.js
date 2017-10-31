@@ -166,7 +166,26 @@
 						glyphicon: "glyphicon-remove"
 					})
 				},
-	                
+	               
+				{
+                    action: "meters",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "showChilds"
+                    },	
+                    
+                    controllerMethodParams: {
+                        child: "dictMeteringPointMeter"
+                    },
+                    
+                    trigger: "button",
+					button: buttonBuilder.build({
+						caption: "Счётчики",
+						tooltip: "Открыть список счётчиков",
+						glyphicon: "glyphicon-list-alt"
+					})
+				},				
             ];
             
 

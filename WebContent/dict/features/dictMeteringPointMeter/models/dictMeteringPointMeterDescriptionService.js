@@ -1,10 +1,10 @@
 (function () {
     angular.module("dictApp")
-        .factory("dictSubstationCompanyDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
+        .factory("dictMeteringPointMeterDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
-			var serviceName = "dictSubstationCompany";
-			var serviceDescPural = "Компании";
-			var serviceDescSingular = "Компания";
+			var serviceName = "dictMeteringPointMeter";
+			var serviceDescPural = "Счётчики";
+			var serviceDescSingular = "Счётчик";
 
 			//List fields description for search
 			var searchFieldsDef = [
@@ -20,11 +20,23 @@
 			var tableFieldsDef = [
 
   	            responsiveTableFieldBuilder.build({
-		            name: "companyName",
-		            desc: "Компания",
-		            headerStyle: "width: 70%",
+		            name: "meterCode",
+		            desc: "Код",
+		            headerStyle: "width: 10%",
+	            }),
+	            
+  	            responsiveTableFieldBuilder.build({
+		            name: "meterName",
+		            desc: "Наименование",
+		            headerStyle: "width: 50%",
 	            }),
 
+  	            responsiveTableFieldBuilder.build({
+		            name: "meterSerialNumber",
+		            desc: "Серийный номер",
+		            headerStyle: "width: 10%",
+	            }),
+	            
   	            responsiveTableFieldBuilder.build({
 		            name: "startDate",
 		            desc: "Дата с",
@@ -148,7 +160,7 @@
                 name: serviceName,
                 desc: serviceDescPural,
                 dataService: dataServices[serviceName],
-                parentField: "substationId",
+                parentField: "meteringPointId",
                 childField: "id",
                 
                 sections: {
@@ -157,7 +169,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", "Подстанции", "@parentName", serviceDescPural],		
+                			items: ["НСИ", "Точки учёта", "@parentName", serviceDescPural],		
                 		}
                 	},
 
@@ -228,11 +240,11 @@
                         fields: [
 
             				fieldBuilder.build({
-            					name: "companyId",
-            					labelDesc: "Компания",
+            					name: "meterId",
+            					labelDesc: "Счётчик",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
-                                dictName: "dictCompany",
+                                dictName: "dictMeter",
                                 required: true,
                                 panel: "base",
                                 editable: true

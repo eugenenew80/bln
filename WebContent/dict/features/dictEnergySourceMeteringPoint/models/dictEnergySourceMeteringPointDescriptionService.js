@@ -157,7 +157,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", "Энергоисточники", serviceDescPural],		
+                			items: ["НСИ", "Энергоисточники", "@parentName", serviceDescPural],		
                 		}
                 	},
 

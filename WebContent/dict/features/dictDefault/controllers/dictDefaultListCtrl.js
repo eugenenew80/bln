@@ -52,7 +52,8 @@ angular.module("dictApp")
             $scope.data.childs=$scope.childDescriptionService.dataService.findAll({parentId: item.id});
             $scope.data.childs.$promise.then(
                 function(data) { 
-                	$scope.data.childPath=$scope.childDescriptionService.sections.header.path.items;
+                	$scope.data.childPath = angular.copy($scope.childDescriptionService.sections.header.path.items);
+                	$scope.data.childPath[$scope.data.childPath.length-2] = item.name;
                 	$scope.data.isChilds = true;
                 	$scope.showToast('Запрос успешно выполнен!'); 
                 },

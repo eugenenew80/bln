@@ -34,10 +34,11 @@ angular.module("dictApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "
     
     .factory("dictChildNodes", function() {
     	return [
-    		{ child: "dictSubstationCompany",   parent: "dictSubstation" },
-    		{ child: "dictSubstationMeteringPoint",   parent: "dictSubstation" },
-    		{ child: "dictEnergySourceCompany", parent: "dictEnergySource" },
-    		{ child: "dictEnergySourceMeteringPoint", parent: "dictEnergySource" },
+    		{ child: "dictSubstationCompany",   		parent: "dictSubstation" },
+    		{ child: "dictSubstationMeteringPoint",   	parent: "dictSubstation" },
+    		{ child: "dictEnergySourceCompany", 		parent: "dictEnergySource" },
+    		{ child: "dictEnergySourceMeteringPoint", 	parent: "dictEnergySource" },
+    		{ child: "dictMeteringPointMeter", 			parent: "dictMeteringPoint" },
     	];
     })
     
