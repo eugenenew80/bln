@@ -8,7 +8,9 @@ angular.module("mediaApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", 
     
     .factory("mediaNodes", function() {
     	return [
-    		"mediaGroup"
+    		"mediaGroup",
+    		"mediaDocType",
+    		"mediaDayMeteringDataOper"
     	];
     })
         
@@ -18,7 +20,20 @@ angular.module("mediaApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", 
     	];
     })    
     
-    .config(function ($routeProvider) {    	
+    .config(function ($routeProvider) {
+    	
+		$routeProvider.when("/media/mediaDayMeteringDataOper/list", {
+			templateUrl: "media/features/mediaDefault/views/list.html",
+			controller: "mediaDayMeteringDataOperListCtrl",
+			
+			resolve: {
+				descriptionService: function(mediaDayMeteringDataOperDescriptionService) {
+					return mediaDayMeteringDataOperDescriptionService;
+				}				
+			}			
+		});   
+    	
+    	
 		$routeProvider.when("/media/:media/list", {
 			templateUrl: "media/features/mediaDefault/views/list.html",
 			controller: "mediaDefaultListCtrl",

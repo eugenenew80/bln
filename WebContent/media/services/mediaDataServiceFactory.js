@@ -36,6 +36,13 @@
                             remove: {
                                 method: "DELETE"
                             },
+                            
+                            calcByGroup: {
+                                method: 'GET',
+                                url:	mediaBaseUrl + path + "/byGroup/" + ":groupId/calc?operDate=:operDate",
+                                param: 	{groupId: "@groupId", operDate: "@operDate"},
+                                isArray: true
+                            }                              
                         }
                     );
                 }
@@ -85,7 +92,11 @@
                         
                         remove: function (entity) {
                             return resource.remove(entity);
-                        }
+                        },
+                        
+                        calcByGroup: function (groupId, operDate) {
+                            return resource.calcByGroup({groupId: groupId, operDate: operDate});
+                        }                        
                     }
 
                 }
