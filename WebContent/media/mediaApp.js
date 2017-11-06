@@ -10,13 +10,15 @@ angular.module("mediaApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", 
     	return [
     		"mediaGroup",
     		"mediaDocType",
-    		"mediaDayMeteringDataOper"
+    		"mediaTemplateMeteringReading",
+    		"mediaDocMeteringReadingHeader"
     	];
     })
         
     .factory("mediaChildNodes", function() {
     	return [
-    		{ child: "mediaGroupMeteringPoint", parent: "mediaGroup" }
+    		{ child: "mediaGroupMeteringPoint", parent: "mediaGroup" },
+    		{ child: "mediaDocMeteringReadingLine", parent: "mediaDocMeteringReadingHeader" }
     	];
     })    
     
