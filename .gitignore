@@ -1,7 +1,6 @@
 .classpath
 .project
+blnClient.iml
 .settings/
+.idea/
 target/
-.tern-project
-WEB-INF/
-META-INF/
