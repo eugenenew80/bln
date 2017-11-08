@@ -156,6 +156,25 @@
 				},
 
 				{
+                    action: "createLines",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "createLines"
+                    },
+
+                    trigger: "button",
+					button: {
+						desc: "Создать строки",
+						tooltip: "Создать строки",
+						classes: "btn btn-primary btn-xs",
+						style: "",
+						glyphicon: "glyphicon",
+						disabled: false
+					}
+				},
+
+				{
                     action: "saveAll",
                     typeAction: "controllerMethod",
 

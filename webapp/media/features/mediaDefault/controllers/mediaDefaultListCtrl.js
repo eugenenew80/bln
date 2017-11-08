@@ -69,7 +69,30 @@ angular.module("mediaApp")
         	$scope.data.currentParentElement = null;
         }
         
-        
+
+        $scope.createLines = function(item) {
+            $scope.data.childs=$scope.childDescriptionService.dataService.createLines(1);
+            $scope.data.state.isApplySearch = true;
+
+            $scope.data.childs.$promise.then(
+                function(data) { $scope.showToast('Запрос успешно выполнен!'); },
+                function(error) { $scope.showMessage("Ошибка!", error.data.errMsg); }
+            );
+            $scope.data.state.selectedPage = 1;
+        }
+
+        $scope.autoFill = function() {
+            $scope.data.childs=$scope.childDescriptionService.dataService.autoFill(1);
+            $scope.data.state.isApplySearch = true;
+
+            $scope.data.childs.$promise.then(
+                function(data) { $scope.showToast('Запрос успешно выполнен!'); },
+                function(error) { $scope.showMessage("Ошибка!", error.data.errMsg); }
+            );
+            $scope.data.state.selectedPage = 1;
+        }
+
+
 		//delete record
 		$scope.remove = function(item) {
 		    var confirm = $mdDialog.confirm()

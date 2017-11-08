@@ -35,14 +35,7 @@
                             
                             remove: {
                                 method: "DELETE"
-                            },
-                            
-                            calcByGroup: {
-                                method: 'GET',
-                                url:	mediaBaseUrl + path + "/byGroup/" + ":groupId/calc?operDate=:operDate",
-                                param: 	{groupId: "@groupId", operDate: "@operDate"},
-                                isArray: true
-                            }                              
+                            }
                         }
                     );
                 }
@@ -92,11 +85,7 @@
                         
                         remove: function (entity) {
                             return resource.remove(entity);
-                        },
-                        
-                        calcByGroup: function (groupId, operDate) {
-                            return resource.calcByGroup({groupId: groupId, operDate: operDate});
-                        }                        
+                        }
                     }
 
                 }
@@ -132,6 +121,18 @@
                             
                             remove: {
                                 method: "DELETE"
+                            },
+
+                            createLines: {
+                                method: "GET",
+                                url:	mediaBaseUrl + path + "/createLines",
+                                isArray: true
+                            },
+
+                            autoFill: {
+                                method: "GET",
+                                url:	mediaBaseUrl + path + "/autoFill",
+                                isArray: true
                             },
                         }
                     );
@@ -174,7 +175,15 @@
                         
                         remove: function (entity) {
                             return resource.remove(entity);
-                        }
+                        },
+
+                         createLines: function (parentId) {
+                             return resource.createLines({parentId: parentId});
+                         },
+
+                         autoFill: function (parentId) {
+                             return resource.autoFill({parentId: parentId});
+                         }
                     }
 
                 }
