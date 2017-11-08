@@ -91,7 +91,7 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 		    mediaGroupMeteringPointDescriptionService,
 		    mediaDayMeteringDataOperDescriptionService,
 		    mediaDocTypeDescriptionService,
-		    mediaTemplateMeteringReadingDescriptionService,
+            mediaDocTemplateDescriptionService,
 		    mediaDocMeteringReadingHeaderDescriptionService,
 		    mediaDocMeteringReadingLineDescriptionService
 	) {
@@ -138,7 +138,7 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 	    descriptionServices["mediaGroup"] = mediaGroupDescriptionService;
 	    descriptionServices["mediaGroupMeteringPoint"] = mediaGroupMeteringPointDescriptionService;
 	    descriptionServices["mediaDocType"] = mediaDocTypeDescriptionService;
-	    descriptionServices["mediaTemplateMeteringReading"] = mediaTemplateMeteringReadingDescriptionService;
+	    descriptionServices["mediaDocTemplate"] = mediaDocTemplateDescriptionService;
 	    descriptionServices["mediaDocMeteringReadingHeader"] = mediaDocMeteringReadingHeaderDescriptionService;
 	    descriptionServices["mediaDocMeteringReadingLine"] = mediaDocMeteringReadingLineDescriptionService;
 	    

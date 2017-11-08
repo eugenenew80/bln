@@ -98,19 +98,22 @@
   	            responsiveTableFieldBuilder.build({
 		            name: "startBalance",
 		            desc: "Начальные показания",
-		            headerStyle: "width: 10%"
+		            headerStyle: "width: 10%",
+					dataType: "number"
 	            }),
 
   	            responsiveTableFieldBuilder.build({
 		            name: "endBalance",
 		            desc: "Конечные показания",
-		            headerStyle: "width: 10%"
+		            headerStyle: "width: 10%",
+                    dataType: "number"
 	            }),
 
   	            responsiveTableFieldBuilder.build({
 		            name: "flow",
 		            desc: "Расход",
-		            headerStyle: "width: 10%"
+		            headerStyle: "width: 10%",
+                    dataType: "number"
 	            })
 			];
 			

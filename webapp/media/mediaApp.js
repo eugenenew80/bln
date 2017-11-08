@@ -10,7 +10,7 @@ angular.module("mediaApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", 
     	return [
     		"mediaGroup",
     		"mediaDocType",
-    		"mediaTemplateMeteringReading",
+    		"mediaDocTemplate",
     		"mediaDocMeteringReadingHeader"
     	];
     })

@@ -288,7 +288,7 @@
             					labelDesc: "Шаблон документа",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
-                                dictName: "mediaTemplateMeteringReading",
+                                dictName: "mediaDocTemplate",
                                 required: true,
                                 panel: "base",
                                 editable: true

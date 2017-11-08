@@ -1,8 +1,8 @@
 (function () {
     angular.module("mediaApp")
-        .factory("mediaTemplateMeteringReadingDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
+        .factory("mediaDocTemplateDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
-			var serviceName = "mediaTemplateMeteringReading";
+			var serviceName = "mediaDocTemplate";
 			var serviceDescPural = "Шаблоны актов съёма показаний";
 			var serviceDescSingular = "Шаблон акта съёма показаний";
 
