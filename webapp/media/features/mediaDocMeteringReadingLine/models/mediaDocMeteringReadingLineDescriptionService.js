@@ -66,46 +66,57 @@
             //List fields description for table
 			var tableFieldsDef = [
   	            responsiveTableFieldBuilder.build({
+		            name: "meteringPointExternalCode",
+		            desc: "Код точки",
+		            headerStyle: "width: 10%"
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
 		            name: "meteringPointName",
-		            desc: "Точка",
-		            headerStyle: "width: 90%"
-	            })	
-	            
+		            desc: "Наименование точки",
+		            headerStyle: "width: 20%"
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "meterSerialNumber",
+		            desc: "Номер счётчика",
+		            headerStyle: "width: 10%"
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "meterName",
+		            desc: "Наименование счётчика",
+		            headerStyle: "width: 10%"
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "paramCode",
+		            desc: "Параметр",
+		            headerStyle: "width: 10%"
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "startBalance",
+		            desc: "Начальные показания",
+		            headerStyle: "width: 10%"
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "endBalance",
+		            desc: "Конечные показания",
+		            headerStyle: "width: 10%"
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "flow",
+		            desc: "Расход",
+		            headerStyle: "width: 10%"
+	            })
 			];
 			
 			
             //List actions after search
             var tableActionsDef = [
-				{
-                    action: "create",
-                    typeAction: "form",
-
-                    form: {
-                        name: "edit",
-                        data: "@newElement",
-
-                        ok: {
-                            action: "@create",
-                            data: "@element"
-                        },
-
-                        cancel: {
-                            action: "@close"
-                        }
-                    },	
-
-					trigger: "button",
-					button: {
-						desc: "Создать",
-						tooltip: "Создать новую запись",
-						classes: "btn btn-primary btn-xs",
-						style: "",
-						glyphicon: "glyphicon",
-						disabled: false
-					}
-				},
-				
-				
 				{
                     action: "back",
                     typeAction: "controllerMethod",
@@ -123,7 +134,45 @@
 						glyphicon: "glyphicon",
 						disabled: false
 					}
-				},	            	
+				},
+
+				{
+                    action: "autoFill",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "autoFill"
+                    },
+
+                    trigger: "button",
+					button: {
+						desc: "Автозаполнение",
+						tooltip: "Выполнить автозаполнение",
+						classes: "btn btn-primary btn-xs",
+						style: "",
+						glyphicon: "glyphicon",
+						disabled: false
+					}
+				},
+
+				{
+                    action: "saveAll",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "autoFill"
+                    },
+
+                    trigger: "button",
+					button: {
+						desc: "Сохранить",
+						tooltip: "Сохранить изменения",
+						classes: "btn btn-primary btn-xs",
+						style: "",
+						glyphicon: "glyphicon",
+						disabled: false
+					}
+				},
             ];
 			
             
