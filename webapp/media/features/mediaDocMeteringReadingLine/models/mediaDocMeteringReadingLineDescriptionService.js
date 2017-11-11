@@ -99,21 +99,24 @@
 		            name: "startBalance",
 		            desc: "Начальные показания",
 		            headerStyle: "width: 10%",
-					dataType: "number"
+					dataType: "number",
+					cellClass: "text-right"
 	            }),
 
   	            responsiveTableFieldBuilder.build({
 		            name: "endBalance",
 		            desc: "Конечные показания",
 		            headerStyle: "width: 10%",
-                    dataType: "number"
+                    dataType: "number",
+                    cellClass: "text-right"
 	            }),
 
   	            responsiveTableFieldBuilder.build({
 		            name: "flow",
 		            desc: "Расход",
 		            headerStyle: "width: 10%",
-                    dataType: "number"
+                    dataType: "number",
+                    cellClass: "text-right"
 	            })
 			];
 			
@@ -241,26 +244,6 @@
 						tooltip: "Удалить запись",
 						glyphicon: "glyphicon-remove"
 					})
-				},
-
-				{
-                    action: "lines",
-                    typeAction: "controllerMethod",
-
-                    controllerMethod: {
-                        name: "showChilds"
-                    },	
-                    
-                    controllerMethodParams: {
-                        child: "mediaDocMeteringReadingLine"
-                    },
-                    
-                    trigger: "button",
-					button: buttonBuilder.build({
-						caption: "Заполнить",
-						tooltip: "Открыть список точек учёта для заполнения",
-						glyphicon: "glyphicon-list-alt"
-					})
 				}
             ];
             
@@ -360,11 +343,11 @@
                         
                         fields: [
             				fieldBuilder.build({
-            					name: "operDate",
-            					labelDesc: "Дата по",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                controlDataType: "date",
+            					name: "endBalance",
+            					labelDesc: "Конечные показания",
+                                labelClass: "col-sm-6",
+                                controlClass: "col-sm-6",
+                                controlDataType: "number",
                                 panel: "base",
                                 editable: true
             				})	                         	

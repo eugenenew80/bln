@@ -71,7 +71,7 @@ angular.module("mediaApp")
         
 
         $scope.createLines = function(item) {
-            $scope.data.childs=$scope.childDescriptionService.dataService.createLines(1);
+            $scope.data.childs=$scope.childDescriptionService.dataService.createLines($scope.data.currentParentElement.id);
             $scope.data.state.isApplySearch = true;
 
             $scope.data.childs.$promise.then(
@@ -82,7 +82,7 @@ angular.module("mediaApp")
         }
 
         $scope.autoFill = function() {
-            $scope.data.childs=$scope.childDescriptionService.dataService.autoFill(1);
+            $scope.data.childs=$scope.childDescriptionService.dataService.autoFill($scope.data.currentParentElement.id);
             $scope.data.state.isApplySearch = true;
 
             $scope.data.childs.$promise.then(
