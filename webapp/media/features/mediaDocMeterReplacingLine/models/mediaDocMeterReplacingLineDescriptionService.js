@@ -1,11 +1,10 @@
 (function () {
     angular.module("mediaApp")
-        .factory("mediaDocMeteringReadingHeaderDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
+        .factory("mediaDocMeterReplacingLineDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
-			var serviceName = "mediaDocMeteringReadingHeader";
-			var serviceDescPural = "Акты съёма показаний";
-			var serviceDescSingular = "Акт съёма показаний";
-
+			var serviceName = "mediaDocMeterReplacingLine";
+			var serviceDescPural = "Показания";
+			var serviceDescSingular = "Показания";
 
 			//List fields description for search
 			var searchFieldsDef = [
@@ -67,30 +66,50 @@
             //List fields description for table
 			var tableFieldsDef = [
   	            responsiveTableFieldBuilder.build({
-		            name: "name",
-		            desc: "Наименование",
-		            headerStyle: "width: 45%",
+		            name: "paramCode",
+		            desc: "Параметр",
+		            headerStyle: "width: 10%"
 	            }),
-	            
+
   	            responsiveTableFieldBuilder.build({
-		            name: "startDate",
-		            desc: "Дата с",
+		            name: "oldBalance",
+		            desc: "Показания снимаемого счётчика",
 		            headerStyle: "width: 10%",
-		            dataType: "date"
+                    dataType: "number",
+                    cellClass: "text-right"
 	            }),
-	            
+
   	            responsiveTableFieldBuilder.build({
-		            name: "endDate",
-		            desc: "Дата по",
+		            name: "oldBalance",
+		            desc: "Показания устанавливаемого счётчика",
 		            headerStyle: "width: 10%",
-		            dataType: "date"
-	            }) 	           
-           
+                    dataType: "number",
+                    cellClass: "text-right"
+	            })
 			];
 			
 			
             //List actions after search
             var tableActionsDef = [
+				{
+                    action: "back",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "goBack"
+                    },
+
+                    trigger: "button",
+					button: {
+						desc: "Назад",
+						tooltip: "Вернуться назад",
+						classes: "btn btn-primary btn-xs",
+						style: "",
+						glyphicon: "glyphicon",
+						disabled: false
+					}
+				},
+
 				{
                     action: "create",
                     typeAction: "form",
@@ -107,7 +126,7 @@
                         cancel: {
                             action: "@close"
                         }
-                    },	
+                    },
 
 					trigger: "button",
 					button: {
@@ -118,7 +137,7 @@
 						glyphicon: "glyphicon",
 						disabled: false
 					}
-				},            	
+				},
             ];
 			
             
@@ -165,26 +184,6 @@
 						tooltip: "Удалить запись",
 						glyphicon: "glyphicon-remove"
 					})
-				},
-
-				{
-                    action: "lines",
-                    typeAction: "controllerMethod",
-
-                    controllerMethod: {
-                        name: "showChilds"
-                    },	
-                    
-                    controllerMethodParams: {
-                        child: "mediaDocMeteringReadingLine"
-                    },
-                    
-                    trigger: "button",
-					button: buttonBuilder.build({
-						caption: "Заполнить",
-						tooltip: "Открыть список точек учёта для заполнения",
-						glyphicon: "glyphicon-list-alt"
-					})
 				}
             ];
             
@@ -194,7 +193,9 @@
                 name: serviceName,
                 desc: serviceDescPural,
                 dataService: dataServices[serviceName],
-                
+                parentField: "headerId",
+                childField: "id",
+
                 sections: {
                 	
                 	//header section
@@ -234,6 +235,7 @@
 		                    templateURL: "common/directives/complexView/complexViewTable/complexViewTableTemplate.html",
 		                    tableClass: "table table-hover table-condensed table-bordered",
 		                    tableStyle: "table-layout: fixed; word-wrap: break-word;",
+		                    containerStyle: "max-width: 600px",
 		                    rowsPerPage: 10,
 		                    
 		                    liveSearch: {
@@ -284,55 +286,33 @@
                         
                         fields: [
             				fieldBuilder.build({
-            					name: "templateId",
-            					labelDesc: "Шаблон документа",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                dictName: "mediaDocTemplate",
-                                required: true,
-                                panel: "base",
-                                editable: true
-            				}),            				
-                        	
-                        	fieldBuilder.build({
-            					name: "name",
-            					labelDesc: "Наименование",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                required: true,
+            					name: "paramCode",
+            					labelDesc: "Тип параметра",
+                                labelClass: "col-sm-6",
+                                controlClass: "col-sm-6",
                                 panel: "base",
                                 editable: true
             				}),
-            				
+
             				fieldBuilder.build({
-            					name: "header",
-            					labelDesc: "Заголовок",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                required: true,
+            					name: "oldBalance",
+            					labelDesc: "Показания снимаемого счётчика",
+                                labelClass: "col-sm-6",
+                                controlClass: "col-sm-6",
+                                controlDataType: "number",
                                 panel: "base",
                                 editable: true
             				}),
-            				
+
             				fieldBuilder.build({
-            					name: "startDate",
-            					labelDesc: "Дата с",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                controlDataType: "date",
+            					name: "newBalance",
+            					labelDesc: "Показания устанавливаемого счётчика",
+                                labelClass: "col-sm-6",
+                                controlClass: "col-sm-6",
+                                controlDataType: "number",
                                 panel: "base",
                                 editable: true
-            				}),
-            				
-            				fieldBuilder.build({
-            					name: "endDate",
-            					labelDesc: "Дата по",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                controlDataType: "date",
-                                panel: "base",
-                                editable: true
-            				})	             				            				
+            				})
                         ],
                         
                         

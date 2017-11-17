@@ -89,11 +89,15 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 		    
 		    mediaGroupDescriptionService,
 		    mediaGroupMeteringPointDescriptionService,
-		    mediaDayMeteringDataOperDescriptionService,
 		    mediaDocTypeDescriptionService,
             mediaDocTemplateDescriptionService,
 		    mediaDocMeteringReadingHeaderDescriptionService,
-		    mediaDocMeteringReadingLineDescriptionService
+		    mediaDocMeteringReadingLineDescriptionService,
+            mediaDocMeterReplacingHeaderDescriptionService,
+            mediaDocMeterReplacingLineDescriptionService,
+            mediaDocUnderAccountingHeaderDescriptionService,
+            mediaDocUnderAccountingMeasLineDescriptionService,
+            mediaDocUnderAccountingCalcLineDescriptionService
 	) {
 	    var descriptionServices = [];
 	    descriptionServices["dictUnit"] = dictUnitDescriptionService;
@@ -141,6 +145,11 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 	    descriptionServices["mediaDocTemplate"] = mediaDocTemplateDescriptionService;
 	    descriptionServices["mediaDocMeteringReadingHeader"] = mediaDocMeteringReadingHeaderDescriptionService;
 	    descriptionServices["mediaDocMeteringReadingLine"] = mediaDocMeteringReadingLineDescriptionService;
-	    
+	    descriptionServices["mediaDocMeterReplacingHeader"] = mediaDocMeterReplacingHeaderDescriptionService;
+	    descriptionServices["mediaDocMeterReplacingLine"] = mediaDocMeterReplacingLineDescriptionService;
+	    descriptionServices["mediaDocUnderAccountingHeader"] = mediaDocUnderAccountingHeaderDescriptionService;
+	    descriptionServices["mediaDocUnderAccountingMeasLine"] = mediaDocUnderAccountingMeasLineDescriptionService;
+	    descriptionServices["mediaDocUnderAccountingCalcLine"] = mediaDocUnderAccountingCalcLineDescriptionService;
+
 	    return descriptionServices;
 	});

@@ -1,10 +1,10 @@
 (function () {
     angular.module("mediaApp")
-        .factory("mediaDayMeteringDataOperDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
+        .factory("mediaDocUnderAccountingCalcLineDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
-			var serviceName = "mediaDayMeteringDataOper";
-			var serviceDescPural = "Акт съёма показаний";
-			var serviceDescSingular = "Акты съёма показаний";
+			var serviceName = "mediaDocUnderAccountingCalcLine";
+			var serviceDescPural = "Замеры";
+			var serviceDescSingular = "Замер";
 
 			//List fields description for search
 			var searchFieldsDef = [
@@ -13,7 +13,7 @@
 					labelDesc: "Наименование",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
-				}),	
+				}),
 			];
         	
         	
@@ -60,21 +60,56 @@
 						disabled: false
 					}
 				}			                        
-			];    
+			];
 			
 			
             //List fields description for table
 			var tableFieldsDef = [
   	            responsiveTableFieldBuilder.build({
-		            name: "name",
-		            desc: "Наименование",
-		            headerStyle: "width: 70%",
-	            }) 
+		            name: "paramCode",
+		            desc: "Параметр",
+		            headerStyle: "width: 10%"
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "oldBalance",
+		            desc: "Показания снимаемого счётчика",
+		            headerStyle: "width: 10%",
+                    dataType: "number",
+                    cellClass: "text-right"
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "oldBalance",
+		            desc: "Показания устанавливаемого счётчика",
+		            headerStyle: "width: 10%",
+                    dataType: "number",
+                    cellClass: "text-right"
+	            })
 			];
 			
 			
             //List actions after search
             var tableActionsDef = [
+				{
+                    action: "back",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "goBack"
+                    },
+
+                    trigger: "button",
+					button: {
+						desc: "Назад",
+						tooltip: "Вернуться назад",
+						classes: "btn btn-primary btn-xs",
+						style: "",
+						glyphicon: "glyphicon",
+						disabled: false
+					}
+				},
+
 				{
                     action: "create",
                     typeAction: "form",
@@ -91,7 +126,7 @@
                         cancel: {
                             action: "@close"
                         }
-                    },	
+                    },
 
 					trigger: "button",
 					button: {
@@ -102,7 +137,7 @@
 						glyphicon: "glyphicon",
 						disabled: false
 					}
-				},            	
+				},
             ];
 			
             
@@ -149,26 +184,6 @@
 						tooltip: "Удалить запись",
 						glyphicon: "glyphicon-remove"
 					})
-				},
-
-				{
-                    action: "meteringPoints",
-                    typeAction: "controllerMethod",
-
-                    controllerMethod: {
-                        name: "showChilds"
-                    },	
-                    
-                    controllerMethodParams: {
-                        child: "mediaGroupMeteringPoint"
-                    },
-                    
-                    trigger: "button",
-					button: buttonBuilder.build({
-						caption: "Точки учёта",
-						tooltip: "Открыть список точек учёта",
-						glyphicon: "glyphicon-list-alt"
-					})
 				}
             ];
             
@@ -178,7 +193,9 @@
                 name: serviceName,
                 desc: serviceDescPural,
                 dataService: dataServices[serviceName],
-                
+                parentField: "headerId",
+                childField: "id",
+
                 sections: {
                 	
                 	//header section
@@ -218,6 +235,7 @@
 		                    templateURL: "common/directives/complexView/complexViewTable/complexViewTableTemplate.html",
 		                    tableClass: "table table-hover table-condensed table-bordered",
 		                    tableStyle: "table-layout: fixed; word-wrap: break-word;",
+		                    containerStyle: "max-width: 600px",
 		                    rowsPerPage: 10,
 		                    
 		                    liveSearch: {
@@ -267,16 +285,34 @@
                         ],
                         
                         fields: [
-
             				fieldBuilder.build({
-            					name: "name",
-            					labelDesc: "Наименование",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                required: true,
+            					name: "paramCode",
+            					labelDesc: "Тип параметра",
+                                labelClass: "col-sm-6",
+                                controlClass: "col-sm-6",
                                 panel: "base",
                                 editable: true
-            				})	
+            				}),
+
+            				fieldBuilder.build({
+            					name: "oldBalance",
+            					labelDesc: "Показания снимаемого счётчика",
+                                labelClass: "col-sm-6",
+                                controlClass: "col-sm-6",
+                                controlDataType: "number",
+                                panel: "base",
+                                editable: true
+            				}),
+
+            				fieldBuilder.build({
+            					name: "newBalance",
+            					labelDesc: "Показания устанавливаемого счётчика",
+                                labelClass: "col-sm-6",
+                                controlClass: "col-sm-6",
+                                controlDataType: "number",
+                                panel: "base",
+                                editable: true
+            				})
                         ],
                         
                         

@@ -11,31 +11,23 @@ angular.module("mediaApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", 
     		"mediaGroup",
     		"mediaDocType",
     		"mediaDocTemplate",
-    		"mediaDocMeteringReadingHeader"
+    		"mediaDocMeteringReadingHeader",
+    		"mediaDocMeterReplacingHeader",
+    		"mediaDocUnderAccountingHeader"
     	];
     })
         
     .factory("mediaChildNodes", function() {
     	return [
     		{ child: "mediaGroupMeteringPoint", parent: "mediaGroup" },
-    		{ child: "mediaDocMeteringReadingLine", parent: "mediaDocMeteringReadingHeader" }
+    		{ child: "mediaDocMeteringReadingLine", parent: "mediaDocMeteringReadingHeader" },
+    		{ child: "mediaDocMeterReplacingLine", parent: "mediaDocMeterReplacingHeader" },
+    		{ child: "mediaDocUnderAccountingMeasLine", parent: "mediaDocUnderAccountingHeader" },
+    		{ child: "mediaDocUnderAccountingCalcLine", parent: "mediaDocUnderAccountingHeader" }
     	];
     })    
     
     .config(function ($routeProvider) {
-    	
-		$routeProvider.when("/media/mediaDayMeteringDataOper/list", {
-			templateUrl: "media/features/mediaDefault/views/list.html",
-			controller: "mediaDayMeteringDataOperListCtrl",
-			
-			resolve: {
-				descriptionService: function(mediaDayMeteringDataOperDescriptionService) {
-					return mediaDayMeteringDataOperDescriptionService;
-				}				
-			}			
-		});   
-    	
-    	
 		$routeProvider.when("/media/:media/list", {
 			templateUrl: "media/features/mediaDefault/views/list.html",
 			controller: "mediaDefaultListCtrl",

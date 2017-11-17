@@ -1,9 +1,9 @@
 (function () {
     angular.module("mediaApp")
-        .factory("mediaDocMeteringReadingHeaderDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
+        .factory("mediaDocMeterReplacingHeaderDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
-			var serviceName = "mediaDocMeteringReadingHeader";
-			var serviceDescPural = "Акты съёма показаний";
+			var serviceName = "mediaDocMeterReplacingHeader";
+			var serviceDescPural = "Акты замены приборов учёта";
 			var serviceDescSingular = "Акт съёма показаний";
 
 
@@ -69,23 +69,21 @@
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Наименование",
-		            headerStyle: "width: 45%",
+		            headerStyle: "width: 50%",
 	            }),
 	            
   	            responsiveTableFieldBuilder.build({
-		            name: "startDate",
-		            desc: "Дата с",
+		            name: "docDate",
+		            desc: "Дата документа",
 		            headerStyle: "width: 10%",
 		            dataType: "date"
 	            }),
-	            
-  	            responsiveTableFieldBuilder.build({
-		            name: "endDate",
-		            desc: "Дата по",
-		            headerStyle: "width: 10%",
-		            dataType: "date"
-	            }) 	           
-           
+
+ 	            responsiveTableFieldBuilder.build({
+		            name: "meteringPointName",
+		            desc: "Присоединение",
+		            headerStyle: "width: 30%"
+	            })
 			];
 			
 			
@@ -176,13 +174,13 @@
                     },	
                     
                     controllerMethodParams: {
-                        child: "mediaDocMeteringReadingLine"
+                        child: "mediaDocMeterReplacingLine"
                     },
                     
                     trigger: "button",
 					button: buttonBuilder.build({
 						caption: "Заполнить",
-						tooltip: "Открыть список точек учёта для заполнения",
+						tooltip: "Заполнить показания счётчиков",
 						glyphicon: "glyphicon-list-alt"
 					})
 				}
@@ -283,17 +281,6 @@
                         ],
                         
                         fields: [
-            				fieldBuilder.build({
-            					name: "templateId",
-            					labelDesc: "Шаблон документа",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                dictName: "mediaDocTemplate",
-                                required: true,
-                                panel: "base",
-                                editable: true
-            				}),            				
-                        	
                         	fieldBuilder.build({
             					name: "name",
             					labelDesc: "Наименование",
@@ -315,8 +302,8 @@
             				}),
             				
             				fieldBuilder.build({
-            					name: "startDate",
-            					labelDesc: "Дата с",
+            					name: "docDate",
+            					labelDesc: "Дата документа",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
                                 controlDataType: "date",
@@ -325,14 +312,37 @@
             				}),
             				
             				fieldBuilder.build({
-            					name: "endDate",
-            					labelDesc: "Дата по",
+            					name: "meteringPointId",
+            					labelDesc: "Присоединение",
                                 labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                controlDataType: "date",
+                                controlClass: "col-sm-8",
+                                dictName: "dictMeteringPoint",
+                                required: true,
                                 panel: "base",
                                 editable: true
-            				})	             				            				
+            				}),
+
+            				fieldBuilder.build({
+            					name: "oldMeterId",
+            					labelDesc: "Снят счётчик",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                dictName: "dictMeter",
+                                required: true,
+                                panel: "base",
+                                editable: true
+            				}),
+
+            				fieldBuilder.build({
+            					name: "newMeterId",
+            					labelDesc: "Установлен счётчик",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                dictName: "dictMeter",
+                                required: true,
+                                panel: "base",
+                                editable: true
+            				})
                         ],
                         
                         
