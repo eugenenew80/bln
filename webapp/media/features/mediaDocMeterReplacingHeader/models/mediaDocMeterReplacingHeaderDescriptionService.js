@@ -4,7 +4,7 @@
 
 			var serviceName = "mediaDocMeterReplacingHeader";
 			var serviceDescPural = "Акты замены приборов учёта";
-			var serviceDescSingular = "Акт съёма показаний";
+			var serviceDescSingular = "Акт замены приборов учёта";
 
 
 			//List fields description for search
