@@ -166,7 +166,7 @@
 				},
 
 				{
-                    action: "lines",
+                    action: "measLines",
                     typeAction: "controllerMethod",
 
                     controllerMethod: {
@@ -174,13 +174,33 @@
                     },	
                     
                     controllerMethodParams: {
-                        child: "mediaDocMeterReplacingLine"
+                        child: "mediaDocUnderAccountingMeasLine"
                     },
                     
                     trigger: "button",
 					button: buttonBuilder.build({
-						caption: "Заполнить",
-						tooltip: "Заполнить показания счётчиков",
+						caption: "Замеры",
+						tooltip: "Заполнить замеры",
+						glyphicon: "glyphicon-list-alt"
+					})
+				}
+,
+				{
+                    action: "calcLines",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "showChilds"
+                    },
+
+                    controllerMethodParams: {
+                        child: "mediaDocUnderAccountingCalcLine"
+                    },
+
+                    trigger: "button",
+					button: buttonBuilder.build({
+						caption: "Расчёты",
+						tooltip: "Вывести расчёты",
 						glyphicon: "glyphicon-list-alt"
 					})
 				}
@@ -258,9 +278,7 @@
                                 type: "actions",
                                 items: rowActionsDef                             
                             }
-	                		
 		                }
-		                		               
                 	}                	
                 },
 
@@ -313,19 +331,8 @@
             				}),
 
             				fieldBuilder.build({
-            					name: "oldMeterId",
-            					labelDesc: "Снят счётчик",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                dictName: "dictMeter",
-                                required: true,
-                                panel: "base",
-                                editable: true
-            				}),
-
-            				fieldBuilder.build({
-            					name: "newMeterId",
-            					labelDesc: "Установлен счётчик",
+            					name: "meterId",
+            					labelDesc: "Счётчик",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 dictName: "dictMeter",
@@ -334,8 +341,7 @@
                                 editable: true
             				})
                         ],
-                        
-                        
+
                         actions: [
     							{
     			                    action: "cmdSave",
