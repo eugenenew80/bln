@@ -290,17 +290,7 @@
                                 panel: "base",
                                 editable: true
             				}),
-            				
-            				fieldBuilder.build({
-            					name: "header",
-            					labelDesc: "Заголовок",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                required: true,
-                                panel: "base",
-                                editable: true
-            				}),
-            				
+
             				fieldBuilder.build({
             					name: "docDate",
             					labelDesc: "Дата документа",

@@ -80,7 +80,7 @@
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "oldBalance",
+		            name: "newBalance",
 		            desc: "Показания устанавливаемого счётчика",
 		            headerStyle: "width: 10%",
                     dataType: "number",

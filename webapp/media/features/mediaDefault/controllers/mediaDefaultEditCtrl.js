@@ -8,19 +8,21 @@ angular.module("mediaApp")
         $scope.actions = {};
         $scope.currentElement = angular.copy(currentElement);
         $scope.action = $scope.currentElement["#status#"];
-        
-        
-        console.log(currentElement);
-        
+
         angular.forEach(form.fields, function(field, key) {
-        	if (field.controls[0].dataType=="date" && angular.isDefined($scope.currentElement[field.name]) )
-        		$scope.currentElement[field.name] = new Date($scope.currentElement[field.name]);
+        	if ((field.controls[0].dataType=="date" || field.controls[0].dataType=="datetime") && angular.isDefined($scope.currentElement[field.name]) ) {
+                var d = new Date($scope.currentElement[field.name]);
+                d.setTime(d.getTime() - d.getTimezoneOffset()*60*1000);
+                $scope.currentElement[field.name] = d;
+            }
         })
-        
-        
+
         //Save the current element and switch to table mode
+        console.log($scope.currentElement);
+
+        
         $scope.actions.save = function () {
-        	dataService[$scope.action]($scope.currentElement).$promise.then(
+            dataService[$scope.action]($scope.currentElement).$promise.then(
 				function(newItem) {
 					if (currentElement.$get) currentElement.$get();					
 					

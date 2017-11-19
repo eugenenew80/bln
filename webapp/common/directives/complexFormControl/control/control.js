@@ -18,6 +18,8 @@ angular.module("common")
 							scope.templateURL=scope.templateURL + "numberInput.html";
 						else if(scope.control.dataType=="date")
 							scope.templateURL=scope.templateURL + "dateInput.html";
+                        else if(scope.control.dataType=="datetime")
+                            scope.templateURL=scope.templateURL + "dateTimeInput.html";
 						else
 							scope.templateURL=scope.templateURL + "stringInput.html";
 
@@ -88,7 +90,22 @@ angular.module("common")
 					}					
 				};
 
-				
+
+				//Bootstrap UI datepicker options
+				scope.dateTimePicker={
+					opened:false,
+					options: {
+
+					},
+
+					format: "dd.MM.yyyy HH:mm",
+
+					modelOptions: {
+						timezone: "0"
+					}
+				};
+
+
 				scope.dict={};
 
 				//Autofill

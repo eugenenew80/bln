@@ -69,23 +69,15 @@
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Наименование",
-		            headerStyle: "width: 45%",
+		            headerStyle: "width: 70%",
 	            }),
-	            
-  	            responsiveTableFieldBuilder.build({
-		            name: "startDate",
-		            desc: "Дата с",
-		            headerStyle: "width: 10%",
-		            dataType: "date"
-	            }),
-	            
-  	            responsiveTableFieldBuilder.build({
-		            name: "endDate",
-		            desc: "Дата по",
-		            headerStyle: "width: 10%",
-		            dataType: "date"
-	            }) 	           
-           
+
+                responsiveTableFieldBuilder.build({
+                    name: "docDate",
+                    desc: "Дата документа",
+                    headerStyle: "width: 10%",
+                    dataType: "date"
+                })
 			];
 			
 			
@@ -283,18 +275,18 @@
                         ],
                         
                         fields: [
-            				fieldBuilder.build({
-            					name: "templateId",
-            					labelDesc: "Шаблон документа",
+                            fieldBuilder.build({
+                                name: "groupId",
+                                labelDesc: "Группа точек учёта",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
-                                dictName: "mediaDocTemplate",
-                                required: true,
+                                dictName: "mediaGroup",
                                 panel: "base",
+                                required: true,
                                 editable: true
-            				}),            				
-                        	
-                        	fieldBuilder.build({
+                            }),
+
+                            fieldBuilder.build({
             					name: "name",
             					labelDesc: "Наименование",
                                 labelClass: "col-sm-4",
@@ -303,33 +295,33 @@
                                 panel: "base",
                                 editable: true
             				}),
-            				
-            				fieldBuilder.build({
-            					name: "header",
-            					labelDesc: "Заголовок",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                required: true,
-                                panel: "base",
-                                editable: true
-            				}),
-            				
-            				fieldBuilder.build({
-            					name: "startDate",
-            					labelDesc: "Дата с",
+
+                            fieldBuilder.build({
+                                name: "docDate",
+                                labelDesc: "Дата документа",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
                                 controlDataType: "date",
+                                panel: "base",
+                                editable: true
+                            }),
+
+            				fieldBuilder.build({
+            					name: "startDate",
+            					labelDesc: "За период с",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-4",
+                                controlDataType: "datetime",
                                 panel: "base",
                                 editable: true
             				}),
             				
             				fieldBuilder.build({
             					name: "endDate",
-            					labelDesc: "Дата по",
+            					labelDesc: "по",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
-                                controlDataType: "date",
+                                controlDataType: "datetime",
                                 panel: "base",
                                 editable: true
             				})	             				            				

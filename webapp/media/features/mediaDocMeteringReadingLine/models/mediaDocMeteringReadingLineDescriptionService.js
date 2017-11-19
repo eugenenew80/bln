@@ -66,26 +66,20 @@
             //List fields description for table
 			var tableFieldsDef = [
   	            responsiveTableFieldBuilder.build({
-		            name: "meteringPointExternalCode",
-		            desc: "Код точки",
-		            headerStyle: "width: 10%"
+		            name: "meteringPointName",
+		            desc: "Присоединение",
+		            headerStyle: "width: 20%"
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "meteringPointName",
-		            desc: "Наименование точки",
-		            headerStyle: "width: 20%"
+		            name: "meteringPointTypeName",
+		            desc: "Тип точки",
+		            headerStyle: "width: 10%"
 	            }),
 
   	            responsiveTableFieldBuilder.build({
 		            name: "meterSerialNumber",
 		            desc: "Номер счётчика",
-		            headerStyle: "width: 10%"
-	            }),
-
-  	            responsiveTableFieldBuilder.build({
-		            name: "meterName",
-		            desc: "Наименование счётчика",
 		            headerStyle: "width: 10%"
 	            }),
 
@@ -117,8 +111,15 @@
 		            headerStyle: "width: 10%",
                     dataType: "number",
                     cellClass: "text-right"
-	            })
-			];
+	            }),
+
+                responsiveTableFieldBuilder.build({
+                    name: "dataSource",
+                    desc: "Источник",
+                    headerStyle: "width: 10%"
+                }),
+
+            ];
 			
 			
             //List actions after search
@@ -253,7 +254,9 @@
                 name: serviceName,
                 desc: serviceDescPural,
                 dataService: dataServices[serviceName],
-                
+                parentField: "headerId",
+                childField: "id",
+
                 sections: {
                 	
                 	//header section
