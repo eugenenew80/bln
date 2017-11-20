@@ -4,7 +4,9 @@
 		.filter("cellFilter", function ($filter) {
 			
 			return function (value, field) {
-				
+				if (angular.isString(value) && field && field.dataType=="datetime")
+                    return $filter("date")(new Date(value), "dd.MM.yyyy HH:mm:ss");
+
 				if (angular.isNumber(value) && field && field.dataType=="date") 
 					return $filter("date")(new Date (value), "dd.MM.yyyy");
 				

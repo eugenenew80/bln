@@ -72,16 +72,15 @@
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "oldBalance",
-		            desc: "Показания снимаемого счётчика",
+		            name: "measTime",
+		            desc: "Время",
 		            headerStyle: "width: 10%",
-                    dataType: "number",
-                    cellClass: "text-right"
+                    dataType: "datetime"
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "oldBalance",
-		            desc: "Показания устанавливаемого счётчика",
+		            name: "value",
+		            desc: "Мощность",
 		            headerStyle: "width: 10%",
                     dataType: "number",
                     cellClass: "text-right"
@@ -287,28 +286,28 @@
                         fields: [
             				fieldBuilder.build({
             					name: "paramCode",
-            					labelDesc: "Тип параметра",
-                                labelClass: "col-sm-6",
-                                controlClass: "col-sm-6",
+            					labelDesc: "Параметр",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-4",
                                 panel: "base",
                                 editable: true
             				}),
 
             				fieldBuilder.build({
-            					name: "oldBalance",
-            					labelDesc: "Показания снимаемого счётчика",
-                                labelClass: "col-sm-6",
-                                controlClass: "col-sm-6",
-                                controlDataType: "number",
+            					name: "measTime",
+            					labelDesc: "Время",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-4",
+                                controlDataType: "datetime",
                                 panel: "base",
                                 editable: true
             				}),
 
             				fieldBuilder.build({
-            					name: "newBalance",
-            					labelDesc: "Показания устанавливаемого счётчика",
-                                labelClass: "col-sm-6",
-                                controlClass: "col-sm-6",
+            					name: "value",
+            					labelDesc: "Мощность",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
                                 editable: true

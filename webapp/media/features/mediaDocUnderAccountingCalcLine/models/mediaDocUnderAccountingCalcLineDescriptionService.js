@@ -72,16 +72,30 @@
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "oldBalance",
-		            desc: "Показания снимаемого счётчика",
+		            name: "turnOffTime",
+		            desc: "Время выключения",
+		            headerStyle: "width: 10%",
+                    dataType: "datetime"
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "turnOnTime",
+		            desc: "Время включения",
+		            headerStyle: "width: 10%",
+                    dataType: "datetime"
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "downtime",
+		            desc: "Время простоя",
 		            headerStyle: "width: 10%",
                     dataType: "number",
                     cellClass: "text-right"
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "oldBalance",
-		            desc: "Показания устанавливаемого счётчика",
+		            name: "value",
+		            desc: "Недоучтённая э.э.",
 		            headerStyle: "width: 10%",
                     dataType: "number",
                     cellClass: "text-right"
@@ -235,7 +249,7 @@
 		                    templateURL: "common/directives/complexView/complexViewTable/complexViewTableTemplate.html",
 		                    tableClass: "table table-hover table-condensed table-bordered",
 		                    tableStyle: "table-layout: fixed; word-wrap: break-word;",
-		                    containerStyle: "max-width: 600px",
+		                    containerStyle: "max-width: 800px",
 		                    rowsPerPage: 10,
 		                    
 		                    liveSearch: {
@@ -289,26 +303,47 @@
             					name: "paramCode",
             					labelDesc: "Тип параметра",
                                 labelClass: "col-sm-6",
-                                controlClass: "col-sm-6",
+                                controlClass: "col-sm-4",
                                 panel: "base",
                                 editable: true
             				}),
 
             				fieldBuilder.build({
-            					name: "oldBalance",
-            					labelDesc: "Показания снимаемого счётчика",
+            					name: "turnOffTime",
+            					labelDesc: "Время выключения",
                                 labelClass: "col-sm-6",
-                                controlClass: "col-sm-6",
+                                controlClass: "col-sm-4",
+                                controlDataType: "datetime",
+                                panel: "base",
+                                editable: true
+            				}),
+
+            				fieldBuilder.build({
+            					name: "turnOnTime",
+            					labelDesc: "Время включения",
+                                labelClass: "col-sm-6",
+                                controlClass: "col-sm-4",
+                                controlDataType: "datetime",
+                                panel: "base",
+                                editable: true
+            				}),
+
+
+            				fieldBuilder.build({
+            					name: "downtime",
+            					labelDesc: "Время простоя",
+                                labelClass: "col-sm-6",
+                                controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
                                 editable: true
             				}),
 
             				fieldBuilder.build({
-            					name: "newBalance",
-            					labelDesc: "Показания устанавливаемого счётчика",
+            					name: "value",
+            					labelDesc: "Недоучтённая э.э.",
                                 labelClass: "col-sm-6",
-                                controlClass: "col-sm-6",
+                                controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
                                 editable: true

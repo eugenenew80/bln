@@ -69,7 +69,7 @@
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Наименование",
-		            headerStyle: "width: 50%",
+		            headerStyle: "width: 40%",
 	            }),
 	            
   	            responsiveTableFieldBuilder.build({
@@ -83,7 +83,13 @@
 		            name: "meteringPointName",
 		            desc: "Присоединение",
 		            headerStyle: "width: 30%"
-	            })
+	            }),
+
+                responsiveTableFieldBuilder.build({
+                    name: "meterSerialNumber",
+                    desc: "№ счётчика",
+                    headerStyle: "width: 10%"
+                })
 			];
 			
 			

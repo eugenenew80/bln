@@ -67,9 +67,15 @@
             //List fields description for table
 			var tableFieldsDef = [
   	            responsiveTableFieldBuilder.build({
+		            name: "groupName",
+		            desc: "Грумма точек",
+		            headerStyle: "width: 20%",
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Наименование",
-		            headerStyle: "width: 70%",
+		            headerStyle: "width: 40%",
 	            }),
 
                 responsiveTableFieldBuilder.build({
@@ -77,7 +83,21 @@
                     desc: "Дата документа",
                     headerStyle: "width: 10%",
                     dataType: "date"
-                })
+                }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "startDate",
+		            desc: "За период с",
+		            headerStyle: "width: 10%",
+                    dataType: "datetime"
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "endDate",
+		            desc: "по",
+		            headerStyle: "width: 10%",
+                    dataType: "datetime"
+	            }),
 			];
 			
 			
