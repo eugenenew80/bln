@@ -73,6 +73,8 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 		    dictEnergySourceCompanyDescriptionService,
 		    dictEnergySourceMeteringPointDescriptionService,
 		    dictMeteringPointMeterDescriptionService,
+		    dictMeteringPointCurrentTransDescriptionService,
+		    dictMeteringPointVoltageTransDescriptionService,
 		    dictBusinessPartnerDescriptionService,
 
 		    admFuncDescriptionService,
@@ -119,13 +121,17 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 	    descriptionServices["dictSubstationType"] = dictSubstationTypeDescriptionService;
 	    descriptionServices["dictAccountingType"] = dictAccountingTypeDescriptionService;
 	    descriptionServices["dictMeteringPointType"] = dictMeteringPointTypeDescriptionService;
-	    descriptionServices["dictMeteringPoint"] = dictMeteringPointDescriptionService;
-	    descriptionServices["dictSubstationCompany"] = dictSubstationCompanyDescriptionService;
-	    descriptionServices["dictSubstationMeteringPoint"] = dictSubstationMeteringPointDescriptionService;
-	    descriptionServices["dictEnergySourceCompany"] = dictEnergySourceCompanyDescriptionService;
-	    descriptionServices["dictEnergySourceMeteringPoint"] = dictEnergySourceMeteringPointDescriptionService;
-	    descriptionServices["dictMeteringPointMeter"] = dictMeteringPointMeterDescriptionService;
-	    descriptionServices["dictBusinessPartner"] = dictBusinessPartnerDescriptionService;
+        descriptionServices["dictMeteringPoint"] = dictMeteringPointDescriptionService;
+        descriptionServices["dictBusinessPartner"] = dictBusinessPartnerDescriptionService;
+
+        descriptionServices["dictSubstationCompany"] = dictSubstationCompanyDescriptionService;
+        descriptionServices["dictSubstationMeteringPoint"] = dictSubstationMeteringPointDescriptionService;
+        descriptionServices["dictEnergySourceCompany"] = dictEnergySourceCompanyDescriptionService;
+        descriptionServices["dictEnergySourceMeteringPoint"] = dictEnergySourceMeteringPointDescriptionService;
+        descriptionServices["dictMeteringPointMeter"] = dictMeteringPointMeterDescriptionService;
+        descriptionServices["dictMeteringPointCurrentTrans"] = dictMeteringPointCurrentTransDescriptionService;
+        descriptionServices["dictMeteringPointVoltageTrans"] = dictMeteringPointVoltageTransDescriptionService;
+        descriptionServices["dictMeteringPointMeter"] = dictMeteringPointMeterDescriptionService;
 
 	    descriptionServices["admFunc"] = admFuncDescriptionService;
 	    descriptionServices["admRole"] = admRoleDescriptionService;

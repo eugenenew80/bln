@@ -323,11 +323,11 @@
             				}),
             				
               				fieldBuilder.build({
-            					name: "companyId",
+            					name: "businessPartnerId",
             					labelDesc: "Компания владелец",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
-            					dictName: "dictCompany",
+            					dictName: "dictBusinessPartner",
             					required: true,
                                 panel: "base",
                                 editable: true            						

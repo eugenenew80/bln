@@ -1,10 +1,10 @@
 (function () {
     angular.module("dictApp")
-        .factory("dictMeteringPointMeterDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
+        .factory("dictMeteringPointVoltageTransDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
-			var serviceName = "dictMeteringPointMeter";
-			var serviceDescPural = "Счётчики";
-			var serviceDescSingular = "Счётчик";
+			var serviceName = "dictMeteringPointVoltageTrans";
+			var serviceDescPural = "Трансформаторы напряжения";
+			var serviceDescSingular = "Трансформатор напряжения";
 
 			//List fields description for search
 			var searchFieldsDef = [
@@ -18,14 +18,15 @@
 			
             //List fields description for table
 			var tableFieldsDef = [
+
   	            responsiveTableFieldBuilder.build({
-		            name: "meterName",
-		            desc: "Наименование",
+		            name: "voltageTransName",
+		            desc: "Тип трансформатора",
 		            headerStyle: "width: 60%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "meterSerialNumber",
+		            name: "voltageTransSerialNumber",
 		            desc: "Серийный номер",
 		            headerStyle: "width: 10%",
 	            }),
@@ -233,11 +234,11 @@
                         fields: [
 
             				fieldBuilder.build({
-            					name: "meterId",
-            					labelDesc: "Счётчик",
+            					name: "voltageTransId",
+            					labelDesc: "Трансформатор напряжения",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
-                                dictName: "dictMeter",
+                                dictName: "dictVoltageTrans",
                                 required: true,
                                 panel: "base",
                                 editable: true

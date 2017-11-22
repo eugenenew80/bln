@@ -185,7 +185,47 @@
 						tooltip: "Открыть список счётчиков",
 						glyphicon: "glyphicon-list-alt"
 					})
-				},				
+				},
+
+				{
+                    action: "currentTrans",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "showChilds"
+                    },
+
+                    controllerMethodParams: {
+                        child: "dictMeteringPointCurrentTrans"
+                    },
+
+                    trigger: "button",
+					button: buttonBuilder.build({
+						caption: "Трансформаторы тока",
+						tooltip: "Открыть список трансформаторов тока",
+						glyphicon: "glyphicon-list-alt"
+					})
+				},
+
+				{
+                    action: "voltageTrans",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "showChilds"
+                    },
+
+                    controllerMethodParams: {
+                        child: "dictMeteringPointVoltageTrans"
+                    },
+
+                    trigger: "button",
+					button: buttonBuilder.build({
+						caption: "Трансформаторы напяжения",
+						tooltip: "Открыть список трансформаторов напряжения",
+						glyphicon: "glyphicon-list-alt"
+					})
+				},
             ];
             
 
@@ -361,11 +401,11 @@
             				}),      
             				
               				fieldBuilder.build({
-            					name: "firstCompanyId",
+            					name: "firstBusinessPartnerId",
             					labelDesc: "Первая компания",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
-            					dictName: "dictCompany",
+            					dictName: "dictBusinessPartner",
             					required: true,
                                 panel: "object",
                                 column: 1,
@@ -373,11 +413,11 @@
             				}),	 
             				
               				fieldBuilder.build({
-            					name: "secondCompanyId",
+            					name: "secondBusinessPartnerId",
             					labelDesc: "Вторая компания",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
-            					dictName: "dictCompany",
+            					dictName: "dictBusinessPartner",
             					required: true,
                                 panel: "object",
                                 column: 1,
