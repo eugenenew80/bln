@@ -33,8 +33,8 @@
 				
 				//orgStruct
 				fieldBuilder.build({
-					name: "companyId",
-					labelDesc: "Компания владелец",
+					name: "businessPartnerId",
+					labelDesc: "Владелец",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4",					
 					dictName: "dictCompany"
@@ -323,11 +323,11 @@
             				}),
             				
               				fieldBuilder.build({
-            					name: "companyId",
-            					labelDesc: "Компания владелец",
+            					name: "businessPartnerId",
+            					labelDesc: "Владелец",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
-            					dictName: "dictCompany",
+            					dictName: "dictBusinessPartner",
             					required: true,
                                 panel: "base",
                                 editable: true            						

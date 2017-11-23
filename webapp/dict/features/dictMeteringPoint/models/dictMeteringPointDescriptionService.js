@@ -361,11 +361,11 @@
             				}),      
             				
               				fieldBuilder.build({
-            					name: "firstCompanyId",
+            					name: "firstBusinessPartnerId",
             					labelDesc: "Первая компания",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
-            					dictName: "dictCompany",
+            					dictName: "dictBusinessPartner",
             					required: true,
                                 panel: "object",
                                 column: 1,
@@ -373,11 +373,11 @@
             				}),	 
             				
               				fieldBuilder.build({
-            					name: "secondCompanyId",
+            					name: "secondBusinessPartnerId",
             					labelDesc: "Вторая компания",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
-            					dictName: "dictCompany",
+            					dictName: "dictBusinessPartner",
             					required: true,
                                 panel: "object",
                                 column: 1,
