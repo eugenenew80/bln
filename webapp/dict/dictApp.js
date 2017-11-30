@@ -28,7 +28,7 @@ angular.module("dictApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "
 			"dictEnergyZone",
 			"dictEnergyNode",
 			"dictDataSource",    		
-			"dictBusinessPartner",
+			"dictBusinessPartner"
     	];
     })
     
