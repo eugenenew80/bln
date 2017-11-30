@@ -40,6 +40,8 @@ angular.module("dictApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "
     		{ child: "dictEnergySourceCompany", 		parent: "dictEnergySource" },
     		{ child: "dictEnergySourceMeteringPoint", 	parent: "dictEnergySource" },
     		{ child: "dictMeteringPointMeter", 			parent: "dictMeteringPoint" },
+    		{ child: "dictMeteringPointCurrentTrans", 	parent: "dictMeteringPoint" },
+    		{ child: "dictMeteringPointVoltageTrans", 	parent: "dictMeteringPoint" },
     	];
     })
     
