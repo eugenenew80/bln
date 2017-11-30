@@ -23,7 +23,7 @@ angular.module("dictApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "
 			"dictMeteringPointType",
 			"dictAccountingType",
 			"dictUnit",
-			"dictCompany",
+			"dictOrganization",
 			"dictRegion",
 			"dictEnergyZone",
 			"dictEnergyNode",
