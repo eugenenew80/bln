@@ -8,14 +8,6 @@
 			
 			//List fields description for search
 			var searchFieldsDef = [
-				
-				fieldBuilder.build({
-					name: "code",
-					labelDesc: "Код",
-                    labelClass: "col-sm-2",
-                    controlClass: "col-sm-2"
-				}),
-				
 				fieldBuilder.build({
 					name: "name",
 					labelDesc: "Наименование",
@@ -80,18 +72,17 @@
 			
             //List fields description for table
 			var tableFieldsDef = [
-
   	            responsiveTableFieldBuilder.build({
-		            name: "code",
-		            desc: "Код",
-		            headerStyle: "width: 20%",
+		            name: "name",
+		            desc: "Тип трансформатора тока",
+		            headerStyle: "width: 70%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "name",
-		            desc: "Наименование",
-		            headerStyle: "width: 70%",
-	            }) 
+		            name: "manufacturer",
+		            desc: "Производитель",
+		            headerStyle: "width: 20%",
+	            })
 			];
 			
 		
@@ -271,20 +262,9 @@
                         ],
                         
                         fields: [
-
-            				fieldBuilder.build({
-            					name: "code",
-            					labelDesc: "Код",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                required: true,
-                                panel: "base",
-                                editable: true            						
-            				}),
-            				
             				fieldBuilder.build({
             					name: "name",
-            					labelDesc: "Тип, Марка, Модель",
+            					labelDesc: "Тип трансформатора тока",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 required: true,
@@ -304,8 +284,8 @@
             				
             				fieldBuilder.build({
             					name: "ratedCurrent1",
-            					labelDesc: "Номинальный ток первичной обмотки, А",
-                                labelClass: "col-sm-4",
+            					labelDesc: "Номинальный ток первичной обмотки",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
@@ -314,8 +294,8 @@
             				
             				fieldBuilder.build({
             					name: "ratedCurrent2",
-            					labelDesc: "Номинальный ток вторичной обмотки, А",
-                                labelClass: "col-sm-4",
+            					labelDesc: "Номинальный ток вторичной обмотки",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
@@ -325,7 +305,7 @@
             				fieldBuilder.build({
             					name: "accuracyClass",
             					labelDesc: "Класс точности",
-                                labelClass: "col-sm-4",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
@@ -334,8 +314,8 @@
             				
             				fieldBuilder.build({
             					name: "minCurrent",
-            					labelDesc: "Минимальная нагрузка в классе точности, %",
-                                labelClass: "col-sm-4",
+            					labelDesc: "Минимальный ток, %",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
@@ -344,8 +324,8 @@
             				
             				fieldBuilder.build({
             					name: "maxCurrent",
-            					labelDesc: "Максимальная нагрузка в классе точности, %",
-                                labelClass: "col-sm-4",
+            					labelDesc: "Максимальная ток, %",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",

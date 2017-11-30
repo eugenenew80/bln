@@ -273,7 +273,7 @@
             					name: "kbe",
             					labelDesc: "КБЕ",
                                 labelClass: "col-sm-4",
-                                controlClass: "col-sm-2",
+                                controlClass: "col-sm-3",
                                 panel: "base",
                                 editable: true
             				}),
@@ -281,57 +281,71 @@
             				fieldBuilder.build({
             					name: "okpo",
             					labelDesc: "ОКПО",
-                                labelClass: "col-sm-6",
-                                controlClass: "col-sm-4",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-6",
                                 panel: "base",
                                 editable: true
             				}),
 
-            				fieldBuilder.build({
-            					name: "certificateRegisterSeries",
-            					labelDesc: "Серия свидетельства о постановке на регистрационный учет по НДС",
-                                labelClass: "col-sm-6",
-                                controlClass: "col-sm-4",
+              				fieldBuilder.build({
+            					name: "parentBusinessPartnerId",
+            					labelDesc: "Головная компания",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+            					dictName: "dictBusinessPartner",
                                 panel: "base",
                                 editable: true
             				}),
 
-            				fieldBuilder.build({
-            					name: "certificateRegisterNumber",
-            					labelDesc: "Номер свидетельства о постановке на регистрационный учет",
-                                labelClass: "col-sm-6",
-                                controlClass: "col-sm-4",
-                                panel: "base",
-                                editable: true
-            				}),
-
-            				fieldBuilder.build({
-            					name: "certificateRegisterDate",
-            					labelDesc: "Дата выдачи свидетельства",
-                                labelClass: "col-sm-6",
+                            fieldBuilder.build({
+                                name: "largeConsumer",
+                                labelDesc: "Крупный потребитель",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 panel: "base",
                                 editable: true,
-                                controlDataType: "date",
-            				}),
+                                controlDataType: "checkbox"
+                            }),
 
-            				fieldBuilder.build({
-            					name: "certificateAuthorityName",
-            					labelDesc: "Наименование налогового органа, осуществившего постановку на регистрационный учет по НДС",
-                                labelClass: "col-sm-6",
-                                controlClass: "col-sm-6",
+                            fieldBuilder.build({
+                                name: "electricityProducer",
+                                labelDesc: "Производитель э/э",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
                                 panel: "base",
-                                editable: true
-            				}),
+                                editable: true,
+                                controlDataType: "checkbox"
+                            }),
 
-            				fieldBuilder.build({
-            					name: "certificateAuthorityBin",
-            					labelDesc: "Бизнес идентификационный номер налогового управления, осуществившего постановку на регистрационный учет",
-                                labelClass: "col-sm-6",
-                                controlClass: "col-sm-6",
+                            fieldBuilder.build({
+                                name: "energySupplyOrganization",
+                                labelDesc: "Энергоснабжающая организация",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
                                 panel: "base",
-                                editable: true
-            				})
+                                editable: true,
+                                controlDataType: "checkbox"
+                            }),
+
+                            fieldBuilder.build({
+                                name: "transmittingOrganization",
+                                labelDesc: "Энергопередающая организация",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                panel: "base",
+                                editable: true,
+                                controlDataType: "checkbox"
+                            }),
+
+                            fieldBuilder.build({
+                                name: "electricityConsumer",
+                                labelDesc: "Потребитель электроэнергии",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                panel: "base",
+                                editable: true,
+                                controlDataType: "checkbox"
+                            }),
                         ],
                         
                         

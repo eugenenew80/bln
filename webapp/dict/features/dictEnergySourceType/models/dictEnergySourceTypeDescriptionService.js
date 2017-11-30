@@ -8,10 +8,9 @@
 			
 			//List fields description for search
 			var searchFieldsDef = [
-				
 				fieldBuilder.build({
-					name: "code",
-					labelDesc: "Код",
+					name: "shortName",
+					labelDesc: "Аббревиатура",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-2"
 				}),
@@ -75,8 +74,8 @@
 			var tableFieldsDef = [
 
   	            responsiveTableFieldBuilder.build({
-		            name: "code",
-		            desc: "Код",
+		            name: "shortName",
+		            desc: "Аббревиатура",
 		            headerStyle: "width: 20%",
 	            }),
 
@@ -264,10 +263,9 @@
                         ],
                         
                         fields: [
-
             				fieldBuilder.build({
-            					name: "code",
-            					labelDesc: "Код",
+            					name: "shortName",
+            					labelDesc: "Аббревиатура",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
                                 required: true,
@@ -284,16 +282,16 @@
                                 panel: "base",
                                 editable: true
             				}),
-            				
-            				fieldBuilder.build({
-            					name: "shortName",
-            					labelDesc: "Краткое наименование",
+
+                            fieldBuilder.build({
+                                name: "res",
+                                labelDesc: "Относится к ВИЭ",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
-                                required: true,
                                 panel: "base",
-                                editable: true
-            				})            				
+                                editable: true,
+                                controlDataType: "checkbox"
+                            })
                         ],
                         
                         

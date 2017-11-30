@@ -8,27 +8,19 @@
 			
 			//List fields description for search
 			var searchFieldsDef = [
-				
-				fieldBuilder.build({
-					name: "code",
-					labelDesc: "Код",
-                    labelClass: "col-sm-2",
-                    controlClass: "col-sm-2"
-				}),
-				
 				fieldBuilder.build({
 					name: "name",
 					labelDesc: "Наименование",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
-				}),	
-				
+				}),
+
 				fieldBuilder.build({
 					name: "manufacturer",
 					labelDesc: "Производитель",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
-				}),					
+				}),
 			];
         	
         	
@@ -80,18 +72,17 @@
 			
             //List fields description for table
 			var tableFieldsDef = [
-
   	            responsiveTableFieldBuilder.build({
-		            name: "code",
-		            desc: "Код",
-		            headerStyle: "width: 20%",
+		            name: "name",
+		            desc: "Тип трансформатора напряжения",
+		            headerStyle: "width: 70%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "name",
-		            desc: "Наименование",
-		            headerStyle: "width: 70%",
-	            }) 
+		            name: "manufacturer",
+		            desc: "Производитель",
+		            headerStyle: "width: 20%",
+	            })
 			];
 			
 		
@@ -262,20 +253,9 @@
                         ],
                         
                         fields: [
-
-            				fieldBuilder.build({
-            					name: "code",
-            					labelDesc: "Код",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                required: true,
-                                panel: "base",
-                                editable: true            						
-            				}),
-            				
             				fieldBuilder.build({
             					name: "name",
-            					labelDesc: "Тип, Марка, Модель",
+            					labelDesc: "Тип трансформатора напряжения",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 required: true,
@@ -295,8 +275,8 @@
             				
             				fieldBuilder.build({
             					name: "ratedVoltage1",
-            					labelDesc: "Номинальное напряжение первичной обмотки, В",
-                                labelClass: "col-sm-4",
+            					labelDesc: "Номинальное напряжение первичной обмотки",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
@@ -305,8 +285,8 @@
             				
             				fieldBuilder.build({
             					name: "ratedVoltage2",
-            					labelDesc: "Номинальное напряжение вторичной обмотки, В",
-                                labelClass: "col-sm-4",
+            					labelDesc: "Номинальное напряжение вторичной обмотки",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
@@ -316,27 +296,7 @@
             				fieldBuilder.build({
             					name: "accuracyClass",
             					labelDesc: "Класс точности",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "base",
-                                editable: true            						
-            				}),	
-            				
-            				fieldBuilder.build({
-            					name: "minVoltage",
-            					labelDesc: "Минимальное напряжение в классе точности, %",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "base",
-                                editable: true            						
-            				}),	 
-            				
-            				fieldBuilder.build({
-            					name: "maxVoltage",
-            					labelDesc: "Максимальное напряжение в классе точности, %",
-                                labelClass: "col-sm-4",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
