@@ -1,10 +1,10 @@
 (function () {
     angular.module("dictApp")
-        .factory("dictEnergySourceCompanyDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
+        .factory("dictSubstationBusinessPartnerDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
-			var serviceName = "dictEnergySourceCompany";
-			var serviceDescPural = "Компании";
-			var serviceDescSingular = "Компания";
+			var serviceName = "dictSubstationBusinessPartner";
+			var serviceDescPural = "Владельцы";
+			var serviceDescSingular = "Владелец";
 
 			//List fields description for search
 			var searchFieldsDef = [
@@ -148,7 +148,7 @@
                 name: serviceName,
                 desc: serviceDescPural,
                 dataService: dataServices[serviceName],
-                parentField: "energySourceId",
+                parentField: "substationId",
                 childField: "id",
                 
                 sections: {
@@ -157,7 +157,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", "Энергоисточники", "@parentName", serviceDescPural],		
+                			items: ["НСИ", "Подстанции", "@parentName", serviceDescPural],		
                 		}
                 	},
 

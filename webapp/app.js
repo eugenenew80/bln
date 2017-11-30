@@ -56,7 +56,7 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 		    dictMeterTypeDescriptionService,
 		    dictCurrentTransTypeDescriptionService,
 		    dictVoltageTransTypeDescriptionService,
-		    dictCompanyDescriptionService,
+		    dictOrganizationDescriptionService,
 		    dictMeterDescriptionService,
 		    dictCurrentTransDescriptionService,
 		    dictVoltageTransDescriptionService,
@@ -68,9 +68,9 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 		    dictAccountingTypeDescriptionService,
 		    dictMeteringPointTypeDescriptionService,
 		    dictMeteringPointDescriptionService,
-		    dictSubstationCompanyDescriptionService,
+		    dictSubstationBusinessPartnerDescriptionService,
 		    dictSubstationMeteringPointDescriptionService,
-		    dictEnergySourceCompanyDescriptionService,
+		    dictEnergySourceBusinessPartnerDescriptionService,
 		    dictEnergySourceMeteringPointDescriptionService,
 		    dictMeteringPointMeterDescriptionService,
 		    dictMeteringPointCurrentTransDescriptionService,
@@ -110,7 +110,7 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 	    descriptionServices["dictMeterType"] = dictMeterTypeDescriptionService;
 	    descriptionServices["dictCurrentTransType"] = dictCurrentTransTypeDescriptionService;
 	    descriptionServices["dictVoltageTransType"] = dictVoltageTransTypeDescriptionService;
-	    descriptionServices["dictCompany"] = dictCompanyDescriptionService;
+	    descriptionServices["dictOrganization"] = dictOrganizationDescriptionService;
 	    descriptionServices["dictMeter"] = dictMeterDescriptionService;
 	    descriptionServices["dictCurrentTrans"] = dictCurrentTransDescriptionService;
 	    descriptionServices["dictVoltageTrans"] = dictVoltageTransDescriptionService;
@@ -124,9 +124,9 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
         descriptionServices["dictMeteringPoint"] = dictMeteringPointDescriptionService;
         descriptionServices["dictBusinessPartner"] = dictBusinessPartnerDescriptionService;
 
-        descriptionServices["dictSubstationCompany"] = dictSubstationCompanyDescriptionService;
+        descriptionServices["dictSubstationBusinessPartner"] = dictSubstationBusinessPartnerDescriptionService;
         descriptionServices["dictSubstationMeteringPoint"] = dictSubstationMeteringPointDescriptionService;
-        descriptionServices["dictEnergySourceCompany"] = dictEnergySourceCompanyDescriptionService;
+        descriptionServices["dictEnergySourceBusinessPartner"] = dictEnergySourceBusinessPartnerDescriptionService;
         descriptionServices["dictEnergySourceMeteringPoint"] = dictEnergySourceMeteringPointDescriptionService;
         descriptionServices["dictMeteringPointMeter"] = dictMeteringPointMeterDescriptionService;
         descriptionServices["dictMeteringPointCurrentTrans"] = dictMeteringPointCurrentTransDescriptionService;

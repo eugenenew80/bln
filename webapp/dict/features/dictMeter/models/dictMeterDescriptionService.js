@@ -11,15 +11,8 @@
 			var searchFieldsDef = [
 				
 				fieldBuilder.build({
-					name: "code",
-					labelDesc: "Код",
-                    labelClass: "col-sm-2",
-                    controlClass: "col-sm-2"
-				}),
-				
-				fieldBuilder.build({
 					name: "name",
-					labelDesc: "Тип, Марка, Модель",
+					labelDesc: "Тип счетчика",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
 				}),	
@@ -37,7 +30,7 @@
 					labelDesc: "Владелец",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4",					
-					dictName: "dictCompany"
+					dictName: "dictBusinessPartner"
 				}),				
 			];
         	
@@ -90,18 +83,23 @@
 			
             //List fields description for table
 			var tableFieldsDef = [
-
-  	            responsiveTableFieldBuilder.build({
-		            name: "code",
-		            desc: "Код",
-		            headerStyle: "width: 10%",
-	            }),
-				
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
-		            desc: "Тип, Марка, Модель",
-		            headerStyle: "width: 70%",
-	            }) 
+		            desc: "Тип счетчика",
+		            headerStyle: "width: 50%",
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "manufacturer",
+		            desc: "Производитель",
+		            headerStyle: "width: 20%",
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "businessPartnerName",
+		            desc: "Владелец",
+		            headerStyle: "width: 20%",
+	            }),
 			];
 			
 		
@@ -281,20 +279,9 @@
                         ],
                         
                         fields: [
-
-            				fieldBuilder.build({
-            					name: "code",
-            					labelDesc: "Код",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                required: true,
-                                panel: "base",
-                                editable: true            						
-            				}),
-            				
             				fieldBuilder.build({
             					name: "name",
-            					labelDesc: "Тип, Марка, Модель",
+            					labelDesc: "Тип счётчика",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 required: true,
@@ -332,11 +319,32 @@
                                 panel: "base",
                                 editable: true            						
             				}),	
-            				
+
+
+            				fieldBuilder.build({
+            					name: "lastVerificationDate",
+            					labelDesc: "Последняя поверка",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-4",
+                                controlDataType: "date",
+                                panel: "base",
+                                editable: true
+            				}),
+
+            				fieldBuilder.build({
+            					name: "nextVerificationDate",
+            					labelDesc: "Следующая поверка",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-4",
+                                controlDataType: "date",
+                                panel: "base",
+                                editable: true
+            				}),
+
             				fieldBuilder.build({
             					name: "ratedCurrent",
             					labelDesc: "Номинальный ток",
-                                labelClass: "col-sm-4",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
@@ -346,7 +354,7 @@
             				fieldBuilder.build({
             					name: "ratedVoltage",
             					labelDesc: "Номинальное напряжение",
-                                labelClass: "col-sm-4",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
@@ -356,7 +364,7 @@
             				fieldBuilder.build({
             					name: "accuracyClass",
             					labelDesc: "Класс точности",
-                                labelClass: "col-sm-4",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
@@ -366,45 +374,84 @@
             				fieldBuilder.build({
             					name: "minimumLoad",
             					labelDesc: "Минимальная нагрузка в классе точности, %",
-                                labelClass: "col-sm-4",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
                                 editable: true            						
             				}),	 
-            				
+
             				fieldBuilder.build({
-            					name: "maximumLoad",
-            					labelDesc: "Максимальная нагрузка в классе точности, %",
-                                labelClass: "col-sm-4",
+            					name: "totalDigitsNumber",
+            					labelDesc: "Общее количество знаков",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
-                                editable: true            						
-            				}),	        
-            				
+                                editable: true
+            				}),,
+
             				fieldBuilder.build({
-            					name: "lastVerificationDate",
-            					labelDesc: "Последняя поверка",
-                                labelClass: "col-sm-4",
+            					name: "digitsAfterDecimalPoint",
+            					labelDesc: "Количество знаков после запятой",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
-                                controlDataType: "date",
+                                controlDataType: "number",
                                 panel: "base",
-                                editable: true            						
-            				}),	             
-            				
-            				fieldBuilder.build({
-            					name: "nextVerificationDate",
-            					labelDesc: "Следующая поверка",
-                                labelClass: "col-sm-4",
+                                editable: true
+            				}),
+
+                            fieldBuilder.build({
+                                name: "parameterAp",
+                                labelDesc: "Параметр A+",
+                                labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
-                                controlDataType: "date",
                                 panel: "base",
-                                editable: true            						
-            				})	             				
+                                editable: true,
+                                controlDataType: "checkbox"
+                            }),
+
+                            fieldBuilder.build({
+                                name: "parameterAm",
+                                labelDesc: "Параметр A-",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                panel: "base",
+                                editable: true,
+                                controlDataType: "checkbox"
+                            }),
+
+                            fieldBuilder.build({
+                                name: "parameterRp",
+                                labelDesc: "Параметр R+",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                panel: "base",
+                                editable: true,
+                                controlDataType: "checkbox"
+                            }),
+
+                            fieldBuilder.build({
+                                name: "parameterRm",
+                                labelDesc: "Параметр R-",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                panel: "base",
+                                editable: true,
+                                controlDataType: "checkbox"
+                            })  ,
+
+                            fieldBuilder.build({
+                                name: "withdrawn",
+                                labelDesc: "Снят с баланса",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                panel: "base",
+                                editable: true,
+                                controlDataType: "checkbox"
+                            })
                         ],
-                        
-                        
+
                         actions: [
     							{
     			                    action: "cmdSave",

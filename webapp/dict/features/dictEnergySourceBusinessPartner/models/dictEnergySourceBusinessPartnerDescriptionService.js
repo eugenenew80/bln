@@ -1,74 +1,18 @@
 (function () {
     angular.module("dictApp")
-        .factory("dictCompanyDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
+        .factory("dictEnergySourceBusinessPartnerDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
-			var serviceName = "dictCompany";
-			var serviceDescPural = "Бизнес-партнеры";
-			var serviceDescSingular = "Бизнес-партнер";
-			
-			
+			var serviceName = "dictEnergySourceBusinessPartner";
+			var serviceDescPural = "Владельцы";
+			var serviceDescSingular = "Владелец";
+
 			//List fields description for search
 			var searchFieldsDef = [
-				
-				fieldBuilder.build({
-					name: "code",
-					labelDesc: "Код",
-                    labelClass: "col-sm-2",
-                    controlClass: "col-sm-2"
-				}),
-				
-				fieldBuilder.build({
-					name: "name",
-					labelDesc: "Наименование",
-                    labelClass: "col-sm-2",
-                    controlClass: "col-sm-4"
-				}),	
 			];
         	
         	
 			//List actions for search
 			var searchActionsDef = [
-				{
-                    action: "applySearch",
-                    typeAction: "controllerMethod",
-
-                    controllerMethod: {
-                        name: "applySearch"
-                    },
-                    
-                    trigger: "button",
-					button: {
-						desc: "Применить",
-						tooltip: "Применить",
-						classes: "btn btn-primary btn-xs pull-left",
-						style: "margin-left: 3px;",
-						glyphicon: "glyphicon glyphicon-search",
-						disabled: false
-					}
-				},
-
-				{
-					filter: {
-						roles: ["expert", "user"]
-					},
-
-                    action: "resetSearch",
-                    typeAction: "controllerMethod",
-
-                    controllerMethod: {
-                        name: "resetSearch"
-                    },					
-                    
-                    trigger: "button",
-					button: {
-						desc: "Сбросить",
-						tooltip: "Сбросить",
-						classes: "btn btn-warning btn-xs pull-left",
-						style: "margin-left: 3px;",
-						glyphicon: "glyphicon glyphicon-off",
-						disabled: false
-					}
-				}			                        
 			];    
 			
 			
@@ -76,16 +20,24 @@
 			var tableFieldsDef = [
 
   	            responsiveTableFieldBuilder.build({
-		            name: "code",
-		            desc: "Код",
-		            headerStyle: "width: 20%",
+		            name: "companyName",
+		            desc: "Компания",
+		            headerStyle: "width: 70%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "name",
-		            desc: "Наименование",
-		            headerStyle: "width: 70%",
-	            }) 
+		            name: "startDate",
+		            desc: "Дата с",
+		            headerStyle: "width: 10%",
+		            dataType: "date"
+	            }),
+	            
+  	            responsiveTableFieldBuilder.build({
+		            name: "endDate",
+		            desc: "Дата по",
+		            headerStyle: "width: 10%",
+		            dataType: "date"
+	            }) 	            
 			];
 			
 		
@@ -112,14 +64,34 @@
 
 					trigger: "button",
 					button: {
-						desc: "Создать",
-						tooltip: "Создать новую запись",
+						desc: "Добавить",
+						tooltip: "Добавить новую запись",
 						classes: "btn btn-primary btn-xs",
 						style: "",
 						glyphicon: "glyphicon",
 						disabled: false
 					}
-				},            	
+				},
+				
+				
+				{
+                    action: "back",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "goBack"
+                    },	
+                    
+                    trigger: "button",
+					button: {
+						desc: "Назад",
+						tooltip: "Вернуться назад",
+						classes: "btn btn-primary btn-xs",
+						style: "",
+						glyphicon: "glyphicon",
+						disabled: false
+					}
+				},				
             ];
 			
             
@@ -157,7 +129,7 @@
                     typeAction: "controllerMethod",
 
                     controllerMethod: {
-                        name: "remove"
+                        name: "removeChild"
                     },	
                     
                     trigger: "button",
@@ -167,7 +139,7 @@
 						glyphicon: "glyphicon-remove"
 					})
 				},
-                
+	                
             ];
             
 
@@ -176,6 +148,8 @@
                 name: serviceName,
                 desc: serviceDescPural,
                 dataService: dataServices[serviceName],
+                parentField: "energySourceId",
+                childField: "id",
                 
                 sections: {
                 	
@@ -183,7 +157,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", serviceDescPural],			
+                			items: ["НСИ", "Энергоисточники", "@parentName", serviceDescPural],		
                 		}
                 	},
 
@@ -192,20 +166,7 @@
                 	main: {
                 		
                 		//Search form
-                		search: {
-                			type: "form",
-                			templateURL: "common/directives/complexForm/complexFormTemplate.html",
-                			header: "Панель фильтров",
-                            fields:  searchFieldsDef,
-                            actions: searchActionsDef,
-                            
-                            enable: false,
-                            auto: true,
-                            collapsable: true,
-                            isCollapse: true,
-                            criteria: {},
-                            entity: {}
-                		},
+                		search: {},
                 		
                 		
 		                table: {
@@ -217,7 +178,7 @@
 		                    tableClass: "table table-hover table-condensed table-bordered",
 		                    tableStyle: "table-layout: fixed; word-wrap: break-word;",
 		                    rowsPerPage: 10,
-
+		                    
 		                    liveSearch: {
 		                    	enabled: true,
 		                    	text: "Быстрый поиск"
@@ -226,7 +187,7 @@
 		                    search: {
 		                    	enabled: true,
 		                    	text: "Панель фильтров"
-		                    },		                    
+		                    },
 		                    
 		                    //fields
 		                    fields: tableFieldsDef,
@@ -267,33 +228,35 @@
                         fields: [
 
             				fieldBuilder.build({
-            					name: "code",
-            					labelDesc: "Код",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                required: true,
-                                panel: "base",
-                                editable: true
-            				}),
-            				
-            				fieldBuilder.build({
-            					name: "name",
-            					labelDesc: "Наименование",
+            					name: "companyId",
+            					labelDesc: "Компания",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
+                                dictName: "dictCompany",
                                 required: true,
                                 panel: "base",
                                 editable: true
             				}),
             				
             				fieldBuilder.build({
-            					name: "tin",
-            					labelDesc: "БИН",
+            					name: "startDate",
+            					labelDesc: "Дата с",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
+                                controlDataType: "date",
                                 panel: "base",
                                 editable: true
-            				})            				
+            				}),
+            				
+            				fieldBuilder.build({
+            					name: "endDate",
+            					labelDesc: "Дата по",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-4",
+                                controlDataType: "date",
+                                panel: "base",
+                                editable: true
+            				})	            				
                         ],
                         
                         
