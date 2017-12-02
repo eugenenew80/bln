@@ -3,8 +3,8 @@
         .factory("dictOrganizationDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
 			var serviceName = "dictOrganization";
-			var serviceDescPural = "Бизнес-партнеры";
-			var serviceDescSingular = "Бизнес-партнер";
+			var serviceDescPlural = "Орг. структура";
+			var serviceDescSingular = "Орг. единица";
 			
 			
 			//List fields description for search
@@ -173,7 +173,7 @@
             //return description service
             return {
                 name: serviceName,
-                desc: serviceDescPural,
+                desc: serviceDescPlural,
                 dataService: dataServices[serviceName],
                 
                 sections: {
@@ -182,7 +182,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", serviceDescPural],			
+                			items: ["НСИ", serviceDescPlural],
                 		}
                 	},
 
@@ -279,19 +279,30 @@
             					name: "bin",
             					labelDesc: "БИН",
                                 labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
+                                controlClass: "col-sm-5",
                                 panel: "base",
                                 editable: true
             				}),
 
             				fieldBuilder.build({
             					name: "orgType",
-            					labelDesc: "Тип организации",
+            					labelDesc: "Тип орг. единицы",
                                 labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
+                                controlClass: "col-sm-5",
                                 panel: "base",
                                 editable: true
-            				})
+            				}),
+
+                            fieldBuilder.build({
+                                name: "parentOrgId",
+                                labelDesc: "Головная орг. единица",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                dictName: "dictOrganization",
+                                panel: "base",
+                                editable: true
+                            }),
+
                         ],
                         
                         
