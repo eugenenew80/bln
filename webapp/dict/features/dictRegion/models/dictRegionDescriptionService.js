@@ -283,7 +283,18 @@
                                 required: true,
                                 panel: "base",
                                 editable: true
-            				})
+            				}),
+
+              				fieldBuilder.build({
+            					name: "countryId",
+            					labelDesc: "Страна",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+            					dictName: "dictCountry",
+            					required: true,
+                                panel: "base",
+                                editable: true
+            				}),
                         ],
                         
                         

@@ -286,8 +286,8 @@
                             fieldBuilder.build({
                                 name: "res",
                                 labelDesc: "Относится к ВИЭ",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
                                 panel: "base",
                                 editable: true,
                                 controlDataType: "checkbox"

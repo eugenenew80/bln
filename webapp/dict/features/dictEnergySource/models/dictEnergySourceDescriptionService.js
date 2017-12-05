@@ -10,8 +10,8 @@
 			var searchFieldsDef = [
 				
 				fieldBuilder.build({
-					name: "code",
-					labelDesc: "Код",
+					name: "shortName",
+					labelDesc: "Аббревиатура",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-2"
 				}),
@@ -73,10 +73,9 @@
 			
             //List fields description for table
 			var tableFieldsDef = [
-
-  	            responsiveTableFieldBuilder.build({
-		            name: "code",
-		            desc: "Код",
+ 	            responsiveTableFieldBuilder.build({
+		            name: "shortName",
+		            desc: "Аббревиатура",
 		            headerStyle: "width: 20%",
 	            }),
 
@@ -306,15 +305,15 @@
                         fields: [
 
             				fieldBuilder.build({
-            					name: "code",
-            					labelDesc: "Код",
+            					name: "shortName",
+            					labelDesc: "Аббревиатура",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
                                 required: true,
                                 panel: "base",
                                 editable: true
             				}),
-            				
+
             				fieldBuilder.build({
             					name: "name",
             					labelDesc: "Наименование",
@@ -324,24 +323,14 @@
                                 panel: "base",
                                 editable: true
             				}),
-            				
-            				
+
             				fieldBuilder.build({
-            					name: "shortName",
-            					labelDesc: "Краткое наименование",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                required: true,
-                                panel: "base",
-                                editable: true
-            				}),
-            				
-            				fieldBuilder.build({
-            					name: "voltageClass",
+            					name: "voltageClassId",
             					labelDesc: "Класс напряжения, кВ",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
-                                controlDataType: "number",
+            					dictName: "dictVoltageClass",
+            					required: true,
                                 panel: "base",
                                 editable: true            						
             				}),	      
@@ -374,9 +363,19 @@
                                 controlClass: "col-sm-8",
                                 panel: "base",
                                 editable: true
-            				}),            				
+            				}),
+
+              				fieldBuilder.build({
+            					name: "businessPartnerId",
+            					labelDesc: "Когмпания-владелец",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+            					dictName: "dictBusinessPartner",
+                                panel: "base",
+                                editable: true
+            				}),
                         ],
-                        
+
                         
                         actions: [
     							{

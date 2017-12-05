@@ -10,8 +10,8 @@
 			var searchFieldsDef = [
 				
 				fieldBuilder.build({
-					name: "code",
-					labelDesc: "Код",
+					name: "shortName",
+					labelDesc: "Аббревиатура",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-2"
 				}),
@@ -73,10 +73,9 @@
 			
             //List fields description for table
 			var tableFieldsDef = [
-
   	            responsiveTableFieldBuilder.build({
-		            name: "code",
-		            desc: "Код",
+		            name: "shortName",
+		            desc: "Аббревиатура",
 		            headerStyle: "width: 20%",
 	            }),
 
@@ -84,10 +83,9 @@
 		            name: "name",
 		            desc: "Наименование",
 		            headerStyle: "width: 70%",
-	            }) 
+	            })
 			];
-			
-		
+
 			
             //List actions after search
             var tableActionsDef = [
@@ -252,7 +250,7 @@
                     //Form edit user
                     edit: {
                         type: "modalForm",
-                        templateURL: "common/directives/complexForm/complexFormTemplate.html",
+                        templateURL: "dict/features/dictDefault/views/edit.html",
                         controller: "dictDefaultEditCtrl",
                         header: serviceDescSingular,
                         
@@ -264,17 +262,16 @@
                         ],
                         
                         fields: [
-
             				fieldBuilder.build({
-            					name: "code",
-            					labelDesc: "Код",
+            					name: "shortName",
+            					labelDesc: "Аббревиатура",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
                                 required: true,
                                 panel: "base",
                                 editable: true
             				}),
-            				
+
             				fieldBuilder.build({
             					name: "name",
             					labelDesc: "Наименование",
@@ -283,20 +280,9 @@
                                 required: true,
                                 panel: "base",
                                 editable: true
-            				}),
-            				
-            				fieldBuilder.build({
-            					name: "shortName",
-            					labelDesc: "Краткое наименование",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                required: true,
-                                panel: "base",
-                                editable: true
-            				})            				
+            				})
                         ],
-                        
-                        
+
                         actions: [
     							{
     			                    action: "cmdSave",

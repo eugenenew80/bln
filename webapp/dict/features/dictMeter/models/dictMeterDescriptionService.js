@@ -315,11 +315,9 @@
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
             					dictName: "dictBusinessPartner",
-            					required: true,
                                 panel: "base",
                                 editable: true            						
             				}),	
-
 
             				fieldBuilder.build({
             					name: "lastVerificationDate",

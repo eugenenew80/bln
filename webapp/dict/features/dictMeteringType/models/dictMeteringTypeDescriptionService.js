@@ -10,8 +10,8 @@
 			var searchFieldsDef = [
 				
 				fieldBuilder.build({
-					name: "code",
-					labelDesc: "Код",
+					name: "shortName",
+					labelDesc: "Аббревиатура",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-2"
 				}),
@@ -73,10 +73,9 @@
 			
             //List fields description for table
 			var tableFieldsDef = [
-
   	            responsiveTableFieldBuilder.build({
-		            name: "code",
-		            desc: "Код",
+		            name: "shortName",
+		            desc: "Аббревиатура",
 		            headerStyle: "width: 20%",
 	            }),
 
@@ -177,7 +176,6 @@
                 dataService: dataServices[serviceName],
                 
                 sections: {
-                	
                 	//header section
                 	header: {
                 		path: {
@@ -243,7 +241,6 @@
                             }
 	                		
 		                }
-		                		               
                 	}                	
                 },
 
@@ -266,8 +263,8 @@
                         fields: [
 
             				fieldBuilder.build({
-            					name: "code",
-            					labelDesc: "Код",
+            					name: "shortName",
+            					labelDesc: "Аббревиатура",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
                                 required: true,
@@ -284,19 +281,28 @@
                                 panel: "base",
                                 editable: true
             				}),
-            				
-            				fieldBuilder.build({
-            					name: "shortName",
-            					labelDesc: "Краткое наименование",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                required: true,
+
+                            fieldBuilder.build({
+                                name: "usedInEnergySources",
+                                labelDesc: "Используется на электростанциях",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
                                 panel: "base",
-                                editable: true
-            				})            				
+                                editable: true,
+                                controlDataType: "checkbox"
+                            }),
+
+                            fieldBuilder.build({
+                                name: "usedInSubstations",
+                                labelDesc: "Используется на подстанциях",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                panel: "base",
+                                editable: true,
+                                controlDataType: "checkbox"
+                            })
                         ],
-                        
-                        
+
                         actions: [
     							{
     			                    action: "cmdSave",

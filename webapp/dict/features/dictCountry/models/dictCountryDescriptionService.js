@@ -1,14 +1,20 @@
 (function () {
     angular.module("dictApp")
-        .factory("dictAccountingTypeDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, responsiveTableFieldBuilder) {
+        .factory("dictCountryDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
-			var serviceName = "dictAccountingType";
-			var serviceDescPural = "Виды учёта";
-			var serviceDescSingular = "Вид учёта";
-			
-        	
-        	//List fields description for search
-			var searchFieldsDef = [
+			var serviceName = "dictCountry";
+			var serviceDescPlural = "Страны";
+			var serviceDescSingular = "Страна";
+
+			//List fields description for search
+			var searchFieldsDef = [			
+				fieldBuilder.build({
+					name: "code",
+					labelDesc: "Код",
+                    labelClass: "col-sm-2",
+                    controlClass: "col-sm-2"
+				}),
+				
 				fieldBuilder.build({
 					name: "name",
 					labelDesc: "Наименование",
@@ -66,10 +72,17 @@
 			
             //List fields description for table
 			var tableFieldsDef = [
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "code",
+		            desc: "Код",
+		            headerStyle: "width: 20%",
+	            }),
+
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Наименование",
-		            headerStyle: "width: 90%",
+		            headerStyle: "width: 70%",
 	            }) 
 			];
 			
@@ -151,14 +164,15 @@
 						tooltip: "Удалить запись",
 						glyphicon: "glyphicon-remove"
 					})
-				}	                
+				},
+	                
             ];
             
 
             //return description service
             return {
                 name: serviceName,
-                desc: serviceDescPural,
+                desc: serviceDescPlural,
                 dataService: dataServices[serviceName],
                 
                 sections: {
@@ -167,7 +181,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", serviceDescPural],			
+                			items: ["НСИ", serviceDescPlural],			
                 		}
                 	},
 
@@ -201,7 +215,7 @@
 		                    tableClass: "table table-hover table-condensed table-bordered",
 		                    tableStyle: "table-layout: fixed; word-wrap: break-word;",
 		                    rowsPerPage: 10,
-
+		                    
 		                    liveSearch: {
 		                    	enabled: true,
 		                    	text: "Быстрый поиск"
@@ -210,7 +224,7 @@
 		                    search: {
 		                    	enabled: true,
 		                    	text: "Панель фильтров"
-		                    },		                    
+		                    },
 		                    
 		                    //fields
 		                    fields: tableFieldsDef,
@@ -249,6 +263,17 @@
                         ],
                         
                         fields: [
+
+            				fieldBuilder.build({
+            					name: "code",
+            					labelDesc: "Код",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-4",
+                                required: true,
+                                panel: "base",
+                                editable: true
+            				}),
+            				
             				fieldBuilder.build({
             					name: "name",
             					labelDesc: "Наименование",
@@ -257,43 +282,44 @@
                                 required: true,
                                 panel: "base",
                                 editable: true
-            				})		
+            				}),
                         ],
-
+                        
+                        
                         actions: [
-                            {
-                                action: "cmdSave",
-                                typeAction: "controllerMethod",
+    							{
+    			                    action: "cmdSave",
+    			                    typeAction: "controllerMethod",
 
-                                controllerMethod: {
-                                    name: "save"
-                                },
+    			                    controllerMethod: {
+    			                        name: "save"
+    			                    },	
+    			                    
+    								trigger: "button",
+    								button: {
+    									desc: "Сохранить",
+    									tooltip: "Сохранить изменения",
+    									classes: "btn btn-primary btn-sm",
+    									disabled: false
+    								}
+    							},
+    							
+    							{
+    			                    action: "cmdCancel",
+    			                    typeAction: "controllerMethod",
 
-                                trigger: "button",
-                                button: {
-                                    desc: "Сохранить",
-                                    tooltip: "Сохранить изменения",
-                                    classes: "btn btn-primary btn-sm",
-                                    disabled: false
-                                }
-                            },
-
-                            {
-                                action: "cmdCancel",
-                                typeAction: "controllerMethod",
-
-                                controllerMethod: {
-                                    name: "cancel"
-                                },
-
-                                trigger: "button",
-                                button: {
-                                    desc: "Закрыть",
-                                    tooltip: "Закрыть окно",
-                                    classes: "btn btn-warning btn-sm",
-                                    disabled: false
-                                }
-                            }
+    			                    controllerMethod: {
+    			                        name: "cancel"
+    			                    },	
+    			                    
+    								trigger: "button",
+    								button: {
+    									desc: "Закрыть",
+    									tooltip: "Закрыть окно",
+    									classes: "btn btn-warning btn-sm",
+    									disabled: false
+    								}
+    							}								                          
                         ]                          
                     }
                                        

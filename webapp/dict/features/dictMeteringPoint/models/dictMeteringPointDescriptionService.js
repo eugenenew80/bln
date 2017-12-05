@@ -334,7 +334,6 @@
                         ],
                         
                         fields: [
-
             				fieldBuilder.build({
             					name: "code",
             					labelDesc: "Код",

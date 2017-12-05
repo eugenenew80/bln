@@ -1,13 +1,13 @@
 (function () {
     angular.module("dictApp")
-        .factory("dictAccountingTypeDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, responsiveTableFieldBuilder) {
+        .factory("dictReactorDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
-			var serviceName = "dictAccountingType";
-			var serviceDescPural = "Виды учёта";
-			var serviceDescSingular = "Вид учёта";
-			
+			var serviceName = "dictReactor";
+			var serviceDescPlural = "Реакторы";
+			var serviceDescSingular = "Реактор";
+
         	
-        	//List fields description for search
+			//List fields description for search
 			var searchFieldsDef = [
 				fieldBuilder.build({
 					name: "name",
@@ -15,6 +15,15 @@
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
 				}),	
+
+				//orgStruct
+				fieldBuilder.build({
+					name: "businessPartnerId",
+					labelDesc: "Владелец",
+                    labelClass: "col-sm-2",
+                    controlClass: "col-sm-4",					
+					dictName: "dictBusinessPartner"
+				}),				
 			];
         	
         	
@@ -70,7 +79,7 @@
 		            name: "name",
 		            desc: "Наименование",
 		            headerStyle: "width: 90%",
-	            }) 
+	            })
 			];
 			
 		
@@ -151,14 +160,15 @@
 						tooltip: "Удалить запись",
 						glyphicon: "glyphicon-remove"
 					})
-				}	                
+				},
+	                
             ];
             
 
             //return description service
             return {
                 name: serviceName,
-                desc: serviceDescPural,
+                desc: serviceDescPlural,
                 dataService: dataServices[serviceName],
                 
                 sections: {
@@ -167,7 +177,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", serviceDescPural],			
+                			items: ["НСИ", serviceDescPlural],			
                 		}
                 	},
 
@@ -201,7 +211,7 @@
 		                    tableClass: "table table-hover table-condensed table-bordered",
 		                    tableStyle: "table-layout: fixed; word-wrap: break-word;",
 		                    rowsPerPage: 10,
-
+		                    
 		                    liveSearch: {
 		                    	enabled: true,
 		                    	text: "Быстрый поиск"
@@ -256,44 +266,74 @@
                                 controlClass: "col-sm-8",
                                 required: true,
                                 panel: "base",
-                                editable: true
-            				})		
+                                editable: true            						
+            				}),	
+
+              				fieldBuilder.build({
+            					name: "businessPartnerId",
+            					labelDesc: "Компания-владелец",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",					
+            					dictName: "dictBusinessPartner",
+                                panel: "base",
+                                editable: true            						
+            				}),	
+
+            				fieldBuilder.build({
+            					name: "deltaPr",
+            					labelDesc: "Потери мощности, кВт",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                controlDataType: "number",
+                                panel: "base",
+                                editable: true            						
+            				}),	         
+            				
+            				fieldBuilder.build({
+            					name: "unom",
+            					labelDesc: "Uном, кВ",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                controlDataType: "number",
+                                panel: "base",
+                                editable: true            						
+            				})
                         ],
 
                         actions: [
-                            {
-                                action: "cmdSave",
-                                typeAction: "controllerMethod",
+    							{
+    			                    action: "cmdSave",
+    			                    typeAction: "controllerMethod",
 
-                                controllerMethod: {
-                                    name: "save"
-                                },
+    			                    controllerMethod: {
+    			                        name: "save"
+    			                    },	
+    			                    
+    								trigger: "button",
+    								button: {
+    									desc: "Сохранить",
+    									tooltip: "Сохранить изменения",
+    									classes: "btn btn-primary btn-sm",
+    									disabled: false
+    								}
+    							},
+    							
+    							{
+    			                    action: "cmdCancel",
+    			                    typeAction: "controllerMethod",
 
-                                trigger: "button",
-                                button: {
-                                    desc: "Сохранить",
-                                    tooltip: "Сохранить изменения",
-                                    classes: "btn btn-primary btn-sm",
-                                    disabled: false
-                                }
-                            },
-
-                            {
-                                action: "cmdCancel",
-                                typeAction: "controllerMethod",
-
-                                controllerMethod: {
-                                    name: "cancel"
-                                },
-
-                                trigger: "button",
-                                button: {
-                                    desc: "Закрыть",
-                                    tooltip: "Закрыть окно",
-                                    classes: "btn btn-warning btn-sm",
-                                    disabled: false
-                                }
-                            }
+    			                    controllerMethod: {
+    			                        name: "cancel"
+    			                    },	
+    			                    
+    								trigger: "button",
+    								button: {
+    									desc: "Закрыть",
+    									tooltip: "Закрыть окно",
+    									classes: "btn btn-warning btn-sm",
+    									disabled: false
+    								}
+    							}								                          
                         ]                          
                     }
                                        

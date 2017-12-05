@@ -8,13 +8,12 @@ angular.module("dictApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "
     
     .factory("dictNodes", function() {
     	return [
+    	    "dictVoltageClass",
     		"dictMeterType",
 			"dictCurrentTransType",
 			"dictVoltageTransType",
 			"dictMeteringPoint",
 			"dictMeter",
-			"dictCurrentTrans",
-			"dictVoltageTrans",
 			"dictSubstationType",
 			"dictEnergySourceType",
 			"dictSubstation",
@@ -28,7 +27,12 @@ angular.module("dictApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "
 			"dictEnergyZone",
 			"dictEnergyNode",
 			"dictDataSource",    		
-			"dictBusinessPartner"
+			"dictBusinessPartner",
+			"dictCountry",
+			"dictReactor",
+			"dictPowerTransformer",
+			"dictPowerLine",
+			"dictPowerLineType",
     	];
     })
     

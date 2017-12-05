@@ -275,7 +275,17 @@
                                 panel: "base",
                                 editable: true
             				}),
-            				
+
+            				fieldBuilder.build({
+            					name: "shortName",
+            					labelDesc: "Аббревиатура",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-4",
+                                required: true,
+                                panel: "base",
+                                editable: true
+            				}),
+
             				fieldBuilder.build({
             					name: "name",
             					labelDesc: "Наименование",
@@ -287,11 +297,12 @@
             				}),
             				
             				fieldBuilder.build({
-            					name: "baseUnit",
+            					name: "baseUnitId",
             					labelDesc: "Базовая ед. измерения",
                                 labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
+                                controlClass: "col-sm-8",
                                 panel: "base",
+                                dictName: "dictUnit",
                                 editable: true
             				}),
             				

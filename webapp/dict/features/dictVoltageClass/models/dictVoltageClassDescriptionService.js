@@ -1,20 +1,19 @@
 (function () {
     angular.module("dictApp")
-        .factory("dictAccountingTypeDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, responsiveTableFieldBuilder) {
+        .factory("dictVoltageClassDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
-			var serviceName = "dictAccountingType";
-			var serviceDescPural = "Виды учёта";
-			var serviceDescSingular = "Вид учёта";
+			var serviceName = "dictVoltageClass";
+			var serviceDescPlural = "Классы напряжений";
+			var serviceDescSingular = "Класс напряжения";
 			
-        	
-        	//List fields description for search
+			//List fields description for search
 			var searchFieldsDef = [
 				fieldBuilder.build({
 					name: "name",
-					labelDesc: "Наименование",
+					labelDesc: "Обозначение",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
-				}),	
+				})
 			];
         	
         	
@@ -68,9 +67,15 @@
 			var tableFieldsDef = [
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
-		            desc: "Наименование",
-		            headerStyle: "width: 90%",
-	            }) 
+		            desc: "Обозначение",
+		            headerStyle: "width: 70%",
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "value",
+		            desc: "Уровень напряжения ",
+		            headerStyle: "width: 10%",
+	            }),
 			];
 			
 		
@@ -151,14 +156,15 @@
 						tooltip: "Удалить запись",
 						glyphicon: "glyphicon-remove"
 					})
-				}	                
+				},
+	                
             ];
             
 
             //return description service
             return {
                 name: serviceName,
-                desc: serviceDescPural,
+                desc: serviceDescPlural,
                 dataService: dataServices[serviceName],
                 
                 sections: {
@@ -167,7 +173,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", serviceDescPural],			
+                			items: ["НСИ", serviceDescPlural],			
                 		}
                 	},
 
@@ -201,7 +207,7 @@
 		                    tableClass: "table table-hover table-condensed table-bordered",
 		                    tableStyle: "table-layout: fixed; word-wrap: break-word;",
 		                    rowsPerPage: 10,
-
+		                    
 		                    liveSearch: {
 		                    	enabled: true,
 		                    	text: "Быстрый поиск"
@@ -251,49 +257,60 @@
                         fields: [
             				fieldBuilder.build({
             					name: "name",
-            					labelDesc: "Наименование",
+            					labelDesc: "Обозначение класса напряже-ния",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 required: true,
                                 panel: "base",
-                                editable: true
-            				})		
+                                editable: true            						
+            				}),	
+
+            				fieldBuilder.build({
+            					name: "value",
+            					labelDesc: "Уровень напряжения в вольтах",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-4",
+                                controlDataType: "number",
+                                panel: "base",
+                                editable: true            						
+            				}),	
                         ],
-
+                        
+                        
                         actions: [
-                            {
-                                action: "cmdSave",
-                                typeAction: "controllerMethod",
+    							{
+    			                    action: "cmdSave",
+    			                    typeAction: "controllerMethod",
 
-                                controllerMethod: {
-                                    name: "save"
-                                },
+    			                    controllerMethod: {
+    			                        name: "save"
+    			                    },	
+    			                    
+    								trigger: "button",
+    								button: {
+    									desc: "Сохранить",
+    									tooltip: "Сохранить изменения",
+    									classes: "btn btn-primary btn-sm",
+    									disabled: false
+    								}
+    							},
+    							
+    							{
+    			                    action: "cmdCancel",
+    			                    typeAction: "controllerMethod",
 
-                                trigger: "button",
-                                button: {
-                                    desc: "Сохранить",
-                                    tooltip: "Сохранить изменения",
-                                    classes: "btn btn-primary btn-sm",
-                                    disabled: false
-                                }
-                            },
-
-                            {
-                                action: "cmdCancel",
-                                typeAction: "controllerMethod",
-
-                                controllerMethod: {
-                                    name: "cancel"
-                                },
-
-                                trigger: "button",
-                                button: {
-                                    desc: "Закрыть",
-                                    tooltip: "Закрыть окно",
-                                    classes: "btn btn-warning btn-sm",
-                                    disabled: false
-                                }
-                            }
+    			                    controllerMethod: {
+    			                        name: "cancel"
+    			                    },	
+    			                    
+    								trigger: "button",
+    								button: {
+    									desc: "Закрыть",
+    									tooltip: "Закрыть окно",
+    									classes: "btn btn-warning btn-sm",
+    									disabled: false
+    								}
+    							}								                          
                         ]                          
                     }
                                        
