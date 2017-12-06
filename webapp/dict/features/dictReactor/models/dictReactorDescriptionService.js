@@ -279,25 +279,55 @@
                                 editable: true            						
             				}),	
 
-            				fieldBuilder.build({
-            					name: "deltaPr",
-            					labelDesc: "Потери мощности, кВт",
+                            fieldBuilder.build({
+                                name: "energyObjectType",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                panel: "base",
+                                editable: true,
+                                control: "radio",
+								controls: [
+									{
+                                        value: "SUBSTATION",
+                                        displayValue: "Подстанция"
+									},
+
+									{
+                                        value: "ENERGY_SOURCE",
+                                        displayValue: "Электростанция",
+									}
+								]
+                            }),
+
+                            fieldBuilder.build({
+                                name: "energyObjectId",
+                                labelDesc: "Объект",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                dictName: "dictSubstation",
+                                panel: "base",
+                                editable: true
+                            }),
+
+                            fieldBuilder.build({
+                                name: "deltaPr",
+                                labelDesc: "Потери мощности, кВт",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
-                                editable: true            						
-            				}),	         
-            				
-            				fieldBuilder.build({
-            					name: "unom",
-            					labelDesc: "Uном, кВ",
+                                editable: true
+                            }),
+
+                            fieldBuilder.build({
+                                name: "unom",
+                                labelDesc: "Uном, кВ",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
                                 panel: "base",
-                                editable: true            						
-            				})
+                                editable: true
+                            }),1
                         ],
 
                         actions: [

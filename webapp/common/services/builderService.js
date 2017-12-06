@@ -376,7 +376,10 @@
 
 						if (conf.controlDisplayValue)
 							control.displayValue = conf.controlDisplayValue;
-						
+
+						if (conf.controlValue)
+							control.value = conf.controlValue;
+
 						if (conf.dependencyField)
 							control.dependencyField = conf.dependencyField;
 
