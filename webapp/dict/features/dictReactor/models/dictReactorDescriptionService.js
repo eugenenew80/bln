@@ -279,6 +279,26 @@
                                 editable: true            						
             				}),	
 
+            				fieldBuilder.build({
+            					name: "deltaPr",
+            					labelDesc: "Потери мощности, кВт",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                controlDataType: "number",
+                                panel: "base",
+                                editable: true
+            				}),
+
+            				fieldBuilder.build({
+            					name: "unom",
+            					labelDesc: "Uном, кВ",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                controlDataType: "number",
+                                panel: "base",
+                                editable: true
+            				}),
+
                             fieldBuilder.build({
                                 name: "energyObjectType",
                                 labelClass: "col-sm-4",
@@ -286,17 +306,19 @@
                                 panel: "base",
                                 editable: true,
                                 control: "radio",
-								controls: [
-									{
-                                        value: "SUBSTATION",
-                                        displayValue: "Подстанция"
-									},
+                                controlValue: "SUBSTATION",
+                                controlDisplayValue: "Подстанция",
+                            }),
 
-									{
-                                        value: "ENERGY_SOURCE",
-                                        displayValue: "Электростанция",
-									}
-								]
+                            fieldBuilder.build({
+                                name: "energyObjectType",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                panel: "base",
+                                editable: true,
+                                control: "radio",
+                                controlValue: "ENERGY_SOURCE",
+                                controlDisplayValue: "Электрстанция",
                             }),
 
                             fieldBuilder.build({
@@ -308,26 +330,6 @@
                                 panel: "base",
                                 editable: true
                             }),
-
-                            fieldBuilder.build({
-                                name: "deltaPr",
-                                labelDesc: "Потери мощности, кВт",
-                                labelClass: "col-sm-8",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "base",
-                                editable: true
-                            }),
-
-                            fieldBuilder.build({
-                                name: "unom",
-                                labelDesc: "Uном, кВ",
-                                labelClass: "col-sm-8",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "base",
-                                editable: true
-                            }),1
                         ],
 
                         actions: [

@@ -1,6 +1,6 @@
 <div ng-class="field.containerClass">
 	<div ng-repeat="control in field.controls | filter: {visible: true}">
-	    <label for="{{field.controls[0].controlName}}" ng-class="field.label.labelClass" ng-show="control.control!='radio'" style="text-align: right;">
+	    <label ng-class="field.label.labelClass"  style="text-align: right;">
 	    	{{field.label.desc}}
 	    </label>
 
