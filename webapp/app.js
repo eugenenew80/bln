@@ -4,9 +4,8 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
         //$locationProvider.html5Mode(true);
         $locationProvider.hashPrefix("!");
 
-        $httpProvider.defaults.headers.common = {
-            "Accept": "application/json;charset=utf-8"
-        };
+        $httpProvider.defaults.headers.common["Accept"] = "application/json;charset=utf-8";
+        $httpProvider.defaults.headers.common["lang"] = "RU";
     })
 
     
@@ -76,6 +75,7 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 		    dictMeteringPointVoltageTransDescriptionService,
 		    dictBusinessPartnerDescriptionService,
 		    dictCountryDescriptionService,
+		    dictBankDescriptionService,
             dictReactorDescriptionService,
             dictPowerTransformerDescriptionService,
             dictPowerLineTypeDescriptionService,
