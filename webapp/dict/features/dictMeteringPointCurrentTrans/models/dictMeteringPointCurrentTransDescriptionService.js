@@ -20,33 +20,19 @@
 			var tableFieldsDef = [
 
   	            responsiveTableFieldBuilder.build({
-		            name: "currentTransName",
+		            name: "name",
 		            desc: "Тип трансформатора",
-		            headerStyle: "width: 60%",
+		            headerStyle: "width: 50%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "currentTransSerialNumber",
-		            desc: "Серийный номер",
-		            headerStyle: "width: 10%",
-	            }),
-	            
-  	            responsiveTableFieldBuilder.build({
-		            name: "startDate",
-		            desc: "Дата монтажа",
-		            headerStyle: "width: 10%",
-		            dataType: "date"
-	            }),
-	            
-  	            responsiveTableFieldBuilder.build({
-		            name: "endDate",
-		            desc: "Дата демонтажа",
-		            headerStyle: "width: 10%",
-		            dataType: "date"
-	            }) 	            
+		            name: "manufacturer",
+		            desc: "Производитель",
+		            headerStyle: "width: 40%",
+	            })
 			];
 			
-		
+
 			
             //List actions after search
             var tableActionsDef = [
@@ -234,16 +220,85 @@
                         fields: [
 
             				fieldBuilder.build({
-            					name: "currentTransId",
-            					labelDesc: "Трансформатор тока",
+            					name: "name",
+            					labelDesc: "Тип трансформатора тока",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
-                                dictName: "dictCurrentTrans",
                                 required: true,
                                 panel: "base",
                                 editable: true
             				}),
-            				
+
+            				fieldBuilder.build({
+            					name: "manufacturer",
+            					labelDesc: "Производитель",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                required: true,
+                                panel: "base",
+                                editable: true
+            				}),
+
+              				fieldBuilder.build({
+            					name: "businessPartnerId",
+            					labelDesc: "Компания владелец",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+            					dictName: "dictBusinessPartner",
+                                panel: "base",
+                                editable: true
+            				}),
+
+            				fieldBuilder.build({
+            					name: "ratedCurrent1",
+            					labelDesc: "Номинальный ток первичной обмотки",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                controlDataType: "number",
+                                panel: "base",
+                                editable: true
+            				}),
+
+            				fieldBuilder.build({
+            					name: "ratedCurrent2",
+            					labelDesc: "Номинальный ток вторичной обмотки",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                controlDataType: "number",
+                                panel: "base",
+                                editable: true
+            				}),
+
+            				fieldBuilder.build({
+            					name: "accuracyClass",
+            					labelDesc: "Класс точности",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                controlDataType: "number",
+                                panel: "base",
+                                editable: true
+            				}),
+
+            				fieldBuilder.build({
+            					name: "minCurrent",
+            					labelDesc: "Минимальный ток, %",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                controlDataType: "number",
+                                panel: "base",
+                                editable: true
+            				}),
+
+            				fieldBuilder.build({
+            					name: "maxCurrent",
+            					labelDesc: "Максимальная ток, %",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                controlDataType: "number",
+                                panel: "base",
+                                editable: true
+            				}),
+
             				fieldBuilder.build({
             					name: "startDate",
             					labelDesc: "Дата монтажа",

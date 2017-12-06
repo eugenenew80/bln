@@ -77,6 +77,9 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 		    dictBusinessPartnerDescriptionService,
 		    dictCountryDescriptionService,
             dictReactorDescriptionService,
+            dictPowerTransformerDescriptionService,
+            dictPowerLineTypeDescriptionService,
+            dictPowerLineDescriptionService,
 
 		    admFuncDescriptionService,
 		    admRoleDescriptionService,
@@ -124,7 +127,11 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
         descriptionServices["dictMeteringPoint"] = dictMeteringPointDescriptionService;
         descriptionServices["dictBusinessPartner"] = dictBusinessPartnerDescriptionService;
         descriptionServices["dictCountry"] = dictCountryDescriptionService;
+        descriptionServices["dictBank"] = dictBankDescriptionService;
         descriptionServices["dictReactor"] = dictReactorDescriptionService;
+        descriptionServices["dictPowerTransformer"] = dictPowerTransformerDescriptionService;
+        descriptionServices["dictPowerLineType"] = dictPowerLineTypeDescriptionService;
+        descriptionServices["dictPowerLine"] = dictPowerLineDescriptionService;
 
         descriptionServices["dictSubstationBusinessPartner"] = dictSubstationBusinessPartnerDescriptionService;
         descriptionServices["dictSubstationMeteringPoint"] = dictSubstationMeteringPointDescriptionService;

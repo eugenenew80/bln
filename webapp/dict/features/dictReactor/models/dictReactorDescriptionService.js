@@ -318,7 +318,7 @@
                                 editable: true,
                                 control: "radio",
                                 controlValue: "ENERGY_SOURCE",
-                                controlDisplayValue: "Электрстанция",
+                                controlDisplayValue: "Электростанция",
                             }),
 
                             fieldBuilder.build({

@@ -163,14 +163,25 @@ angular.module("common")
 					dictParams=urlParamsBuilder.build(scope.control.dictParams, scope.currentElement);
 
 				//Bind dict to select
-				if (scope.control.dict && scope.control.control=="select")
+				if (scope.control.dict && scope.control.control=="select" && scope.control.name!='energyObjectId')
 					scope.dict[scope.control.name] = dataServices[scope.control.dict].getElements(dictParams);
+
+
+				if (scope.control.dict && scope.control.control=="select" && scope.control.name=='energyObjectId') {
+					scope.$watch("currentElement.energyObjectType", function (newValue, oldValue) {
+						if (!newValue) return;
+
+                        if (newValue=='ENERGY_SOURCE')
+                            scope.dict[scope.control.name] = dataServices['dictEnergySource'].getElements(dictParams);
+
+                        if (newValue=='SUBSTATION')
+                            scope.dict[scope.control.name] = dataServices['dictSubstation'].getElements(dictParams);
+					})
+                }
 
 
 				//Bind dict to listCheckbox
 				if (scope.control.dict && scope.control.control=="listCheckBox") {
-
-					
 					scope.dict[scope.control.name] = dataServices[scope.control.dict].getElements(dictParams);
 
 					scope.dict[scope.control.name].$promise

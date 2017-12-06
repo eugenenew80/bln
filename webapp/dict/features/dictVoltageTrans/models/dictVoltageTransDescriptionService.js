@@ -280,17 +280,6 @@
                         ],
                         
                         fields: [
-
-            				fieldBuilder.build({
-            					name: "code",
-            					labelDesc: "Код",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                required: true,
-                                panel: "base",
-                                editable: true            						
-            				}),
-            				
             				fieldBuilder.build({
             					name: "name",
             					labelDesc: "Тип, Марка, Модель",
@@ -310,23 +299,13 @@
                                 panel: "base",
                                 editable: true            						
             				}),	
-            				
-            				fieldBuilder.build({
-            					name: "serialNumber",
-            					labelDesc: "Серийный / заводской номер",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                required: true,
-                                panel: "base",
-                                editable: true            						
-            				}),
-            				
+
               				fieldBuilder.build({
-            					name: "companyId",
+            					name: "businessPartnerId",
             					labelDesc: "Компания владелец",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
-            					dictName: "dictCompany",
+            					dictName: "dictBusinessPartner",
             					required: true,
                                 panel: "base",
                                 editable: true            						
@@ -381,26 +360,7 @@
                                 panel: "base",
                                 editable: true            						
             				}),	        
-            				
-            				fieldBuilder.build({
-            					name: "lastVerificationDate",
-            					labelDesc: "Последняя поверка",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                controlDataType: "date",
-                                panel: "base",
-                                editable: true            						
-            				}),	             
-            				
-            				fieldBuilder.build({
-            					name: "nextVerificationDate",
-            					labelDesc: "Следующая поверка",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                controlDataType: "date",
-                                panel: "base",
-                                editable: true            						
-            				})	             				
+
                         ],
                         
                         

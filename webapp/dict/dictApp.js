@@ -29,6 +29,7 @@ angular.module("dictApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "
 			"dictDataSource",    		
 			"dictBusinessPartner",
 			"dictCountry",
+			"dictBank",
 			"dictReactor",
 			"dictPowerTransformer",
 			"dictPowerLine",

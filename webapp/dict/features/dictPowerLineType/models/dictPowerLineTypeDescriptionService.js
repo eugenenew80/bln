@@ -1,36 +1,93 @@
 (function () {
     angular.module("dictApp")
-        .factory("dictMeteringPointVoltageTransDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
+        .factory("dictPowerLineTypeDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
-			var serviceName = "dictMeteringPointVoltageTrans";
-			var serviceDescPural = "Трансформаторы напряжения";
-			var serviceDescSingular = "Трансформатор напряжения";
+			var serviceName = "dictPowerLineType";
+			var serviceDescPlural = "Типы линий электропередач";
+			var serviceDescSingular = "Типы линии электропередач";
 
 			//List fields description for search
 			var searchFieldsDef = [
+				
+				fieldBuilder.build({
+					name: "code",
+					labelDesc: "Код",
+                    labelClass: "col-sm-2",
+                    controlClass: "col-sm-2"
+				}),
+				
+				fieldBuilder.build({
+					name: "name",
+					labelDesc: "Наименование",
+                    labelClass: "col-sm-2",
+                    controlClass: "col-sm-4"
+				}),	
 			];
         	
         	
 			//List actions for search
 			var searchActionsDef = [
+				{
+                    action: "applySearch",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "applySearch"
+                    },
+                    
+                    trigger: "button",
+					button: {
+						desc: "Применить",
+						tooltip: "Применить",
+						classes: "btn btn-primary btn-xs pull-left",
+						style: "margin-left: 3px;",
+						glyphicon: "glyphicon glyphicon-search",
+						disabled: false
+					}
+				},
+
+				{
+					filter: {
+						roles: ["expert", "user"]
+					},
+
+                    action: "resetSearch",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "resetSearch"
+                    },					
+                    
+                    trigger: "button",
+					button: {
+						desc: "Сбросить",
+						tooltip: "Сбросить",
+						classes: "btn btn-warning btn-xs pull-left",
+						style: "margin-left: 3px;",
+						glyphicon: "glyphicon glyphicon-off",
+						disabled: false
+					}
+				}			                        
 			];    
 			
 			
             //List fields description for table
 			var tableFieldsDef = [
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "code",
+		            desc: "Код",
+		            headerStyle: "width: 20%",
+	            }),
+
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
-		            desc: "Тип трансформатора",
-		            headerStyle: "width: 50%",
-	            }),
-
-  	            responsiveTableFieldBuilder.build({
-		            name: "manufacturer",
-		            desc: "Производитель",
-		            headerStyle: "width: 40%",
-	            }),
+		            desc: "Наименование",
+		            headerStyle: "width: 70%",
+	            }) 
 			];
-
+			
+		
 			
             //List actions after search
             var tableActionsDef = [
@@ -54,34 +111,14 @@
 
 					trigger: "button",
 					button: {
-						desc: "Добавить",
-						tooltip: "Добавить новую запись",
+						desc: "Создать",
+						tooltip: "Создать новую запись",
 						classes: "btn btn-primary btn-xs",
 						style: "",
 						glyphicon: "glyphicon",
 						disabled: false
 					}
-				},
-				
-				
-				{
-                    action: "back",
-                    typeAction: "controllerMethod",
-
-                    controllerMethod: {
-                        name: "goBack"
-                    },	
-                    
-                    trigger: "button",
-					button: {
-						desc: "Назад",
-						tooltip: "Вернуться назад",
-						classes: "btn btn-primary btn-xs",
-						style: "",
-						glyphicon: "glyphicon",
-						disabled: false
-					}
-				},				
+				},            	
             ];
 			
             
@@ -119,7 +156,7 @@
                     typeAction: "controllerMethod",
 
                     controllerMethod: {
-                        name: "removeChild"
+                        name: "remove"
                     },	
                     
                     trigger: "button",
@@ -136,10 +173,8 @@
             //return description service
             return {
                 name: serviceName,
-                desc: serviceDescPural,
+                desc: serviceDescPlural,
                 dataService: dataServices[serviceName],
-                parentField: "meteringPointId",
-                childField: "id",
                 
                 sections: {
                 	
@@ -147,7 +182,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", "Точки учёта", "@parentName", serviceDescPural],		
+                			items: ["НСИ", serviceDescPlural],			
                 		}
                 	},
 
@@ -156,7 +191,20 @@
                 	main: {
                 		
                 		//Search form
-                		search: {},
+                		search: {
+                			type: "form",
+                			templateURL: "common/directives/complexForm/complexFormTemplate.html",
+                			header: "Панель фильтров",
+                            fields:  searchFieldsDef,
+                            actions: searchActionsDef,
+                            
+                            enable: false,
+                            auto: true,
+                            collapsable: true,
+                            isCollapse: true,
+                            criteria: {},
+                            entity: {}
+                		},
                 		
                 		
 		                table: {
@@ -195,7 +243,8 @@
                             }
 	                		
 		                }
-                	}
+		                		               
+                	}                	
                 },
 
                 //Modal forms
@@ -215,105 +264,26 @@
                         ],
                         
                         fields: [
+
+            				fieldBuilder.build({
+            					name: "code",
+            					labelDesc: "Код",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-4",
+                                required: true,
+                                panel: "base",
+                                editable: true
+            				}),
+            				
             				fieldBuilder.build({
             					name: "name",
-            					labelDesc: "Тип, Марка, Модель",
+            					labelDesc: "Наименование",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 required: true,
                                 panel: "base",
                                 editable: true
             				}),
-
-            				fieldBuilder.build({
-            					name: "manufacturer",
-            					labelDesc: "Производитель",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                required: true,
-                                panel: "base",
-                                editable: true
-            				}),
-
-              				fieldBuilder.build({
-            					name: "businessPartnerId",
-            					labelDesc: "Компания владелец",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-            					dictName: "dictBusinessPartner",
-                                panel: "base",
-                                editable: true
-            				}),
-
-            				fieldBuilder.build({
-            					name: "ratedVoltage1",
-            					labelDesc: "Номинальное напряжение первичной обмотки, В",
-                                labelClass: "col-sm-8",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "base",
-                                editable: true
-            				}),
-
-            				fieldBuilder.build({
-            					name: "ratedVoltage2",
-            					labelDesc: "Номинальное напряжение вторичной обмотки, В",
-                                labelClass: "col-sm-8",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "base",
-                                editable: true
-            				}),
-
-            				fieldBuilder.build({
-            					name: "accuracyClass",
-            					labelDesc: "Класс точности",
-                                labelClass: "col-sm-8",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "base",
-                                editable: true
-            				}),
-
-            				fieldBuilder.build({
-            					name: "minVoltage",
-            					labelDesc: "Минимальное напряжение в классе точности, %",
-                                labelClass: "col-sm-8",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "base",
-                                editable: true
-            				}),
-
-            				fieldBuilder.build({
-            					name: "maxVoltage",
-            					labelDesc: "Максимальное напряжение в классе точности, %",
-                                labelClass: "col-sm-8",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "base",
-                                editable: true
-            				}),
-            				
-            				fieldBuilder.build({
-            					name: "startDate",
-            					labelDesc: "Дата монтажа",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                controlDataType: "date",
-                                panel: "base",
-                                editable: true
-            				}),
-            				
-            				fieldBuilder.build({
-            					name: "endDate",
-            					labelDesc: "Дата демонтажа",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                controlDataType: "date",
-                                panel: "base",
-                                editable: true
-            				})	            				
                         ],
                         
                         

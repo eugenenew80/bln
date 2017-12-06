@@ -320,17 +320,7 @@
                         	{
                         		name:   "base",
                         		title:  "Общие данные"
-                        	},
-                        	
-                        	{
-                        		name:   "object",
-                        		title:  "Объект, граница раздела, учёт"
-                        	},
-                        	
-                        	{
-                        		name:   "ikue",
-                        		title:  "Измерительный комплекс учета электроэнергии"
-                        	},                        	
+                        	}
                         ],
                         
                         fields: [
@@ -355,12 +345,24 @@
                                 column: 1,
                                 editable: true
             				}),
+
+            				fieldBuilder.build({
+            					name: "shortName",
+            					labelDesc: "Краткое наименование",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                required: true,
+                                panel: "base",
+                                column: 1,
+                                editable: true
+            				}),
             				
             				fieldBuilder.build({
             					name: "externalCode",
-            					labelDesc: "Внешний код точки учета на ОРЭ",
+            					labelDesc: "Внешний код точки учета",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
+                                required: true,
                                 panel: "base",
                                 column: 1,
                                 editable: true
@@ -387,123 +389,103 @@
                                 column: 2,
                                 editable: true
             				}),
-            				
-            				fieldBuilder.build({
-            					name: "ratedVoltage",
-            					labelDesc: "Номинальное напряжение, кВ",
-                                labelClass: "col-sm-7",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "base",
-                                column: 2,
-                                editable: true
-            				}),      
-            				
-              				fieldBuilder.build({
-            					name: "firstBusinessPartnerId",
-            					labelDesc: "Первая компания",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",					
-            					dictName: "dictBusinessPartner",
-            					required: true,
-                                panel: "object",
-                                column: 1,
-                                editable: true            						
-            				}),	 
-            				
-              				fieldBuilder.build({
-            					name: "secondBusinessPartnerId",
-            					labelDesc: "Вторая компания",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",					
-            					dictName: "dictBusinessPartner",
-            					required: true,
-                                panel: "object",
-                                column: 1,
-                                editable: true            						
-            				}),	
-            				
-              				fieldBuilder.build({
-            					name: "accountingTypeId",
-            					labelDesc: "Вид учета электроэнергии",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",					
-            					dictName: "dictAccountingType",
-            					required: true,
-                                panel: "object",
-                                column: 2,
-                                editable: true            						
-            				}),	
-            				
-              				fieldBuilder.build({
-            					name: "meteringTypeId",
-            					labelDesc: "Тип учета электроэнергии",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",					
-            					dictName: "dictMeteringType",
-            					required: true,
-                                panel: "object",
-                                column: 2,
-                                editable: true            						
-            				}),
-            				
+
               				fieldBuilder.build({
             					name: "meteringPointTypeId",
             					labelDesc: "Тип точки учета",
                                 labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",					
+                                controlClass: "col-sm-8",
             					dictName: "dictMeteringPointType",
             					required: true,
                                 panel: "object",
                                 column: 2,
-                                editable: true            						
-            				}),	  
-            				
-            				fieldBuilder.build({
-            					name: "limitError",
-            					labelDesc: "Предел допустимой относительной погрешности ИКУЭ",
-                                labelClass: "col-sm-8",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "ikue",
-                                column: 1,
                                 editable: true
-            				}),               				
-            				
-            				fieldBuilder.build({
-            					name: "transformationRate",
-            					labelDesc: "Коэффициент трансформации ИКУЭ",
-                                labelClass: "col-sm-8",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "ikue",
-                                column: 1,
-                                editable: true
-            				}),     
-            				
-            				fieldBuilder.build({
-            					name: "minLoad",
-            					labelDesc: "Минимальная нагрузка в первичной цепи в классе точности, кВт",
-                                labelClass: "col-sm-8",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "ikue",
+            				}),
+
+              				fieldBuilder.build({
+            					name: "accountingTypeId",
+            					labelDesc: "Вид учета электроэнергии",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+            					dictName: "dictAccountingType",
+            					required: true,
+                                panel: "object",
                                 column: 2,
+                                editable: true
+            				}),
+
+                            fieldBuilder.build({
+                                name: "energyObjectType",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                panel: "base",
+                                editable: true,
+                                control: "radio",
+                                controlValue: "SUBSTATION",
+                                controlDisplayValue: "Подстанция",
+                            }),
+
+                            fieldBuilder.build({
+                                name: "energyObjectType",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                panel: "base",
+                                editable: true,
+                                control: "radio",
+                                controlValue: "ENERGY_SOURCE",
+                                controlDisplayValue: "Электростанция",
+                            }),
+
+                            fieldBuilder.build({
+                                name: "energyObjectId",
+                                labelDesc: "Объект",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                dictName: "dictSubstation",
+                                panel: "base",
+                                editable: true
+                            }),
+
+            				fieldBuilder.build({
+            					name: "ratedVoltage",
+            					labelDesc: "Номинальное напряжение, кВ",
+                                labelClass: "col-sm-8",
+                                controlClass: "col-sm-4",
+                                controlDataType: "number",
+                                panel: "base",
                                 editable: true
             				}),      
             				
-            				fieldBuilder.build({
-            					name: "maxLoad",
-            					labelDesc: "Максимальная нагрузка в первичной цепи в классе точности, кВт",
-                                labelClass: "col-sm-8",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "ikue",
-                                column: 2,
+              				fieldBuilder.build({
+            					name: "businessPartnerId1",
+            					labelDesc: "Компания 1",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",					
+            					dictName: "dictBusinessPartner",
+                                panel: "base",
                                 editable: true
-            				}),             				
+            				}),	 
+            				
+              				fieldBuilder.build({
+            					name: "businessPartnerId2",
+            					labelDesc: "Компания 2",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",					
+            					dictName: "dictBusinessPartner",
+                                panel: "base",
+                                editable: true
+            				}),
+
+              				fieldBuilder.build({
+            					name: "referenceMeteringPointId",
+            					labelDesc: "Опорная точка",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+            					dictName: "dictMeteringPoint",
+                                panel: "base",
+                                editable: true
+            				}),
                         ],
-                        
                         
                         actions: [
     							{
