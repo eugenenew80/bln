@@ -1,10 +1,7 @@
-<select id="{{control.name}}" 
-		name="{{control.controlName}}" 
-		class="form-control" 
-		ng-required="control.required" 
-		ng-model="currentElement[control.name]" 			
-		ng-options="item[fieldValueName] as item[fieldDisplayName] for item in dict[control.name]"
-		ng-disabled="!control.editable"
->
-	<option value=""></option>
-</select>
+<md-input-container layout="row" style="margin-left: 10px; padding-right: 10px;">
+	<label>{{field.label.desc}}</label>
+	<md-select ng-model="currentElement[control.name]">
+		<md-option ng-value="null"></md-option>
+		<md-option ng-value="item[fieldValueName]" ng-repeat="item in dict[control.name]">{{ item[fieldDisplayName] }}</md-option>
+	</md-select>
+</md-input-container>

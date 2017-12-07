@@ -291,7 +291,7 @@
                     //Form edit user
                     edit: {
                         type: "modalForm",
-                        templateURL: "dict/features/dictDefault/views/edit3.html",
+                        templateURL: "dict/features/dictDefault/views/edit.html",
                         controller: "dictDefaultEditCtrl",
                         header: serviceDescSingular,
                         

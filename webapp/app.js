@@ -1,11 +1,20 @@
 angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dictApp", "admApp", "infoApp", "mediaApp"])
 
-    .config(function ($httpProvider, $locationProvider) {
+    .config(function ($httpProvider, $locationProvider, $mdDateLocaleProvider) {
         //$locationProvider.html5Mode(true);
         $locationProvider.hashPrefix("!");
 
         $httpProvider.defaults.headers.common["Accept"] = "application/json;charset=utf-8";
         $httpProvider.defaults.headers.common["lang"] = "RU";
+
+        $mdDateLocaleProvider.formatDate = function(date) {
+            return date ? moment(date).format('DD.MM.YYYY') : null;
+        };
+
+        $mdDateLocaleProvider.parseDate = function(dateString) {
+            var m = moment(dateString, 'DD.MM.YYYY', true);
+            return m.isValid() ? m.toDate() : new Date(NaN);
+        };
     })
 
     
