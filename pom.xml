@@ -39,13 +39,6 @@
             </activation>
 
             <properties>
-                <driver>oracle.jdbc.OracleDriver</driver>
-                <url>jdbc:oracle:thin:@localhost:1521:BLNDEV</url>
-                <username>system</username>
-                <password>q1w2e3r4T5</password>
-                <scripts>dev</scripts>
-                <skipTests>true</skipTests>
-
                 <wildfly-server>10.9.44.240</wildfly-server>
                 <wildfly-port>9990</wildfly-port>
                 <wildfly-user>admin</wildfly-user>
@@ -56,13 +49,6 @@
         <profile>
             <id>localDev</id>
             <properties>
-                <driver>org.postgresql.Driver</driver>
-                <url>jdbc:postgresql://localhost:5432/bln_dev</url>
-                <username>postgres</username>
-                <password>1</password>
-                <scripts>dev</scripts>
-                <skipTests>true</skipTests>
-
                 <wildfly-server>localhost</wildfly-server>
                 <wildfly-port>9990</wildfly-port>
                 <wildfly-user>admin</wildfly-user>
