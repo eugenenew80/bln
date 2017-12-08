@@ -252,7 +252,7 @@
                         templateURL: "dict/features/dictDefault/views/edit.html",
                         controller: "dictDefaultEditCtrl",
                         header: serviceDescSingular,
-                        style: "min-width: 400px;",
+                        style: "min-width: 500px;",
 
                         panels: [
                         	{

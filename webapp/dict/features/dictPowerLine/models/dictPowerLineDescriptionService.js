@@ -286,6 +286,7 @@
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
             					dictName: "dictPowerLineType",
+            					required: true,
                                 panel: "base",
                                 editable: true
             				}),
