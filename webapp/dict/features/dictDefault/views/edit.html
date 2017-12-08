@@ -1,4 +1,4 @@
-<md-dialog style="max-width: 600px; min-width: 400px;">
+<md-dialog style="min-width: 400px;">
 	<form name="frmEdit" class="dialog-form" ng-cloak >
 
 	    <md-toolbar>
@@ -8,17 +8,7 @@
 	    </md-toolbar>
     
 		<md-dialog-content>			
-			<section ng-repeat="panel in form.panels" style="padding-left: 10px;padding-right: 10px;"> 
-				<md-subheader class="md-primary">{{panel.title}}</md-subheader>
-				
-				<div ng-repeat="field in form.fields | filter:{visible: true, panel: panel.name}">
-					<complex-form-control element="currentElement"
-								  form="frmEdit"
-								  field="field"							
-					>
-					</complex-form-control>		
-				</div>	
-			</section>
+			<complex-form-control element="currentElement" form="frmEdit" field="field" ng-repeat="field in form.fields | filter:{visible: true}" />
 		</md-dialog-content>
 		
 		<md-dialog-actions layout="row">

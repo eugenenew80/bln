@@ -1,10 +1,4 @@
-<label>
-	<input id="{{control.name}}"
-		name="{{control.controlName}}"
-		type="radio"
-		ng-model="currentElement[control.name]"
-		value="{{control.value}}"
-	>
-	{{control.displayValue}}
-</label>
-
+<md-radio-group ng-model="currentElement[field.name]">
+	<md-radio-button value="SUBSTATION">Подстанция</md-radio-button>
+	<md-radio-button value="ENERGY_SOURCE"> Электростанция </md-radio-button>
+</md-radio-group>

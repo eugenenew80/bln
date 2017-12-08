@@ -280,7 +280,8 @@ angular.module("common")
 			scope: {
 				currentElement: "=element",
 				form: 			"=form",
-				control: 		"=control"
+				control: 		"=control",
+				field: 			"=field"
 			},
 
 			template: "<ng-include src='templateURL'></ng-include>"
