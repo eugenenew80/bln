@@ -331,7 +331,6 @@
                                 controlClass: "col-sm-4",
                                 required: true,
                                 panel: "base",
-                                column: 1,
                                 editable: true
             				}),
             				
@@ -342,7 +341,6 @@
                                 controlClass: "col-sm-8",
                                 required: true,
                                 panel: "base",
-                                column: 1,
                                 editable: true
             				}),
 
@@ -353,7 +351,6 @@
                                 controlClass: "col-sm-8",
                                 required: true,
                                 panel: "base",
-                                column: 1,
                                 editable: true
             				}),
             				
@@ -364,7 +361,6 @@
                                 controlClass: "col-sm-8",
                                 required: true,
                                 panel: "base",
-                                column: 1,
                                 editable: true
             				}),            
             				
@@ -375,7 +371,6 @@
                                 controlClass: "col-sm-5",
                                 controlDataType: "date",
                                 panel: "base",
-                                column: 2,
                                 editable: true
             				}),            				
             				
@@ -386,7 +381,6 @@
                                 controlClass: "col-sm-5",
                                 controlDataType: "date",
                                 panel: "base",
-                                column: 2,
                                 editable: true
             				}),
 
@@ -398,7 +392,6 @@
             					dictName: "dictMeteringPointType",
             					required: true,
                                 panel: "object",
-                                column: 2,
                                 editable: true
             				}),
 
@@ -410,7 +403,6 @@
             					dictName: "dictAccountingType",
             					required: true,
                                 panel: "object",
-                                column: 2,
                                 editable: true
             				}),
 
@@ -421,19 +413,17 @@
                                 panel: "base",
                                 editable: true,
                                 control: "radio",
-                                controlValue: "SUBSTATION",
-                                controlDisplayValue: "Подстанция",
-                            }),
+                                controls: [
+                                    {
+                                        value: "SUBSTATION",
+                                        displayValue: "Подстанция",
+                                    },
 
-                            fieldBuilder.build({
-                                name: "energyObjectType",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                panel: "base",
-                                editable: true,
-                                control: "radio",
-                                controlValue: "ENERGY_SOURCE",
-                                controlDisplayValue: "Электростанция",
+									{
+                                        value: "ENERGY_SOURCE",
+                                        displayValue: "Электростанция",
+                                    }
+								]
                             }),
 
                             fieldBuilder.build({
