@@ -26,7 +26,8 @@ angular.module("dictApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "
 			"dictRegion",
 			"dictEnergyZone",
 			"dictEnergyNode",
-			"dictDataSource",    		
+			"dictEnergyDistrict",
+			"dictDataSource",
 			"dictBusinessPartner",
 			"dictCountry",
 			"dictBank",
@@ -40,13 +41,12 @@ angular.module("dictApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "
     
     .factory("dictChildNodes", function() {
     	return [
-    		{ child: "dictSubstationBusinessPartner",   parent: "dictSubstation" },
     		{ child: "dictSubstationMeteringPoint",   	parent: "dictSubstation" },
-    		{ child: "dictEnergySourceBusinessPartner", parent: "dictEnergySource" },
     		{ child: "dictEnergySourceMeteringPoint", 	parent: "dictEnergySource" },
     		{ child: "dictMeteringPointMeter", 			parent: "dictMeteringPoint" },
     		{ child: "dictMeteringPointCurrentTrans", 	parent: "dictMeteringPoint" },
     		{ child: "dictMeteringPointVoltageTrans", 	parent: "dictMeteringPoint" },
+    		{ child: "dictPowerLinePart", 	            parent: "dictPowerLine" }
     	];
     })
     

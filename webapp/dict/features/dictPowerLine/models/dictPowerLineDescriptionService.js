@@ -152,7 +152,26 @@
 						glyphicon: "glyphicon-remove"
 					})
 				},
-	                
+
+				{
+                    action: "powerLineParts",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "showChilds"
+                    },
+
+                    controllerMethodParams: {
+                        child: "dictPowerLinePart"
+                    },
+
+                    trigger: "button",
+					button: buttonBuilder.build({
+						caption: "Участки линий",
+						tooltip: "Открыть список участков линий электропередач",
+						glyphicon: "glyphicon-list-alt"
+					})
+				},
             ];
             
 

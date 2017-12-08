@@ -51,6 +51,7 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 		    dictRegionDescriptionService,
 		    dictEnergyZoneDescriptionService,
 		    dictEnergyNodeDescriptionService,
+		    dictEnergyDistrictDescriptionService,
 		    dictDataSourceDescriptionService,
 		    dictMeterTypeDescriptionService,
 		    dictCurrentTransTypeDescriptionService,
@@ -80,6 +81,7 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
             dictPowerTransformerDescriptionService,
             dictPowerLineTypeDescriptionService,
             dictPowerLineDescriptionService,
+            dictPowerLinePartDescriptionService,
 
 		    admFuncDescriptionService,
 		    admRoleDescriptionService,
@@ -110,6 +112,7 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
 	    descriptionServices["dictRegion"] = dictRegionDescriptionService;
 	    descriptionServices["dictEnergyZone"] = dictEnergyZoneDescriptionService;
 	    descriptionServices["dictEnergyNode"] = dictEnergyNodeDescriptionService;
+	    descriptionServices["dictEnergyDistrict"] = dictEnergyDistrictDescriptionService;
 	    descriptionServices["dictDataSource"] = dictDataSourceDescriptionService;
 	    descriptionServices["dictMeterType"] = dictMeterTypeDescriptionService;
 	    descriptionServices["dictCurrentTransType"] = dictCurrentTransTypeDescriptionService;
@@ -132,6 +135,7 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
         descriptionServices["dictPowerTransformer"] = dictPowerTransformerDescriptionService;
         descriptionServices["dictPowerLineType"] = dictPowerLineTypeDescriptionService;
         descriptionServices["dictPowerLine"] = dictPowerLineDescriptionService;
+        descriptionServices["dictPowerLinePart"] = dictPowerLinePartDescriptionService;
 
         descriptionServices["dictSubstationBusinessPartner"] = dictSubstationBusinessPartnerDescriptionService;
         descriptionServices["dictSubstationMeteringPoint"] = dictSubstationMeteringPointDescriptionService;

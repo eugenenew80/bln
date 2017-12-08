@@ -1,11 +1,11 @@
 (function () {
     angular.module("dictApp")
-        .factory("dictEnergySourceDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
-        	
-			var serviceName = "dictEnergySource";
-			var serviceDescPural = "Энергоисточники";
-			var serviceDescSingular = "Энергоисточник";
-			
+        .factory("dictEnergyDistrictDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
+
+			var serviceName = "dictEnergyDistrict";
+			var serviceDescPlural = "Энергорайоны системы";
+			var serviceDescSingular = "Энергорайон системы";
+
 			//List fields description for search
 			var searchFieldsDef = [
 				
@@ -73,7 +73,8 @@
 			
             //List fields description for table
 			var tableFieldsDef = [
- 	            responsiveTableFieldBuilder.build({
+
+  	            responsiveTableFieldBuilder.build({
 		            name: "shortName",
 		            desc: "Аббревиатура",
 		            headerStyle: "width: 20%",
@@ -165,53 +166,14 @@
 						glyphicon: "glyphicon-remove"
 					})
 				},
-       
-				{
-                    action: "companies",
-                    typeAction: "controllerMethod",
-
-                    controllerMethod: {
-                        name: "showChilds"
-                    },	
-                    
-                    controllerMethodParams: {
-                        child: "dictEnergySourceCompany"
-                    },
-                    
-                    trigger: "button",
-					button: buttonBuilder.build({
-						caption: "Компании",
-						tooltip: "Открыть список компаний",
-						glyphicon: "glyphicon-list-alt"
-					})
-				},	  
-				
-				{
-                    action: "meteringPoints",
-                    typeAction: "controllerMethod",
-
-                    controllerMethod: {
-                        name: "showChilds"
-                    },	
-                    
-                    controllerMethodParams: {
-                        child: "dictEnergySourceMeteringPoint"
-                    },
-                    
-                    trigger: "button",
-					button: buttonBuilder.build({
-						caption: "Точки учёта",
-						tooltip: "Открыть список точек учёта",
-						glyphicon: "glyphicon-list-alt"
-					})
-				},
+	                
             ];
             
 
             //return description service
             return {
                 name: serviceName,
-                desc: serviceDescPural,
+                desc: serviceDescPlural,
                 dataService: dataServices[serviceName],
                 
                 sections: {
@@ -220,7 +182,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", serviceDescPural],			
+                			items: ["НСИ", serviceDescPlural],			
                 		}
                 	},
 
@@ -231,7 +193,7 @@
                 		//Search form
                 		search: {
                 			type: "form",
-                			templateURL: "common/directives/form/formTemplate.html",
+                			templateURL: "common/directives/complexForm/complexFormTemplate.html",
                 			header: "Панель фильтров",
                             fields:  searchFieldsDef,
                             actions: searchActionsDef,
@@ -254,7 +216,7 @@
 		                    tableClass: "table table-hover table-condensed table-bordered",
 		                    tableStyle: "table-layout: fixed; word-wrap: break-word;",
 		                    rowsPerPage: 10,
-
+		                    
 		                    liveSearch: {
 		                    	enabled: true,
 		                    	text: "Быстрый поиск"
@@ -263,7 +225,7 @@
 		                    search: {
 		                    	enabled: true,
 		                    	text: "Панель фильтров"
-		                    },		                    
+		                    },
 		                    
 		                    //fields
 		                    fields: tableFieldsDef,
@@ -312,7 +274,7 @@
                                 panel: "base",
                                 editable: true
             				}),
-
+            				
             				fieldBuilder.build({
             					name: "name",
             					labelDesc: "Наименование",
@@ -322,59 +284,19 @@
                                 panel: "base",
                                 editable: true
             				}),
-
-            				fieldBuilder.build({
-            					name: "voltageClassId",
-            					labelDesc: "Класс напряжения, кВ",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-            					dictName: "dictVoltageClass",
-            					required: true,
-                                panel: "base",
-                                editable: true            						
-            				}),	      
             				
               				fieldBuilder.build({
-            					name: "energySourceTypeId",
-            					labelDesc: "Тип энергоисточника",
+            					name: "energyNodeId",
+            					labelDesc: "Энергоузел",
                                 labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",					
-            					dictName: "dictEnergySourceType",
+                                controlClass: "col-sm-8",
+            					dictName: "dictEnergyNode",
             					required: true,
                                 panel: "base",
-                                editable: true            						
-            				}),	
-            				
-            				fieldBuilder.build({
-            					name: "installedPower",
-            					labelDesc: "Установленная мощность, МВт",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "base",
-                                editable: true            						
-            				}),	  
-            				
-            				fieldBuilder.build({
-            					name: "address",
-            					labelDesc: "Адрес",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                panel: "base",
                                 editable: true
-            				}),
-
-              				fieldBuilder.build({
-            					name: "businessPartnerId",
-            					labelDesc: "Когмпания-владелец",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-            					dictName: "dictBusinessPartner",
-                                panel: "base",
-                                editable: true
-            				}),
+            				})            				
                         ],
-
+                        
                         
                         actions: [
     							{

@@ -3,8 +3,8 @@
         .factory("dictMeteringPointDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
 			var serviceName = "dictMeteringPoint";
-			var serviceDescPural = "Точки учёта";
-			var serviceDescSingular = "Точки учёта";
+			var serviceDescPlural = "Точки учёта";
+			var serviceDescSingular = "Точка учёта";
 
 			//List fields description for search
 			var searchFieldsDef = [
@@ -232,7 +232,7 @@
             //return description service
             return {
                 name: serviceName,
-                desc: serviceDescPural,
+                desc: serviceDescPlural,
                 dataService: dataServices[serviceName],
                 
                 sections: {
@@ -241,7 +241,7 @@
                 	header: {
                 		path: {
                 			type: "breadcrumb",
-                			items: ["НСИ", serviceDescPural],			
+                			items: ["НСИ", serviceDescPlural],			
                 		}
                 	},
 
