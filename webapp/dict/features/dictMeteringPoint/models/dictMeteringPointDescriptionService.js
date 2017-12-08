@@ -314,8 +314,8 @@
                         templateURL: "dict/features/dictDefault/views/edit.html",
                         controller: "dictDefaultEditCtrl",
                         header: serviceDescSingular,
-                        size: "lg",
-                        
+                        style: "min-width: 600px;",
+
                         panels: [
                         	{
                         		name:   "base",

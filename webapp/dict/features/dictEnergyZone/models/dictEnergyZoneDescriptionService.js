@@ -175,6 +175,7 @@
                 name: serviceName,
                 desc: serviceDescPural,
                 dataService: dataServices[serviceName],
+                style: "min-width: 400px;",
                 
                 sections: {
                 	

@@ -217,6 +217,7 @@
                         templateURL: "dict/features/dictDefault/views/edit.html",
                         controller: "dictDefaultEditCtrl",
                         header: serviceDescSingular,
+                        style: "min-width: 400px;",
                         
                         panels: [
                         	{

@@ -1,4 +1,5 @@
-<md-radio-group ng-model="currentElement[field.name]">
-	<md-radio-button value="SUBSTATION">Подстанция</md-radio-button>
-	<md-radio-button value="ENERGY_SOURCE"> Электростанция </md-radio-button>
+<md-radio-group ng-model="currentElement[field.name]" layout="row" style="margin-left: 10px; padding-right: 10px;">
+	<md-radio-button value="{{item.value}}" ng-repeat="item in field.controls">
+		{{item.displayValue}}
+	</md-radio-button>
 </md-radio-group>
