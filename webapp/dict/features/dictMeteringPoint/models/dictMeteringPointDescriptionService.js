@@ -314,12 +314,17 @@
                         templateURL: "dict/features/dictDefault/views/edit.html",
                         controller: "dictDefaultEditCtrl",
                         header: serviceDescSingular,
-                        style: "min-width: 600px;",
+                        style: "min-width: 400px;",
 
                         panels: [
                         	{
                         		name:   "base",
                         		title:  "Общие данные"
+                        	},
+
+                        	{
+                        		name:   "loc",
+                        		title:  "Расположение"
                         	}
                         ],
                         
@@ -410,7 +415,7 @@
                                 name: "energyObjectType",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
-                                panel: "base",
+                                panel: "loc",
                                 editable: true,
                                 control: "radio",
                                 controls: [
@@ -432,7 +437,7 @@
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 dictName: "dictSubstation",
-                                panel: "base",
+                                panel: "loc",
                                 editable: true
                             }),
 
@@ -442,7 +447,7 @@
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
-                                panel: "base",
+                                panel: "loc",
                                 editable: true
             				}),      
             				
@@ -452,7 +457,7 @@
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
             					dictName: "dictBusinessPartner",
-                                panel: "base",
+                                panel: "loc",
                                 editable: true
             				}),	 
             				
@@ -462,7 +467,7 @@
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
             					dictName: "dictBusinessPartner",
-                                panel: "base",
+                                panel: "loc",
                                 editable: true
             				}),
 
@@ -472,7 +477,7 @@
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
             					dictName: "dictMeteringPoint",
-                                panel: "base",
+                                panel: "loc",
                                 editable: true
             				}),
                         ],
