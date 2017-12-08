@@ -307,19 +307,17 @@
                                 panel: "base",
                                 editable: true,
                                 control: "radio",
-                                controlValue: "SUBSTATION",
-                                controlDisplayValue: "Подстанция",
-                            }),
+                                controls: [
+                                    {
+                                        value: "SUBSTATION",
+                                        displayValue: "Подстанция",
+                                    },
 
-                            fieldBuilder.build({
-                                name: "energyObjectType",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                panel: "base",
-                                editable: true,
-                                control: "radio",
-                                controlValue: "ENERGY_SOURCE",
-                                controlDisplayValue: "Электростанция",
+									{
+                                        value: "ENERGY_SOURCE",
+                                        displayValue: "Электростанция",
+                                    }
+								]
                             }),
 
                             fieldBuilder.build({
