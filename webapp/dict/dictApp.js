@@ -61,13 +61,8 @@ angular.module("dictApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "
 					return descriptionServices[$route.current.params.dict];
 				}				
 			}			
-		});     	
-    			
-		$routeProvider.when("/dict/logo", {
-			templateUrl: "dict/logo.html",
-		});	
-		
-		
+		});
+
 		$routeProvider.otherwise({
             templateUrl: "dict/logo.html"
         });

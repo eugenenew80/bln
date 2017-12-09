@@ -55,12 +55,7 @@ angular.module("admApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "c
 				}				
 			}			
 		});     	
-    			
-		$routeProvider.when("/adm/logo", {
-			templateUrl: "adm/logo.html",
-		});	
-		
-		
+
 		$routeProvider.otherwise({
             templateUrl: "adm/logo.html"
         });

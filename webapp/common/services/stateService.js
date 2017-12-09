@@ -3,7 +3,6 @@
 	angular.module("common")
 		.factory("stateService", function($filter) {
 
-			var budgetVer = {};
 			var states = [];
 			var routeParams={};
 			var currentResp = {};
@@ -14,6 +13,14 @@
 
 			return {
 				states: states,
+
+				getStates: function() {
+					return states;
+				},
+
+				clearStates: function () {
+					states = [];
+                },
 
 				getState: function(entityName) {
 
@@ -39,8 +46,6 @@
 				
 				setUser: function(newUser) {
 					user.name=newUser.userName;
-					user.role=newUser.roleName;
-					user.roleNameRu=newUser.nameRu;
 				},
 
 				getRouteParams: function() {
@@ -64,8 +69,6 @@
 
 		.factory("appSettings", function() {
 			return {
-				//baseUrl: "http://10.9.41.187:8080/"
-				//baseUrl: "http://10.9.40.29:8080/"	
 				baseUrl: "/"
 			}
 		});

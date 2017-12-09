@@ -396,7 +396,7 @@
                                 controlClass: "col-sm-8",
             					dictName: "dictMeteringPointType",
             					required: true,
-                                panel: "object",
+                                panel: "loc",
                                 editable: true
             				}),
 
@@ -407,7 +407,7 @@
                                 controlClass: "col-sm-8",
             					dictName: "dictAccountingType",
             					required: true,
-                                panel: "object",
+                                panel: "loc",
                                 editable: true
             				}),
 

@@ -53,7 +53,11 @@ angular.module("app")
 				user: $scope.data.auth.user,          
 	        };
 	        $location.path('/');
-		};        
-        
+		};
+
+
+        $scope.goto = function(page) {
+            $location.path('/');
+        }
     });
 	

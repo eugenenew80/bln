@@ -1,14 +1,13 @@
 angular.module("dictApp")
 	.controller("dictDefaultListCtrl", function ($scope, $routeParams, $location, $mdDialog, $mdToast, $http, stateService, descriptionService, descriptionServices, admRoleModuleDescriptionService, admRoleFuncDescriptionService) {
-			
 		var dataService = descriptionService.dataService;
 		
         //Save route parameters
         angular.forEach($routeParams, function(value, key) {
             stateService.getRouteParams()[key]=value;
-        }); 		
-		
-		
+        });
+
+
         //Selected row index
         var selectedRowIndex;
         $scope.setSelectedRow=function(newRowIndex) { selectedRowIndex=newRowIndex;};
@@ -21,8 +20,8 @@ angular.module("dictApp")
         
         
         //Apply search button
-        $scope.applySearch = function() {            
-            $scope.data.elements=dataService.findAll($scope.data.state.searchModel);
+        $scope.applySearch = function() {
+        	$scope.data.elements=dataService.findAll($scope.data.state.searchModel);
             $scope.data.state.isApplySearch = true;
 
             $scope.data.elements.$promise.then(
