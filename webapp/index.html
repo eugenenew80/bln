@@ -7,14 +7,12 @@
 	    <title>{{data.app.header}}</title>
 	
 	    <link href="content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<!-- <link href="content/bootstrap-helper/css/bootstrap-formhelpers.css" rel="stylesheet"> -->
         <link href="content/angular-material/angular-material.min.css" rel="stylesheet">
         <link href="content/css/main.css?version=v1" rel="stylesheet">
         <link href="content/css/login.css?version=v1" rel="stylesheet">
 
 		<script src="content/bootstrap/js/jquery-1.12.3.min.js"></script>
         <script src="content/bootstrap/js/bootstrap.min.js"></script>
-		<!--<script src="content/bootstrap-helper/js/bootstrap-formhelpers.js"></script> -->
         <script src="content/angular/angular.min.js"></script>
         <script src="content/angular/angular-resource.js"></script>
         <script src="content/angular/angular-route.min.js"></script>
@@ -239,15 +237,29 @@
 					  
 					  <div flex="20" ng-show="!data.fullScreen" style="margin-right: 10px; border: thin solid lightgray;">
 					    <md-content>
-					      <md-list flex style="height: 600px; overflow-y: scroll;">
-					        <md-list-item class="md-3-line" ng-repeat="item in menu.nodes" ng-click="onSelectedMenu(item.code)">
-					          <img ng-src="{{item.imagePath}}?{{$index}}" class="md-avatar" />
-					          <div class="md-list-item-text" layout="column">
-					            <h3>{{item.shortName}}</h3>
-					            <p>{{item.name}}</p>
-					          </div>
-					        </md-list-item>						        
-					      </md-list>
+							<md-menu style="margin-bottom: 0px;">
+								<md-button class="md-raised md-primary" ng-mouseenter="$mdMenu.open()">
+									<md-icon md-menu-origin md-svg-icon="call:textsms"></md-icon>
+									{{menu.selectedGroupName}}
+								</md-button>
+								<md-menu-content width="4" ng-mouseleave="$mdMenu.close()">
+									<md-menu-item ng-repeat="group in menu.groups">
+										<md-button ng-click="menu.selectedGroup=group.code; menu.selectedGroupName=group.name;">
+											{{group.name}}
+										</md-button>
+									</md-menu-item>
+								</md-menu-content>
+							</md-menu>
+
+							<md-list flex style="margin-top: 0px; height: 600px; overflow-y: auto;">
+								<md-list-item class="md-3-line" ng-repeat="item in menu.nodes | filter:{groupCode: menu.selectedGroup}" ng-click="onSelectedMenu(item.code)">
+								  <img ng-src="{{item.imagePath}}?{{$index}}" class="md-avatar" />
+								  <div class="md-list-item-text" layout="column">
+									<h3>{{item.shortName}}</h3>
+									<p>{{item.name}}</p>
+								  </div>
+								</md-list-item>
+							</md-list>
 					    </md-content>					  
 					  </div>
 					  

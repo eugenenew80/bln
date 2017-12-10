@@ -1,6 +1,6 @@
 angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dictApp", "admApp", "infoApp", "mediaApp"])
 
-    .config(function ($httpProvider, $locationProvider, $mdDateLocaleProvider) {
+    .config(function ($httpProvider, $locationProvider, $mdDateLocaleProvider, $mdIconProvider) {
         //$locationProvider.html5Mode(true);
         $locationProvider.hashPrefix("!");
 
@@ -15,6 +15,8 @@ angular.module("app", ["ngCookies", "ngMaterial", "ui.bootstrap", "common", "dic
             var m = moment(dateString, 'DD.MM.YYYY', true);
             return m.isValid() ? m.toDate() : new Date(NaN);
         };
+
+        $mdIconProvider.iconSet('call', 'img/icons/sets/communication-icons.svg', 24);
     })
 
     
