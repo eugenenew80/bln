@@ -265,7 +265,6 @@
                         ],
                         
                         fields: [
-
             				fieldBuilder.build({
             					name: "name",
             					labelDesc: "Наименование",
@@ -275,7 +274,17 @@
                                 panel: "base",
                                 editable: true
             				}),
-            				
+
+            				fieldBuilder.build({
+            					name: "shortName",
+            					labelDesc: "Краткое наименование",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                required: true,
+                                panel: "base",
+                                editable: true
+            				}),
+
             				fieldBuilder.build({
             					name: "bin",
             					labelDesc: "БИН",
@@ -290,6 +299,8 @@
             					labelDesc: "Тип орг. единицы",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-5",
+                                dictName: "dictOrgType",
+                                dictValueName: "code",
                                 panel: "base",
                                 editable: true
             				}),
@@ -300,10 +311,10 @@
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 dictName: "dictOrganization",
+                                dictDisplayName: "shortName",
                                 panel: "base",
                                 editable: true
                             }),
-
                         ],
                         
                         

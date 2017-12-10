@@ -239,7 +239,7 @@
 					  
 					  <div flex="20" ng-show="!data.fullScreen" style="margin-right: 10px; border: thin solid lightgray;">
 					    <md-content>
-					      <md-list flex>
+					      <md-list flex style="height: 600px; overflow-y: scroll;">
 					        <md-list-item class="md-3-line" ng-repeat="item in menu.nodes" ng-click="onSelectedMenu(item.code)">
 					          <img ng-src="{{item.imagePath}}?{{$index}}" class="md-avatar" />
 					          <div class="md-list-item-text" layout="column">
