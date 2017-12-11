@@ -104,7 +104,7 @@
 						glyphicon: "glyphicon",
 						disabled: false
 					}
-				},            	
+				},
             ];
 			
             

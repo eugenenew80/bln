@@ -8,30 +8,28 @@ angular.module("dictApp")
         $scope.actions = {};
         $scope.currentElement = angular.copy(currentElement);
         $scope.action = $scope.currentElement["#status#"];
-        
-        
-        console.log(currentElement);
+
         
         angular.forEach(form.fields, function(field, key) {
         	if (field.controls[0].dataType=="date" && angular.isDefined($scope.currentElement[field.name]) )
         		$scope.currentElement[field.name] = new Date($scope.currentElement[field.name]);
         })
         
-        
+
         //Save the current element and switch to table mode
         $scope.actions.save = function () {
         	dataService[$scope.action]($scope.currentElement).$promise.then(
 				function(newItem) {
-					if (currentElement.$get) 
-						currentElement.$get();					
-					else {						
+					if (currentElement.$get)
+						currentElement.$get();
+					else {
 						if (descriptionService.parentField)
 							newItem = dataService.findById(newItem[descriptionService.parentField], newItem[descriptionService.childField]);
 					}
-					
+
 					if ($scope.action=="create")
 						dataService.getElements().push(newItem);
-					
+
 					$scope.showToast('Запись успешно сохранена!');
 					$mdDialog.hide();
 				},
@@ -40,7 +38,7 @@ angular.module("dictApp")
 					$scope.showMessage("Ошибка!", error.data.errMsg);;
 				}
 			);
-        }        
+        }
         
         //Cancel changes and switch to table mode
         $scope.actions.cancel = function () {
@@ -69,5 +67,5 @@ angular.module("dictApp")
                   .hideDelay(3000)
                   .parent(parentEl)
             );		
-		}	
-	});	
+		}
+	});
