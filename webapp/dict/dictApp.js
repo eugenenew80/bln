@@ -50,6 +50,7 @@ angular.module("dictApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "
     		{ child: "dictPowerLinePart", 	            parent: "dictPowerLine" },
     		{ child: "dictBusinessPartnerContact", 	    parent: "dictBusinessPartner" },
     		{ child: "dictBusinessPartnerBankAccount", 	parent: "dictBusinessPartner" },
+    		{ child: "dictBusinessPartnerContent", 		parent: "dictBusinessPartner" },
     	];
     })
     
