@@ -152,6 +152,66 @@
 						glyphicon: "glyphicon-remove"
 					})
 				},
+
+                {
+                    action: "bankAccounts",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "showChilds"
+                    },
+
+                    controllerMethodParams: {
+                        child: "dictBusinessPartnerBankAccount"
+                    },
+
+                    trigger: "button",
+                    button: buttonBuilder.build({
+                        caption: "Банковские счета",
+                        tooltip: "Открыть список банковских счетов",
+                        glyphicon: "glyphicon-list-alt"
+                    })
+                },
+
+                {
+                    action: "contacts",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "showChilds"
+                    },
+
+                    controllerMethodParams: {
+                        child: "dictBusinessPartnerContact"
+                    },
+
+                    trigger: "button",
+                    button: buttonBuilder.build({
+                        caption: "Контакты",
+                        tooltip: "Открыть список контактов",
+                        glyphicon: "glyphicon-list-alt"
+                    })
+                },
+
+                {
+                    action: "content",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "showChilds"
+                    },
+
+                    controllerMethodParams: {
+                        child: "dictBusinessPartnerContent"
+                    },
+
+                    trigger: "button",
+                    button: buttonBuilder.build({
+                        caption: "Файлы",
+                        tooltip: "Открыть список файлов",
+                        glyphicon: "glyphicon-list-alt"
+                    })
+                },
                 
             ];
             
