@@ -247,10 +247,17 @@ angular.module("dictApp")
                         array[i] = content.charCodeAt(i);
 
                     var blob = new Blob([array], {type: 'application/octet-stream'});
-                    var link = document.createElement('a');
-                    link.href = window.URL.createObjectURL(blob);
-                    link.download = data.fileName;
-                    link.click();
+
+                    if (navigator.appVersion.toString().indexOf('.NET') > 0)
+                        window.navigator.msSaveBlob(blob, data.fileName);
+                    else {
+                        var link = document.createElement('a');
+                        link.href = window.URL.createObjectURL(blob);
+                        link.download = data.fileName;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    }
 				},
 				function(error) {$scope.data.error = error;}
 			);
