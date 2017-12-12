@@ -271,14 +271,24 @@
                         
                         fields: [
             				fieldBuilder.build({
+            					name: "code",
+            					labelDesc: "Код",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-4",
+                                required: true,
+                                panel: "base",
+                                editable: true            						
+            				}),
+
+            				fieldBuilder.build({
             					name: "name",
             					labelDesc: "Наименование",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 required: true,
                                 panel: "base",
-                                editable: true            						
-            				}),	
+                                editable: true
+            				}),
 
               				fieldBuilder.build({
             					name: "powerLineTypeId",
