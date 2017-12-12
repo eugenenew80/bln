@@ -166,27 +166,7 @@
 						glyphicon: "glyphicon-remove"
 					})
 				},
-       
-				{
-                    action: "companies",
-                    typeAction: "controllerMethod",
 
-                    controllerMethod: {
-                        name: "showChilds"
-                    },	
-                    
-                    controllerMethodParams: {
-                        child: "dictSubstationCompany"
-                    },
-                    
-                    trigger: "button",
-					button: buttonBuilder.build({
-						caption: "Компании",
-						tooltip: "Открыть список компаний",
-						glyphicon: "glyphicon-list-alt"
-					})
-				},
-				
 				{
                     action: "meteringPoints",
                     typeAction: "controllerMethod",

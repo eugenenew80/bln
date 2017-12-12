@@ -124,6 +124,12 @@
                             remove: {
                                 method: "DELETE"
                             },
+
+                            download: {
+                                method: "GET",
+                                url:	dictBaseUrl + path + "/" + ":entityId" + "/download",
+                                param: 	{entityId: "@entityId"}
+                            },
                         }
                     );
                 }
@@ -151,7 +157,6 @@
                       
 
                         findById: function (parentId, id) {
-                        	console.log({parentId: parentId, entityId: id});
                             return resource.findById({parentId: parentId, entityId: id});
                         },                        
                         
@@ -167,7 +172,11 @@
                         
                         remove: function (entity) {
                             return resource.remove(entity);
-                        }
+                        },
+
+                        download: function (parentId, id) {
+                            return resource.download({parentId: parentId, entityId: id});
+                        },
                     }
 
                 }

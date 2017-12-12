@@ -236,6 +236,26 @@ angular.module("dictApp")
         }
 	
 
+        //Export selected invoices to xml file
+		$scope.download = function(item) {
+			$scope.childDescriptionService.dataService.download(item.businessPartnerId, item.id).$promise.then(
+				function(data) {
+					var content = decodeURIComponent(escape(window.atob(data.contentBase64)));
+
+                    var array = new Uint8Array(content.length);
+                    for (var i = 0; i < content.length; i++)
+                        array[i] = content.charCodeAt(i);
+
+                    var blob = new Blob([array], {type: 'application/octet-stream'});
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = data.fileName;
+                    link.click();
+				},
+				function(error) {$scope.data.error = error;}
+			);
+		}
+
 
         //Add data to scope
 

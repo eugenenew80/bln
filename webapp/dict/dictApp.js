@@ -36,6 +36,7 @@ angular.module("dictApp", ["ngMaterial", "ngResource", "ngRoute", "ngAnimate", "
 			"dictPowerLine",
 			"dictPowerLineType",
 			"dictOrgType",
+			"ecmContentType",
     	];
     })
     

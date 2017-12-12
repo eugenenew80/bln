@@ -124,6 +124,22 @@
 						tooltip: "Удалить запись",
 						glyphicon: "glyphicon-remove"
 					})
+				},
+
+				{
+                    action: "download",
+                    typeAction: "controllerMethod",
+
+                    controllerMethod: {
+                        name: "download"
+                    },
+
+                    trigger: "button",
+					button: buttonBuilder.build({
+						caption: "Скачать",
+						tooltip: "Скачать файл",
+						glyphicon: "glyphicon-download"
+					})
 				}
             ];
             
@@ -219,7 +235,7 @@
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 required: true,
-                                dictName: "dictContentType",
+                                dictName: "ecmContentType",
                                 panel: "base",
                                 editable: true
             				}),

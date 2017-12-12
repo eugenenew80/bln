@@ -238,7 +238,18 @@
                                 panel: "base",
                                 editable: true
             				}),
-            				
+
+            				fieldBuilder.build({
+            					name: "meteringTypeId",
+            					labelDesc: "Группа учёта",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                dictName: "dictMeteringType",
+                                required: true,
+                                panel: "base",
+                                editable: true
+            				}),
+
             				fieldBuilder.build({
             					name: "startDate",
             					labelDesc: "Дата с",

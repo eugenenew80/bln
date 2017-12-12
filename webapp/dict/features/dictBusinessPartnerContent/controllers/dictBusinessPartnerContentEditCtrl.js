@@ -74,6 +74,15 @@ angular.module("dictApp")
             var file = document.getElementById('content');
             $scope.currentElement.fileName = file.files[0].name;
             $scope.currentElement.fileSize = file.files[0].size;
+
+            var reader = new FileReader();
+            reader.readAsBinaryString(file.files[0], "UTF-8");
+            reader.onload = function (evt) {
+                $scope.currentElement.contentBase64 = window.btoa(unescape(encodeURIComponent( evt.target.result)));
+            }
+            reader.onerror = function (evt) { console.log("Ошибка чтения файла"); }
+
             $scope.$apply();
+            $scope.frmEdit.$setDirty();
         }
 	});
