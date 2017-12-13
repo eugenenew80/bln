@@ -10,8 +10,8 @@
 			var searchFieldsDef = [
 				
 				fieldBuilder.build({
-					name: "code",
-					labelDesc: "Код",
+					name: "bic",
+					labelDesc: "БИК",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-2"
 				}),
@@ -75,7 +75,7 @@
 			var tableFieldsDef = [
 
   	            responsiveTableFieldBuilder.build({
-		            name: "bik",
+		            name: "biс",
 		            desc: "Бик",
 		            headerStyle: "width: 20%",
 	            }),
