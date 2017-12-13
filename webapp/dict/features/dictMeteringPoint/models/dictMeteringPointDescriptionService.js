@@ -77,14 +77,26 @@
   	            responsiveTableFieldBuilder.build({
 		            name: "code",
 		            desc: "Код",
-		            headerStyle: "width: 20%",
+		            headerStyle: "width: 10%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Наименование",
-		            headerStyle: "width: 70%",
-	            }) 
+		            headerStyle: "width: 30%",
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "energyObjectName",
+		            desc: "Объект сети",
+		            headerStyle: "width: 20%",
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "orgName",
+		            desc: "Филиал",
+		            headerStyle: "width: 30%",
+	            })
 			];
 			
 		
