@@ -3,15 +3,15 @@
         .factory("dictMeteringTypeDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
 			var serviceName = "dictMeteringType";
-			var serviceDescPural = "Типы учёта";
-			var serviceDescSingular = "Тип учёта";
+			var serviceDescPural = "Группы точек учета электроэнергии";
+			var serviceDescSingular = "Группа учета электроэнергии";
 			
 			//List fields description for search
 			var searchFieldsDef = [
 				
 				fieldBuilder.build({
 					name: "shortName",
-					labelDesc: "Аббревиатура",
+					labelDesc: "Код",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-2"
 				}),
@@ -75,7 +75,7 @@
 			var tableFieldsDef = [
   	            responsiveTableFieldBuilder.build({
 		            name: "shortName",
-		            desc: "Аббревиатура",
+		            desc: "Код",
 		            headerStyle: "width: 20%",
 	            }),
 
@@ -265,7 +265,7 @@
 
             				fieldBuilder.build({
             					name: "shortName",
-            					labelDesc: "Аббревиатура",
+            					labelDesc: "Код",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
                                 required: true,
