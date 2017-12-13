@@ -75,8 +75,8 @@
 			var tableFieldsDef = [
 
   	            responsiveTableFieldBuilder.build({
-		            name: "code",
-		            desc: "Код",
+		            name: "bik",
+		            desc: "Бик",
 		            headerStyle: "width: 20%",
 	            }),
 
@@ -265,16 +265,6 @@
                         ],
                         
                         fields: [
-            				fieldBuilder.build({
-            					name: "code",
-            					labelDesc: "Код",
-                                labelClass: "col-sm-4",
-                                controlClass: "col-sm-4",
-                                required: true,
-                                panel: "base",
-                                editable: true
-            				}),
-            				
             				fieldBuilder.build({
             					name: "name",
             					labelDesc: "Наименование",
