@@ -76,7 +76,7 @@
 
   	            responsiveTableFieldBuilder.build({
 		            name: "biс",
-		            desc: "Бик",
+		            desc: "БИК",
 		            headerStyle: "width: 20%",
 	            }),
 
