@@ -5,37 +5,16 @@ angular.module("dictApp")
 			nodes: []
 	    };
 
+    	$http({method: "GET", url: metaBaseUrl + "metaDictGroup"}).then(
+    		function successCallback(response) {
+    		    $scope.menu.dictGroups = response.data;
+                $scope.menu.selectedGroup = "equipment";
+                $scope.menu.selectedGroupName = "Оборудование";
+    		},
+    		function errorCallback(error) {}
+    	);
 
-        $scope.menu.groups = [
-            {
-                code: "equipment",
-                name: "Оборудование"
-            },
-
-            {
-                code: "meteringPoint",
-                name: "Точки учёта"
-            },
-
-            {
-                code: "object",
-                name: "Объекты сети"
-            },
-
-            {
-                code: "location",
-                name: "Расположение"
-            },
-
-            {
-                code: "other",
-                name: "Прочие справочники"
-            }
-        ];
-        $scope.menu.selectedGroup = "equipment";
-        $scope.menu.selectedGroupName = "Оборудование";
-
-    	$http({method: "GET", url: metaBaseUrl + "metaDict"}).then(
+    	$http({method: "GET", url: metaBaseUrl + "metaDict/byUser"}).then(
     		function successCallback(response) { $scope.menu.nodes = response.data; },
     		function errorCallback(error) {}
     	);      	

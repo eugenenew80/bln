@@ -248,7 +248,7 @@
 									{{menu.selectedGroupName}}
 								</md-button>
 								<md-menu-content width="4" ng-mouseleave="$mdMenu.close()">
-									<md-menu-item ng-repeat="group in menu.groups">
+									<md-menu-item ng-repeat="group in menu.dictGroups">
 										<md-button ng-click="menu.selectedGroup=group.code; menu.selectedGroupName=group.name;">
 											{{group.name}}
 										</md-button>
@@ -257,7 +257,7 @@
 							</md-menu>
 
 							<md-list flex style="margin-top: 0px; height: 600px; overflow-y: auto;">
-								<md-list-item class="md-3-line" ng-repeat="item in menu.nodes | filter:{groupCode: menu.selectedGroup}" ng-click="onSelectedMenu(item.code)">
+								<md-list-item class="md-3-line" ng-repeat="item in menu.nodes | filter:{dictGroupCode: menu.selectedGroup}" ng-click="onSelectedMenu(item.code)">
 								  <img ng-src="{{item.imagePath}}?{{$index}}" class="md-avatar" />
 								  <div class="md-list-item-text" layout="column">
 									<h3>{{item.shortName}}</h3>

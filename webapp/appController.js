@@ -4,8 +4,7 @@ angular.module("app")
     	$scope.data = {
     		app: {
 	    		header: "Информационная система Билинг",
-	    		current: "INFO",
-	    		topMenu: []    			
+	    		topMenu: []
     		},
     		
     		auth: {
@@ -16,8 +15,12 @@ angular.module("app")
 
         $scope.$watch("data.auth.isAuth", function() {
         	if ($scope.data.auth.isAuth) {
-                $http({method: "GET", url: metaBaseUrl + "metaModule"}).then(
-            		function successCallback(response) { $scope.data.app.topMenu = response.data }, 
+                $http({method: "GET", url: metaBaseUrl + "metaModule/byUser"}).then(
+            		function successCallback(response) {
+            		    $scope.data.app.topMenu = response.data;
+            		    if (response.data.length>0)
+            		        $scope.data.app.current = response.data[0].code;
+            		},
             		function errorCallback(error) {}
                 );   	
         	}
