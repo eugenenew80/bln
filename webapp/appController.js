@@ -3,7 +3,7 @@ angular.module("app")
 
     	$scope.data = {
     		app: {
-	    		header: "Информационная система Билинг",
+	    		header: "Система для сбора НСИ",
 	    		topMenu: []
     		},
     		

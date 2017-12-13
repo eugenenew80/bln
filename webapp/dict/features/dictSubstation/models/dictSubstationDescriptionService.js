@@ -288,7 +288,7 @@
 
             				fieldBuilder.build({
             					name: "shortName",
-            					labelDesc: "Аббревиатура",
+            					labelDesc: "Краткое наименование",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
                                 required: true,
