@@ -292,7 +292,7 @@
 
               				fieldBuilder.build({
             					name: "powerLineTypeId",
-            					labelDesc: "Тип линии",
+            					labelDesc: "Тип ЛЭП",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
             					dictName: "dictPowerLineType",
@@ -332,7 +332,7 @@
 
             				fieldBuilder.build({
             					name: "po",
-            					labelDesc: "Удельная заряд-ная мощность",
+            					labelDesc: "Удельная зарядная мощность",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",

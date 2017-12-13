@@ -382,7 +382,7 @@
 
             				fieldBuilder.build({
             					name: "totalDigitsNumber",
-            					labelDesc: "Общее количество знаков",
+            					labelDesc: "Общее количество знаков в показаниях",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",

@@ -264,7 +264,7 @@
                         fields: [
             				fieldBuilder.build({
             					name: "name",
-            					labelDesc: "Тип счетчика ",
+            					labelDesc: "Тип",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 required: true,
@@ -314,7 +314,7 @@
             				
             				fieldBuilder.build({
             					name: "minimumLoad",
-            					labelDesc: "Минимальная нагрузка",
+            					labelDesc: "Минимальная нагрузка в классе точности",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
