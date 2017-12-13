@@ -213,15 +213,16 @@
                         
                         fields: [
 
-            				fieldBuilder.build({
-            					name: "contactType",
-            					labelDesc: "Тип контакта",
+                            fieldBuilder.build({
+                                name: "contactType",
+                                labelDesc: "Тип конткта",
                                 labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",
-                                required: true,
+                                controlClass: "col-sm-5",
+                                dictName: "dictContactType",
+                                dictValueName: "code",
                                 panel: "base",
                                 editable: true
-            				}),
+                            }),
 
             				fieldBuilder.build({
             					name: "post",
