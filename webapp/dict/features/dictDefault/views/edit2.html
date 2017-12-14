@@ -1,0 +1,37 @@
+<md-dialog style="{{form.style}}">
+	<form name="frmEdit" class="dialog-form" ng-cloak >
+
+	    <md-toolbar>
+	      <div class="md-toolbar-tools">
+	        <h2>{{form.header}}</h2>
+	      </div>
+	    </md-toolbar>
+    
+		<md-dialog-content ng-if="form.panels.length>1">
+			<md-tabs md-dynamic-height md-border-bottom>
+				<md-tab label="{{panel.title}}" ng-repeat="panel in form.panels" >
+					<md-content class="md-padding">
+						<complex-form-control element="currentElement" form="frmEdit" field="field" ng-repeat="field in form.fields | filter:{visible: true, panel: panel.name}" />
+					</md-content>
+				</md-tab>
+			</md-tabs>
+		</md-dialog-content>
+
+		<md-dialog-content ng-if="form.panels.length<=1" class="md-padding">
+			<complex-form-control element="currentElement" form="frmEdit" field="field" ng-repeat="field in form.fields | filter:{visible: true}" />
+		</md-dialog-content>
+		
+		<md-dialog-actions layout="row">
+			<md-button ng-repeat="action in form.actions" 
+							id="{{action.action}}" 
+							ng-click="actions[action.controllerMethod.name]()"
+							ng-disabled="(action.action=='cmdSave' || action.action=='cmdOk') && (frmEdit.$invalid || frmEdit.$pristine)">
+				{{action.button.desc}}
+			</md-button>
+
+			<md-button ng-click="showDialog()">
+				Поиск
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

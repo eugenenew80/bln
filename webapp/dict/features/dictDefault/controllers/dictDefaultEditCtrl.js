@@ -86,4 +86,17 @@ angular.module("dictApp")
                   .parent(parentEl)
             );		
 		}
+
+		$scope.showDialog = function() {
+            $mdDialog.show({
+                templateUrl: "dict/features/dictDefault/views/search.html",
+                controller: "defaultSearchCtrl",
+                autoWrap: true,
+                skipHide: true,
+                multiple: true,
+            })
+            .finally(function(qqq) {
+                alert(qqq);
+            });
+		}
 	});
