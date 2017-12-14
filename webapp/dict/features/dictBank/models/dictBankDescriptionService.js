@@ -75,7 +75,7 @@
 			var tableFieldsDef = [
 
   	            responsiveTableFieldBuilder.build({
-		            name: "biс",
+		            name: "bic",
 		            desc: "БИК",
 		            headerStyle: "width: 20%",
 	            }),
