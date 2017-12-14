@@ -312,7 +312,7 @@
 
             				fieldBuilder.build({
             					name: "length",
-            					labelDesc: "Длина",
+            					labelDesc: "Длина,км",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
@@ -332,7 +332,7 @@
 
             				fieldBuilder.build({
             					name: "po",
-            					labelDesc: "Удельная зарядная мощность",
+            					labelDesc: "Удельная зарядная мощность, См/км",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",

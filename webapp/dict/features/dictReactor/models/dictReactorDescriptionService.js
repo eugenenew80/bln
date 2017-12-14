@@ -282,7 +282,7 @@
 
             				fieldBuilder.build({
             					name: "deltaPr",
-            					labelDesc: "Номинальные потери мошности",
+            					labelDesc: "Номинальные потери мошности, кВт",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
