@@ -1,0 +1,36 @@
+<md-dialog style="width: 600px;">
+	<form name="frmEdit" class="dialog-form" ng-cloak >
+
+	    <md-toolbar>
+	      <div class="md-toolbar-tools">
+	        <h2>Поиск элемента справочника</h2>
+	      </div>
+	    </md-toolbar>
+
+		<md-dialog-content class="md-padding">
+			<table>
+				<thead>
+					<tr>
+						<th>Наименование</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr ng-repeat="element in data.elements">
+						<td>{{element.name}}</td>
+					</tr>
+				</tbody>
+
+				<tfoot>
+
+				</tfoot>
+			</table>
+		</md-dialog-content>
+		
+		<md-dialog-actions layout="row">
+			<md-button ng-click="ok()">
+				Ok
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

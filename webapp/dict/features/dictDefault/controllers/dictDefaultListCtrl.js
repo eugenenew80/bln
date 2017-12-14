@@ -190,10 +190,7 @@ angular.module("dictApp")
 					}
 					resolvedItem["#status#"] = "create";
 				}
-				
-				//if (resolvedItem.$get) 
-				//	resolvedItem.$get();
-					
+
 				//open dialog
 	        	$mdDialog.show({
 	                templateUrl: form.templateURL,
