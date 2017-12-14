@@ -60,7 +60,7 @@ angular.module("dictApp")
         
         //Cancel changes and switch to table mode
         $scope.actions.cancel = function () {
-        	$mdDialog.hide();
+        	$mdDialog.cancel();
         }
 
 	

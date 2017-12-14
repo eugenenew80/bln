@@ -19,7 +19,7 @@ angular.module("common")
 					.then(function (data) {
                         scope.currentElement[scope.control.name] = data[scope.fieldDisplayName];
                         scope.currentElement[scope.control.value] = data[scope.fieldValueName];
-                        console.log(scope.currentElement);
+						scope.form.$setDirty();
 					});
                 };
 

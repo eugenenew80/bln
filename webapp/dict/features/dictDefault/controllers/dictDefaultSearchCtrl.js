@@ -10,6 +10,10 @@ angular.module("dictApp")
             $mdDialog.hide( $scope.data.elements[selectedRowIndex-1] );
         }
 
+        $scope.cancel = function() {
+            $mdDialog.cancel();
+        }
+
         //Selected row index
         var selectedRowIndex=1;
         $scope.setSelectedRow=function(newRowIndex) { selectedRowIndex=newRowIndex;};
