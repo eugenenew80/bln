@@ -284,7 +284,7 @@
             				
             				fieldBuilder.build({
             					name: "ratedCurrent",
-            					labelDesc: "Номинальный ток",
+            					labelDesc: "Номинальный ток,А",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
@@ -294,7 +294,7 @@
             				
             				fieldBuilder.build({
             					name: "ratedVoltage",
-            					labelDesc: "Номинальное напряжение",
+            					labelDesc: "Номинальное напряжение, В",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
@@ -314,7 +314,7 @@
             				
             				fieldBuilder.build({
             					name: "minimumLoad",
-            					labelDesc: "Минимальная нагрузка в классе точности",
+            					labelDesc: "Минимальная нагрузка в классе точности, %",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",

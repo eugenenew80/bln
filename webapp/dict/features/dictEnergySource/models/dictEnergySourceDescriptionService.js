@@ -3,22 +3,22 @@
         .factory("dictEnergySourceDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
         	
 			var serviceName = "dictEnergySource";
-			var serviceDescPural = "Энергоисточники";
-			var serviceDescSingular = "Энергоисточник";
+			var serviceDescPural = "Электростанции";
+			var serviceDescSingular = "Электростанция";
 			
 			//List fields description for search
 			var searchFieldsDef = [
 				
 				fieldBuilder.build({
 					name: "shortName",
-					labelDesc: "Аббревиатура",
+					labelDesc: "Краткое наименование",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-2"
 				}),
 				
 				fieldBuilder.build({
 					name: "name",
-					labelDesc: "Наименование",
+					labelDesc: "Диспетчерское наименование",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
 				}),	
@@ -75,13 +75,13 @@
 			var tableFieldsDef = [
  	            responsiveTableFieldBuilder.build({
 		            name: "shortName",
-		            desc: "Аббревиатура",
+		            desc: "Краткое наименование",
 		            headerStyle: "width: 20%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
-		            desc: "Наименование",
+		            desc: "Диспетчерское наименование",
 		            headerStyle: "width: 70%",
 	            }) 
 			];
@@ -287,7 +287,7 @@
 
             				fieldBuilder.build({
             					name: "shortName",
-            					labelDesc: "Аббревиатура",
+            					labelDesc: "Краткое наименование",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
                                 required: true,
@@ -297,7 +297,7 @@
 
             				fieldBuilder.build({
             					name: "name",
-            					labelDesc: "Наименование",
+            					labelDesc: "Диспетчерское наименование",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 required: true,
@@ -318,7 +318,7 @@
             				
               				fieldBuilder.build({
             					name: "energySourceTypeId",
-            					labelDesc: "Тип энергоисточника",
+            					labelDesc: "Тип электростанции",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
             					dictName: "dictEnergySourceType",

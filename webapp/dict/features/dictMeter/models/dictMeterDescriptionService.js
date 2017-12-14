@@ -342,7 +342,7 @@
 
             				fieldBuilder.build({
             					name: "ratedCurrent",
-            					labelDesc: "Номинальный ток",
+            					labelDesc: "Номинальный ток, A",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
@@ -352,7 +352,7 @@
             				
             				fieldBuilder.build({
             					name: "ratedVoltage",
-            					labelDesc: "Номинальное напряжение",
+            					labelDesc: "Номинальное напряжение, B",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",

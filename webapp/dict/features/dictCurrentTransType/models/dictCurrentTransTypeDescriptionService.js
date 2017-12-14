@@ -285,7 +285,7 @@
             				
             				fieldBuilder.build({
             					name: "ratedCurrent1",
-            					labelDesc: "Номинальный ток первичной обмотки",
+            					labelDesc: "Номинальный ток в первичной обмотки, А",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
@@ -295,7 +295,7 @@
             				
             				fieldBuilder.build({
             					name: "ratedCurrent2",
-            					labelDesc: "Номинальный ток вторичной обмотки",
+            					labelDesc: "Номинальный ток во вторичной обмотки ,А",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",

@@ -3,14 +3,14 @@
         .factory("dictEnergySourceTypeDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, tableFieldBuilder, responsiveTableFieldBuilder) {
 
 			var serviceName = "dictEnergySourceType";
-			var serviceDescPural = "Типы энергоисточников";
-			var serviceDescSingular = "Тип энергоисточника";
+			var serviceDescPural = "Типы электростанций";
+			var serviceDescSingular = "Тип электростанции";
 			
 			//List fields description for search
 			var searchFieldsDef = [
 				fieldBuilder.build({
 					name: "shortName",
-					labelDesc: "Аббревиатура",
+					labelDesc: "Тип",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-2"
 				}),
@@ -75,7 +75,7 @@
 
   	            responsiveTableFieldBuilder.build({
 		            name: "shortName",
-		            desc: "Аббревиатура",
+		            desc: "Тип",
 		            headerStyle: "width: 20%",
 	            }),
 
@@ -266,7 +266,7 @@
                         fields: [
             				fieldBuilder.build({
             					name: "shortName",
-            					labelDesc: "Аббревиатура",
+            					labelDesc: "Тип",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
                                 required: true,
