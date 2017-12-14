@@ -11,7 +11,7 @@
 				
 				fieldBuilder.build({
 					name: "shortName",
-					labelDesc: "Код",
+					labelDesc: "Краткое наименование",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-2"
 				}),
@@ -75,7 +75,7 @@
 			var tableFieldsDef = [
   	            responsiveTableFieldBuilder.build({
 		            name: "shortName",
-		            desc: "Код",
+		            desc: "Краткое наименование",
 		            headerStyle: "width: 20%",
 	            }),
 
@@ -265,7 +265,7 @@
 
             				fieldBuilder.build({
             					name: "shortName",
-            					labelDesc: "Код",
+            					labelDesc: "Краткое наименование",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-4",
                                 required: true,
