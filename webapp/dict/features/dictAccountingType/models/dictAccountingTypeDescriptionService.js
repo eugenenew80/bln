@@ -237,7 +237,7 @@
                     //Form edit user
                     edit: {
                         type: "modalForm",
-                        templateURL: "dict/features/dictDefault/views/edit2.html",
+                        templateURL: "dict/features/dictDefault/views/edit.html",
                         controller: "dictDefaultEditCtrl",
                         header: serviceDescSingular,
                         style: "min-width: 400px;",
@@ -258,7 +258,7 @@
                                 required: true,
                                 panel: "base",
                                 editable: true
-            				})		
+            				})
                         ],
 
                         actions: [

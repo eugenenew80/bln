@@ -516,13 +516,17 @@
                             }),
 
               				fieldBuilder.build({
-            					name: "referenceMeteringPointId",
+            					name: "referenceMeteringPointName",
+            					controlValue: "referenceMeteringPointId",
             					labelDesc: "Опорная точка",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
             					dictName: "dictMeteringPoint",
+                                dictValueName: "id",
+                                dictDisplayName: "name",
                                 panel: "loc",
-                                editable: true
+                                editable: true,
+                                control: "input"
             				}),
                         ],
                         

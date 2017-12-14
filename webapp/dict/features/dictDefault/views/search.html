@@ -1,5 +1,5 @@
 <md-dialog style="width: 600px;">
-	<form name="frmEdit" class="dialog-form" ng-cloak >
+	<form name="frmSearch" class="dialog-form" ng-cloak >
 
 	    <md-toolbar>
 	      <div class="md-toolbar-tools">
@@ -8,23 +8,32 @@
 	    </md-toolbar>
 
 		<md-dialog-content class="md-padding">
-			<table>
-				<thead>
-					<tr>
-						<th>Наименование</th>
-					</tr>
-				</thead>
+			<div class="table">
+				<table ng-class="descriptionService.sections.main.table.tableClass" ng-style="descriptionService.sections.main.table.tableStyle">
+					<thead>
+						<tr>
+							<th style="width: 5%; min-width: 30px"></th>
+							<th ng-repeat="item in descriptionService.sections.main.table.fields" style="{{item.headerStyle}}" class="{{item.headerClass}}">
+								{{item.desc}}
+							</th>
 
-				<tbody>
-					<tr ng-repeat="element in data.elements">
-						<td>{{element.name}}</td>
-					</tr>
-				</tbody>
+						</tr>
+					</thead>
 
-				<tfoot>
+					<tbody>
+						<tr ng-repeat="item in data.elements" ng-click="setSelectedRow($index+1)" ng-class="{'selected':$index+1 == getSelectedRow()}">
+							<td class="text-center">
+								<span class="glyphicon glyphicon-triangle-right text-primary" ng-show="$index+1 == getSelectedRow()" >
+								</span>
+							</td>
 
-				</tfoot>
-			</table>
+							<td ng-repeat="field in descriptionService.sections.main.table.fields | filter: {cell: true}" class="{{field.cellClass}}" style="{{field.cellStyle}}">
+								{{item[field.name] | cellFilter: field }}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</md-dialog-content>
 		
 		<md-dialog-actions layout="row">

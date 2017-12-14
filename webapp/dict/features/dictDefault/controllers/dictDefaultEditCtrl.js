@@ -1,5 +1,5 @@
 angular.module("dictApp")
-	.controller("dictDefaultEditCtrl", function ($scope, $mdDialog, $mdToast, descriptionService, form, currentElement) {
+	.controller("dictDefaultEditCtrl", function ($scope, $mdDialog, $mdToast, descriptionServices, descriptionService, form, currentElement) {
 
         $scope.action = currentElement["#status#"];
         $scope.currentElement = angular.copy(currentElement);
@@ -85,18 +85,5 @@ angular.module("dictApp")
                   .hideDelay(3000)
                   .parent(parentEl)
             );		
-		}
-
-		$scope.showDialog = function() {
-            $mdDialog.show({
-                templateUrl: "dict/features/dictDefault/views/search.html",
-                controller: "defaultSearchCtrl",
-                autoWrap: true,
-                skipHide: true,
-                multiple: true,
-            })
-            .finally(function(qqq) {
-                alert(qqq);
-            });
 		}
 	});

@@ -1,8 +1,28 @@
 angular.module("common")
-	.directive("simpleControl", function ($filter, idField, dataServices, stateService, urlParamsBuilder) {
+	.directive("simpleControl", function ($filter, $mdDialog, idField, descriptionServices, dataServices, stateService, urlParamsBuilder) {
 		return {
 
 			link: function (scope, element, attrs) {
+
+				scope.search = function () {
+					if (!scope.control.dict)
+						return;
+
+					$mdDialog.show({
+                        templateUrl: "dict/features/dictDefault/views/search.html",
+                        controller: "defaultSearchCtrl",
+                        multiple: true,
+                        locals: {
+                            descriptionService: descriptionServices[scope.control.dict]
+                        }
+                    })
+					.then(function (data) {
+                        scope.currentElement[scope.control.name] = data[scope.fieldDisplayName];
+                        scope.currentElement[scope.control.value] = data[scope.fieldValueName];
+                        console.log(scope.currentElement);
+					});
+                };
+
 				scope.fieldValue=idField;
 				scope.fieldDisplayName=scope.control.dictDisplayName;
 				scope.fieldValueName=scope.control.dictValueName || idField;

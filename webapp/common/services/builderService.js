@@ -390,8 +390,14 @@
 						}
 
 						if (conf.dictName) {
-							control.dataType = conf.controlDataType || conf.dataType || "objectId";
-							control.control = conf.control || "select";
+                            if (!conf.control || conf.control=="select") {
+                                control.dataType = conf.controlDataType || conf.dataType || "objectId";
+                                control.control = conf.control || "select";
+                            }
+                            else {
+                                control.dataType = conf.controlDataType || "string";
+                                control.control = conf.control || "input";
+							}
 							control.dict = conf.dictName;
 							control.dictDisplayName = conf.dictDisplayName || "name";
 							control.dictValueName = conf.dictValueName || "id";
@@ -406,6 +412,7 @@
 
 							control.control = conf.control || controlDef;
 						}
+
 
 						control.required = angular.isUndefined(conf.required) ? field.required : conf.required;
 						control.editable = angular.isUndefined(conf.editable) ? field.editable : conf.editable;

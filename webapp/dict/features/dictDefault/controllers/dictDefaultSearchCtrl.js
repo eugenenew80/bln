@@ -1,9 +1,17 @@
 angular.module("dictApp")
-	.controller("defaultSearchCtrl", function ($scope, $mdDialog, $mdToast, dataServices) {
-        $scope.data = {};
-        $scope.data.elements = dataServices["dictAccountingType"].findAll();
+	.controller("defaultSearchCtrl", function ($scope, $mdDialog, descriptionService) {
+        var dataService = descriptionService.dataService;
+
+	    $scope.data = {};
+        $scope.data.elements = dataService.findAll();
+        $scope.descriptionService = descriptionService;
 
         $scope.ok = function() {
-            $mdDialog.hide( "qqq" );
+            $mdDialog.hide( $scope.data.elements[selectedRowIndex-1] );
         }
+
+        //Selected row index
+        var selectedRowIndex=1;
+        $scope.setSelectedRow=function(newRowIndex) { selectedRowIndex=newRowIndex;};
+        $scope.getSelectedRow=function() { return selectedRowIndex; };
 	});
