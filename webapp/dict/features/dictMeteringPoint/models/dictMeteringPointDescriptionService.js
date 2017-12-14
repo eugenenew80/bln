@@ -326,7 +326,7 @@
                         templateURL: "dict/features/dictDefault/views/edit.html",
                         controller: "dictDefaultEditCtrl",
                         header: serviceDescSingular,
-                        style: "min-width: 400px;",
+                        style: "min-width: 500px;",
 
                         panels: [
                         	{
@@ -337,6 +337,11 @@
                         	{
                         		name:   "loc",
                         		title:  "Расположение"
+                        	},
+
+                        	{
+                        		name:   "boundary",
+                        		title:  "Граница раздела"
                         	}
                         ],
                         
@@ -462,26 +467,53 @@
                                 panel: "loc",
                                 editable: true
             				}),      
-            				
+
+                            fieldBuilder.build({
+                                name: "propertyBoundary",
+                                labelDesc: "Граница раздела",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                panel: "boundary",
+                                editable: true
+                            }),
+
               				fieldBuilder.build({
             					name: "businessPartnerId1",
             					labelDesc: "Компания 1",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
             					dictName: "dictBusinessPartner",
-                                panel: "loc",
+                                panel: "boundary",
                                 editable: true
             				}),	 
-            				
+
+                            fieldBuilder.build({
+                                name: "responsibilityZone1",
+                                labelDesc: "Зона отвестсвенности",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                panel: "boundary",
+                                editable: true
+                            }),
+
               				fieldBuilder.build({
             					name: "businessPartnerId2",
             					labelDesc: "Компания 2",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
             					dictName: "dictBusinessPartner",
-                                panel: "loc",
+                                panel: "boundary",
                                 editable: true
             				}),
+
+                            fieldBuilder.build({
+                                name: "responsibilityZone2",
+                                labelDesc: "Зона отвестсвенности",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                panel: "boundary",
+                                editable: true
+                            }),
 
               				fieldBuilder.build({
             					name: "referenceMeteringPointId",
