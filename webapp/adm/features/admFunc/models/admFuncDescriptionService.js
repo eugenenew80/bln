@@ -283,7 +283,17 @@
                                 required: true,
                                 panel: "base",
                                 editable: true
-            				})	
+            				}),
+
+            				fieldBuilder.build({
+            					name: "url",
+            					labelDesc: "URL ресурса",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                required: true,
+                                panel: "base",
+                                editable: true
+            				})
                         ],
                         
                         

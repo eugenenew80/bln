@@ -1,20 +1,38 @@
 angular.module("dictApp")
 	.controller("dictDefaultEditCtrl", function ($scope, $mdDialog, $mdToast, descriptionService, form, currentElement) {
-		
-		dataService=descriptionService.dataService;		
+
+        $scope.action = currentElement["#status#"];
+        $scope.currentElement = angular.copy(currentElement);
+
+        var parentId = $scope.currentElement.parentId;
+        var entityId = $scope.currentElement.entityId;
+
+        if (currentElement.$get) {
+        	currentElement.$get().then(
+                function(data) {
+                    $scope.currentElement = angular.copy(data);
+                    $scope.currentElement.parentId = parentId;
+                    $scope.currentElement.entityId = entityId;
+                    angular.forEach(form.fields, function(field, key) {
+                        if (field.controls[0].dataType=="date" && angular.isDefined($scope.currentElement[field.name]) )
+                            $scope.currentElement[field.name] = new Date($scope.currentElement[field.name]);
+                    })
+
+                    currentElement.parentId = $scope.currentElement.parentId;
+                    currentElement.entityId = $scope.currentElement.entityId;
+                },
+                function(error) {
+                	$scope.showMessage("Ошибка!", error.data.errMsg);
+                }
+            );
+        }
+
+		dataService=descriptionService.dataService;
 		$scope.data = {};
         $scope.descriptionService = descriptionService;
         $scope.form = form;
         $scope.actions = {};
-        $scope.currentElement = angular.copy(currentElement);
-        $scope.action = $scope.currentElement["#status#"];
 
-        
-        angular.forEach(form.fields, function(field, key) {
-        	if (field.controls[0].dataType=="date" && angular.isDefined($scope.currentElement[field.name]) )
-        		$scope.currentElement[field.name] = new Date($scope.currentElement[field.name]);
-        })
-        
 
         //Save the current element and switch to table mode
         $scope.actions.save = function () {
