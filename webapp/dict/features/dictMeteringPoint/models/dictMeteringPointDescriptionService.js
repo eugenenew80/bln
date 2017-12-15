@@ -478,13 +478,15 @@
                             }),
 
               				fieldBuilder.build({
-            					name: "businessPartnerId1",
+            					name: "businessPartnerName1",
+                                controlValue: "businessPartnerId1",
             					labelDesc: "Компания 1",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
             					dictName: "dictBusinessPartner",
                                 panel: "boundary",
-                                editable: true
+                                editable: true,
+                                control: "input"
             				}),	 
 
                             fieldBuilder.build({
@@ -497,13 +499,15 @@
                             }),
 
               				fieldBuilder.build({
-            					name: "businessPartnerId2",
+            					name: "businessPartnerName2",
+                                controlValue: "businessPartnerId2",
             					labelDesc: "Компания 2",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
             					dictName: "dictBusinessPartner",
                                 panel: "boundary",
-                                editable: true
+                                editable: true,
+                                control: "input"
             				}),
 
                             fieldBuilder.build({
