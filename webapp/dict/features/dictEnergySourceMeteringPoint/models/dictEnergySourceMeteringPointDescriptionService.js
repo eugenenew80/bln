@@ -227,16 +227,18 @@
                         ],
                         
                         fields: [
-
-            				fieldBuilder.build({
-            					name: "meteringPointId",
+              				fieldBuilder.build({
+            					name: "meteringPointName",
+            					controlValue: "meteringPointId",
             					labelDesc: "Точка учёта",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
-                                dictName: "dictMeteringPoint",
-                                required: true,
+            					dictName: "dictMeteringPoint",
+                                dictValueName: "id",
+                                dictDisplayName: "name",
                                 panel: "base",
-                                editable: true
+                                editable: true,
+                                control: "input"
             				}),
 
             				fieldBuilder.build({
