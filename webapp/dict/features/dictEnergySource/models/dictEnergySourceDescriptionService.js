@@ -82,8 +82,20 @@
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Диспетчерское наименование",
-		            headerStyle: "width: 70%",
-	            }) 
+		            headerStyle: "width: 40%",
+	            }),
+
+	 	         responsiveTableFieldBuilder.build({
+    		        name: "voltageClassName",
+    		        desc: "Класс напряжения",
+    		        headerStyle: "width: 10%",
+    	          }),
+
+      	          responsiveTableFieldBuilder.build({
+    		        name: "businessPartnerShortName",
+    		        desc: "Компания-владелец",
+    		        headerStyle: "width: 20%",
+    	          }),
 			];
 			
 		
