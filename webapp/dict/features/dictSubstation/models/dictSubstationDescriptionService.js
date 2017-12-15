@@ -90,7 +90,7 @@
 		            name: "voltageClassName",
 		            desc: "Класс напряжения",
 		            headerStyle: "width: 10%",
-	            }),,
+	            }),
 
   	            responsiveTableFieldBuilder.build({
 		            name: "businessPartnerShortName",
