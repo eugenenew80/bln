@@ -3,20 +3,23 @@
 
 	    <md-toolbar>
 	      <div class="md-toolbar-tools">
-	        <h2>Поиск элемента справочника</h2>
+	        <h2>{{descriptionService.desc}}</h2>
 	      </div>
 	    </md-toolbar>
 
 		<md-dialog-content class="md-padding">
+			<div layout="row" layout-sm="column" layout-align="space-around">
+				<md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+			</div>
+
 			<div class="table">
-				<table ng-class="descriptionService.sections.main.table.tableClass" ng-style="descriptionService.sections.main.table.tableStyle">
+				<table ng-class="descriptionService.sections.main.searchTable.tableClass" ng-style="descriptionService.sections.main.searchTable.tableStyle" ng-show="!isLoading">
 					<thead>
 						<tr>
 							<th style="width: 5%; min-width: 30px"></th>
-							<th ng-repeat="item in descriptionService.sections.main.table.fields" style="{{item.headerStyle}}" class="{{item.headerClass}}">
+							<th ng-repeat="item in descriptionService.sections.main.searchTable.fields" style="{{item.headerStyle}}" class="{{item.headerClass}}">
 								{{item.desc}}
 							</th>
-
 						</tr>
 					</thead>
 
@@ -26,8 +29,7 @@
 								<span class="glyphicon glyphicon-triangle-right text-primary" ng-show="$index+1 == getSelectedRow()" >
 								</span>
 							</td>
-
-							<td ng-repeat="field in descriptionService.sections.main.table.fields | filter: {cell: true}" class="{{field.cellClass}}" style="{{field.cellStyle}}">
+							<td ng-repeat="field in descriptionService.sections.main.searchTable.fields | filter: {cell: true}" class="{{field.cellClass}}" style="{{field.cellStyle}}">
 								{{item[field.name] | cellFilter: field }}
 							</td>
 						</tr>
@@ -37,8 +39,8 @@
 		</md-dialog-content>
 		
 		<md-dialog-actions layout="row">
-			<md-button ng-click="ok()">Ok</md-button>
-			<md-button ng-click="cancel()">Отмена</md-button>
+			<md-button ng-click="ok()" ng-show="!isLoading">Ok</md-button>
+			<md-button ng-click="cancel()" ng-show="!isLoading">Отмена</md-button>
 		</md-dialog-actions>
 	</form>
 </md-dialog>
