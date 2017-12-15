@@ -1,7 +1,7 @@
 angular.module("dictApp")
 	.controller("dictDefaultListCtrl", function ($scope, $routeParams, $location, $mdDialog, $mdToast, $http, stateService, descriptionService, descriptionServices, admRoleModuleDescriptionService, admRoleFuncDescriptionService) {
 		var dataService = descriptionService.dataService;
-		
+
         //Save route parameters
         angular.forEach($routeParams, function(value, key) {
             stateService.getRouteParams()[key]=value;
@@ -21,12 +21,19 @@ angular.module("dictApp")
         
         //Apply search button
         $scope.applySearch = function() {
+        	$scope.isLoading = true;
         	$scope.data.elements=dataService.findAll($scope.data.state.searchModel);
             $scope.data.state.isApplySearch = true;
 
             $scope.data.elements.$promise.then(
-                function(data) { $scope.showToast('Запрос успешно выполнен!'); },
-                function(error) { $scope.showMessage("Ошибка!", error.data.errMsg); }
+                function(data) {
+                    $scope.isLoading = false;
+                    $scope.showToast('Запрос успешно выполнен!');
+                },
+                function(error) {
+                    $scope.isLoading = false;
+                    $scope.showMessage("Ошибка!", error.data.errMsg);
+                }
             );
             $scope.data.state.selectedPage = 1;
         }
@@ -190,6 +197,9 @@ angular.module("dictApp")
 					}
 					resolvedItem["#status#"] = "create";
 				}
+
+				//if (resolvedItem.$get)
+				//	resolvedItem.$get();
 
 				//open dialog
 	        	$mdDialog.show({
