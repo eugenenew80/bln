@@ -76,18 +76,29 @@
 
   	            responsiveTableFieldBuilder.build({
 		            name: "shortName",
-		            desc: "Аббревиатура",
+		            desc: "Краткое наименования",
 		            headerStyle: "width: 20%",
-	            }),
+	            })
 
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Наименование",
-		            headerStyle: "width: 70%",
-	            }) 
+		            headerStyle: "width: 40%",
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "voltageClassName",
+		            desc: "Класс напряжения",
+		            headerStyle: "width: 10%",
+	            }),,
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "businessPartnerShortName",
+		            desc: "Компания-владелец",
+		            headerStyle: "width: 20%",
+	            }),
 			];
-			
-		
+
 			
             //List actions after search
             var tableActionsDef = [
