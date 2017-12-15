@@ -349,14 +349,14 @@
             				}),
 
               				fieldBuilder.build({
-            					name: "businessPartnerName",
+            					name: "businessPartnerShortName",
                                 controlValue: "businessPartnerId",
                                 labelDesc: "Когмпания-владелец",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 dictName: "dictBusinessPartner",
                                 dictValueName: "id",
-                                dictDisplayName: "name",
+                                dictDisplayName: "shortName",
                                 panel: "base",
                                 editable: true,
                                 control: "input"
