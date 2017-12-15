@@ -78,7 +78,7 @@
 		            name: "shortName",
 		            desc: "Краткое наименования",
 		            headerStyle: "width: 20%",
-	            })
+	            }),
 
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
