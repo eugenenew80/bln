@@ -224,7 +224,7 @@
                 		//Search form
                 		search: {
                 			type: "form",
-                			templateURL: "common/directives/form/formTemplate.html",
+                            templateURL: "common/directives/complexForm/complexFormTemplate.html",
                 			header: "Панель фильтров",
                             fields:  searchFieldsDef,
                             actions: searchActionsDef,

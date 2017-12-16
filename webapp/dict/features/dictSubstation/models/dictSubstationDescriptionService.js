@@ -8,20 +8,19 @@
 			
 			//List fields description for search
 			var searchFieldsDef = [
-				
-				fieldBuilder.build({
-					name: "shortName",
-					labelDesc: "Аббревиатура",
-                    labelClass: "col-sm-2",
-                    controlClass: "col-sm-2"
-				}),
-				
-				fieldBuilder.build({
-					name: "name",
-					labelDesc: "Наименование",
+                fieldBuilder.build({
+                    name: "shortName",
+                    labelDesc: "Краткое наименование",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
-				}),	
+                }),
+
+                fieldBuilder.build({
+                    name: "name",
+                    labelDesc: "Диспетчерское наименование",
+                    labelClass: "col-sm-2",
+                    controlClass: "col-sm-4"
+                }),
 			];
         	
         	
@@ -296,7 +295,6 @@
                         ],
                         
                         fields: [
-
             				fieldBuilder.build({
             					name: "shortName",
             					labelDesc: "Краткое наименование",
@@ -309,7 +307,7 @@
             				
             				fieldBuilder.build({
             					name: "name",
-            					labelDesc: "Наименование",
+                                labelDesc: "Диспетчерское наименование",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 required: true,

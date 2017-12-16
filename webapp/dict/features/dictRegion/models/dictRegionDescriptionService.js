@@ -8,7 +8,6 @@
 			
 			//List fields description for search
 			var searchFieldsDef = [
-				
 				fieldBuilder.build({
 					name: "code",
 					labelDesc: "Код",
@@ -73,7 +72,6 @@
 			
             //List fields description for table
 			var tableFieldsDef = [
-
   	            responsiveTableFieldBuilder.build({
 		            name: "code",
 		            desc: "Код",
@@ -83,8 +81,14 @@
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Наименование",
-		            headerStyle: "width: 70%",
-	            }) 
+		            headerStyle: "width: 50%",
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "countryName",
+		            desc: "Страна",
+		            headerStyle: "width: 20%",
+	            })
 			];
 			
 		

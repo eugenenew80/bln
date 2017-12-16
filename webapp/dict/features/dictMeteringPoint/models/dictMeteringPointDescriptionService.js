@@ -8,23 +8,28 @@
 
 			//List fields description for search
 			var searchFieldsDef = [
-				
 				fieldBuilder.build({
 					name: "code",
 					labelDesc: "Код",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-2"
 				}),
-				
-				fieldBuilder.build({
-					name: "name",
-					labelDesc: "Наименование",
+
+                fieldBuilder.build({
+                    name: "shortName",
+                    labelDesc: "Краткое наименование",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
-				}),	
+                }),
+
+                fieldBuilder.build({
+                    name: "name",
+                    labelDesc: "Наименование",
+                    labelClass: "col-sm-2",
+                    controlClass: "col-sm-4"
+                })
 			];
-        	
-        	
+
 			//List actions for search
 			var searchActionsDef = [
 				{
@@ -83,19 +88,13 @@
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Наименование",
-		            headerStyle: "width: 35%",
+		            headerStyle: "width: 45%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
 		            name: "energyObjectName",
 		            desc: "Объект сети",
-		            headerStyle: "width: 20%",
-	            }),
-
-  	            responsiveTableFieldBuilder.build({
-		            name: "orgShortName",
-		            desc: "Филиал",
-		            headerStyle: "width: 20%",
+		            headerStyle: "width: 30%",
 	            })
 			];
 			

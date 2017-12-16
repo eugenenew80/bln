@@ -14,7 +14,14 @@
 					labelDesc: "Наименование",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
-				}),	
+				}),
+
+				fieldBuilder.build({
+					name: "shortName",
+					labelDesc: "Краткое наименование",
+                    labelClass: "col-sm-2",
+                    controlClass: "col-sm-4"
+				}),
 			];
         	
         	
@@ -367,6 +374,16 @@
                                 editable: true
             				}),
             				
+            				fieldBuilder.build({
+            					name: "shortName",
+            					labelDesc: "Краткое наименование",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                required: true,
+                                panel: "base",
+                                editable: true
+            				}),
+
             				fieldBuilder.build({
             					name: "bin",
             					labelDesc: "БИН",
