@@ -1,4 +1,11 @@
 <md-input-container layout="row">
 	<label>{{field.label.desc}}</label>
-	<input type="number" ng-model="currentElement[control.name]" type="number" >
+	<input
+		id="{{control.name}}"
+		name="{{control.controlName}}"
+		type="number"
+		ng-model="currentElement[control.name]" type="number"
+		ng-required="control.required"
+		ng-disabled="!control.editable"
+	>
 </md-input-container>
