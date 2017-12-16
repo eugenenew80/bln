@@ -10,6 +10,13 @@
 			//List fields description for search
 			var searchFieldsDef = [
 				fieldBuilder.build({
+					name: "code",
+					labelDesc: "Код",
+                    labelClass: "col-sm-2",
+                    controlClass: "col-sm-2"
+				}),
+
+				fieldBuilder.build({
 					name: "name",
 					labelDesc: "Наименование",
                     labelClass: "col-sm-2",

@@ -14,16 +14,7 @@
 					labelDesc: "Наименование",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
-				}),	
-
-				//orgStruct
-				fieldBuilder.build({
-					name: "businessPartnerId",
-					labelDesc: "Владелец",
-                    labelClass: "col-sm-2",
-                    controlClass: "col-sm-4",					
-					dictName: "dictBusinessPartner"
-				}),				
+				})
 			];
         	
         	
