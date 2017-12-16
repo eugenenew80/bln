@@ -257,7 +257,7 @@
                             fieldBuilder.build({
                                 name: "businessPartnerShortName",
                                 controlValue: "businessPartnerId",
-                                labelDesc: "Когмпания-владелец",
+                                labelDesc: "Компания-владелец",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 dictName: "dictBusinessPartner",
@@ -274,7 +274,8 @@
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
-                                panel: "base",
+                                required: true,
+								panel: "base",
                                 editable: true
             				}),
 
@@ -284,7 +285,8 @@
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
-                                panel: "base",
+                                required: true,
+								panel: "base",
                                 editable: true
             				}),
 

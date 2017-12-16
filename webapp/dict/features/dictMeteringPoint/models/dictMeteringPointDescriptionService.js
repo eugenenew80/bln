@@ -232,7 +232,7 @@
 
                     trigger: "button",
 					button: buttonBuilder.build({
-						caption: "Трансформаторы напяжения",
+						caption: "Трансформаторы напряжения",
 						tooltip: "Открыть список трансформаторов напряжения",
 						glyphicon: "glyphicon-list-alt"
 					})
