@@ -8,7 +8,6 @@
 
 			//List fields description for search
 			var searchFieldsDef = [
-				
 				fieldBuilder.build({
 					name: "shortName",
 					labelDesc: "Аббревиатура",

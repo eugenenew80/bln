@@ -9,29 +9,12 @@
         	
 			//List fields description for search
 			var searchFieldsDef = [
-				
 				fieldBuilder.build({
 					name: "name",
 					labelDesc: "Тип счетчика",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
-				}),	
-				
-				fieldBuilder.build({
-					name: "manufacturer",
-					labelDesc: "Производитель",
-                    labelClass: "col-sm-2",
-                    controlClass: "col-sm-4"
-				}),	
-				
-				//orgStruct
-				fieldBuilder.build({
-					name: "businessPartnerId",
-					labelDesc: "Владелец",
-                    labelClass: "col-sm-2",
-                    controlClass: "col-sm-4",					
-					dictName: "dictBusinessPartner"
-				}),				
+				}),
 			];
         	
         	

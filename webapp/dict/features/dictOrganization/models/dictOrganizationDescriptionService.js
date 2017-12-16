@@ -11,10 +11,10 @@
 			var searchFieldsDef = [
 
 				fieldBuilder.build({
-					name: "bin",
-					labelDesc: "БИН",
+					name: "shortName",
+					labelDesc: "Краткое наменвание",
                     labelClass: "col-sm-2",
-                    controlClass: "col-sm-2"
+                    controlClass: "col-sm-4"
 				}),
 
 				fieldBuilder.build({

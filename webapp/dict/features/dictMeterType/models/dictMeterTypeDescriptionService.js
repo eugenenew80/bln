@@ -13,14 +13,7 @@
 					labelDesc: "Тип счетчика",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
-				}),	
-				
-				fieldBuilder.build({
-					name: "manufacturer",
-					labelDesc: "Производитель",
-                    labelClass: "col-sm-2",
-                    controlClass: "col-sm-4"
-				}),					
+				})
 			];
         	
         	

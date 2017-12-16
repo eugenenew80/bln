@@ -1,12 +1,10 @@
 (function () {
     angular.module("dictApp")
         .factory("dictAccountingTypeDescriptionService", function ($filter, dataServices, buttonBuilder, fieldBuilder, responsiveTableFieldBuilder) {
-
 			var serviceName = "dictAccountingType";
 			var serviceDescPural = "Виды учёта";
 			var serviceDescSingular = "Вид учёта";
-			
-        	
+
         	//List fields description for search
 			var searchFieldsDef = [
 				fieldBuilder.build({
