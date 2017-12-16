@@ -6,7 +6,7 @@
 	        <h2>{{form.header}}</h2>
 	      </div>
 	    </md-toolbar>
-    
+
 		<md-dialog-content ng-if="form.panels.length>1">
 			<md-tabs md-dynamic-height md-border-bottom>
 				<md-tab label="{{panel.title}}" ng-repeat="panel in form.panels" >
@@ -18,11 +18,17 @@
 		</md-dialog-content>
 
 		<md-dialog-content ng-if="form.panels.length<=1" class="md-padding">
+			<md-input-container layout="row" ng-if="form.autoFill">
+				<label>{{form.autoFill.tooltip}}</label>
+				<input type="text" ng-disabled="true" ng-readonly="true" />
+				<md-icon ng-click="autoFill(form.autoFill.dictName)" class="name" md-svg-icon="img/icons/sets/ic_view_headline_black_24px.svg"></md-icon>
+			</md-input-container>
+
 			<complex-form-control element="currentElement" form="frmEdit" field="field" ng-repeat="field in form.fields | filter:{visible: true}" />
 		</md-dialog-content>
 		
 		<md-dialog-actions layout="row">
-			<md-button ng-repeat="action in form.actions" 
+			<md-button ng-repeat="action in form.actions"
 							id="{{action.action}}" 
 							ng-click="actions[action.controllerMethod.name]()"
 							ng-disabled="(action.action=='cmdSave' || action.action=='cmdOk') && (frmEdit.$invalid || frmEdit.$pristine)">

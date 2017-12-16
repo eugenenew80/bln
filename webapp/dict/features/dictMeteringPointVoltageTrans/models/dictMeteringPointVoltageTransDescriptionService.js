@@ -207,7 +207,20 @@
                         controller: "dictDefaultEditCtrl",
                         header: serviceDescSingular,
                         style: "min-width: 400px;",
-                        
+
+                        autoFill: {
+                            dictName: "dictVoltageTransType",
+                            desc: "Тип трансформатора напряжения",
+                            tooltip: "Выбрать тип трансформатора напряжения",
+                            fields: [
+                                "name",
+                                "manufacturer",
+                                "accuracyClass",
+                                "ratedVoltage1",
+                                "ratedVoltage2"
+                            ]
+                        },
+
                         panels: [
                         	{
                         		name:   "base",

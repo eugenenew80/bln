@@ -254,7 +254,25 @@
                         controller: "dictDefaultEditCtrl",
                         header: serviceDescSingular,
                         style: "min-width: 500px;",
-                        
+
+                        autoFill: {
+                            dictName: "dictMeterType",
+                            desc: "Тип счётчика",
+                            tooltip: "Выбрать тип счётчика",
+                            fields: [
+                                "name",
+                                "manufacturer",
+                                "accuracyClass",
+                                "minimumLoad",
+                                "parameterAm",
+                                "parameterAp",
+                                "parameterRm",
+                                "parameterRp",
+                                "totalDigitsNumber",
+                                "digitsAfterDecimalPoint",
+                            ]
+                        },
+
                         panels: [
                         	{
                         		name:   "base",
@@ -270,7 +288,7 @@
                                 controlClass: "col-sm-8",
                                 required: true,
                                 panel: "base",
-                                editable: true            						
+                                editable: true
             				}),	
             				
             				fieldBuilder.build({

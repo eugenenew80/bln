@@ -211,6 +211,20 @@
                         header: serviceDescSingular,
                         style: "min-width: 400px;",
 
+                        autoFill: {
+                            dictName: "dictCurrentTransType",
+                            desc: "Тип трансформатора тока",
+                            tooltip: "Выбрать тип трансформатора тока",
+                            fields: [
+                                "name",
+                                "manufacturer",
+                                "maxCurrent",
+                                "minCurrent",
+                                "ratedCurrent1",
+                                "ratedCurrent2"
+                            ]
+                        },
+
                         panels: [
                         	{
                         		name:   "base",

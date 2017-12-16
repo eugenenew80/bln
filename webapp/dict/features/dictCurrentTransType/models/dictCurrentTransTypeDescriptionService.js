@@ -10,10 +10,17 @@
 			var searchFieldsDef = [
 				fieldBuilder.build({
 					name: "name",
-					labelDesc: "Тип трансформатора тока",
+					labelDesc: "Наименование",
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
-				})
+				}),
+
+				fieldBuilder.build({
+					name: "manufacturer",
+					labelDesc: "Производитель",
+                    labelClass: "col-sm-2",
+                    controlClass: "col-sm-4"
+				}),
 			];
         	
         	

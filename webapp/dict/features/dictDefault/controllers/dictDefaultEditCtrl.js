@@ -86,4 +86,22 @@ angular.module("dictApp")
                   .parent(parentEl)
             );		
 		}
+
+
+        $scope.autoFill = function (dictName) {
+            $mdDialog.show({
+                templateUrl: "dict/features/dictDefault/views/search.html",
+                controller: "defaultSearchCtrl",
+                multiple: true,
+                locals: {
+                    descriptionService: descriptionServices[dictName]
+                }
+            })
+            .then(function (data) {
+                angular.forEach(form.autoFill.fields, function (key) {
+                    $scope.currentElement[key] = data[key];
+                })
+                $scope.frmEdit.$setDirty();
+            });
+        };
 	});
