@@ -75,13 +75,13 @@
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Тип трансформатора тока",
-		            headerStyle: "width: 70%",
+		            headerStyle: "width: 50%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
 		            name: "manufacturer",
 		            desc: "Производитель",
-		            headerStyle: "width: 20%",
+		            headerStyle: "width: 40%",
 	            })
 			];
 			
