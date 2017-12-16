@@ -18,7 +18,6 @@
 			
             //List fields description for table
 			var tableFieldsDef = [
-
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Тип трансформатора",

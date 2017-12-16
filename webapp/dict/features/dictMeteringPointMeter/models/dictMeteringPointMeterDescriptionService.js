@@ -21,31 +21,17 @@
   	            responsiveTableFieldBuilder.build({
 		            name: "meterName",
 		            desc: "Наименование",
-		            headerStyle: "width: 60%",
+		            headerStyle: "width: 50%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "meterSerialNumber",
+		            name: "meterManufacturer",
 		            desc: "Серийный номер",
-		            headerStyle: "width: 10%",
+		            headerStyle: "width: 40%",
 	            }),
-	            
-  	            responsiveTableFieldBuilder.build({
-		            name: "startDate",
-		            desc: "Дата монтажа",
-		            headerStyle: "width: 10%",
-		            dataType: "date"
-	            }),
-	            
-  	            responsiveTableFieldBuilder.build({
-		            name: "endDate",
-		            desc: "Дата демонтажа",
-		            headerStyle: "width: 10%",
-		            dataType: "date"
-	            }) 	            
 			];
-			
-		
+
+
 			
             //List actions after search
             var tableActionsDef = [
@@ -234,14 +220,18 @@
                         fields: [
 
             				fieldBuilder.build({
-            					name: "meterId",
+            					name: "meterName",
+                                controlValue: "meterId",
             					labelDesc: "Счётчик",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 dictName: "dictMeter",
+                                dictValueName: "id",
+                                dictDisplayName: "name",
                                 required: true,
                                 panel: "base",
-                                editable: true
+                                editable: true,
+                                control: "input"
             				}),
             				
             				fieldBuilder.build({
