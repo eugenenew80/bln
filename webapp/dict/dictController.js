@@ -5,11 +5,11 @@ angular.module("dictApp")
 			nodes: []
 	    };
 
-    	$http({method: "GET", url: metaBaseUrl + "metaDictGroup"}).then(
+    	$http({method: "GET", url: metaBaseUrl + "metaDictGroup/byUser"}).then(
     		function successCallback(response) {
     		    $scope.menu.dictGroups = response.data;
-                $scope.menu.selectedGroup = "equipment";
-                $scope.menu.selectedGroupName = "Оборудование";
+                $scope.menu.selectedGroup = $scope.menu.dictGroups[0].code;
+                $scope.menu.selectedGroupName = $scope.menu.dictGroups[0].name;
     		},
     		function errorCallback(error) {}
     	);
