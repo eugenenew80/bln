@@ -268,18 +268,21 @@
                                 required: true,
                                 panel: "base",
                                 editable: true            						
-            				}),	
+            				}),
 
-              				fieldBuilder.build({
-            					name: "businessPartnerId",
-            					labelDesc: "Компания-владелец",
+                            fieldBuilder.build({
+                                name: "businessPartnerShortName",
+                                controlValue: "businessPartnerId",
+                                labelDesc: "Когмпания-владелец",
                                 labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",					
-            					dictName: "dictBusinessPartner",
+                                controlClass: "col-sm-8",
+                                dictName: "dictBusinessPartner",
+                                dictValueName: "id",
+                                dictDisplayName: "shortName",
                                 panel: "base",
-                                editable: true            						
-            				}),	
-
+                                editable: true,
+                                control: "input"
+                            }),
 
             				fieldBuilder.build({
             					name: "snom",

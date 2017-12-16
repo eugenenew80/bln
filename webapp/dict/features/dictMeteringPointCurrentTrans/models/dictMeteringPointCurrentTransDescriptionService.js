@@ -240,17 +240,19 @@
                                 editable: true
             				}),
 
-              				fieldBuilder.build({
-            					name: "businessPartnerName",
+                            fieldBuilder.build({
+                                name: "businessPartnerShortName",
                                 controlValue: "businessPartnerId",
-            					labelDesc: "Владелец",
+                                labelDesc: "Когмпания-владелец",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
-            					dictName: "dictBusinessPartner",
+                                dictName: "dictBusinessPartner",
+                                dictValueName: "id",
+                                dictDisplayName: "shortName",
                                 panel: "base",
                                 editable: true,
                                 control: "input"
-            				}),
+                            }),
 
             				fieldBuilder.build({
             					name: "ratedCurrent1",

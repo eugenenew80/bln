@@ -96,7 +96,7 @@
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "businessPartnerName",
+		            name: "businessPartnerShortName",
 		            desc: "Владелец",
 		            headerStyle: "width: 20%",
 	            }),
@@ -309,18 +309,20 @@
                                 panel: "base",
                                 editable: true            						
             				}),
-            				
-              				fieldBuilder.build({
-            					name: "businessPartnerName",
+
+                            fieldBuilder.build({
+                                name: "businessPartnerShortName",
                                 controlValue: "businessPartnerId",
-            					labelDesc: "Владелец",
+                                labelDesc: "Когмпания-владелец",
                                 labelClass: "col-sm-4",
-                                controlClass: "col-sm-8",					
-            					dictName: "dictBusinessPartner",
+                                controlClass: "col-sm-8",
+                                dictName: "dictBusinessPartner",
+                                dictValueName: "id",
+                                dictDisplayName: "shortName",
                                 panel: "base",
                                 editable: true,
                                 control: "input"
-            				}),	
+                            }),
 
             				fieldBuilder.build({
             					name: "lastVerificationDate",

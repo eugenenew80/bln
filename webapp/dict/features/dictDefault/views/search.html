@@ -12,8 +12,18 @@
 				<md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
 			</div>
 
-			<div class="table">
-				<table ng-class="descriptionService.sections.main.searchTable.tableClass" ng-style="descriptionService.sections.main.searchTable.tableStyle" ng-show="!isLoading">
+			<md-input-container layout="row" ng-show="!isLoading">
+				<label>Значение для поиска</label>
+				<input type="text"
+					   id="txtSearch"
+					   name="txtSearch"
+					   ng-model="searchValue"
+				/>
+				<md-icon md-svg-src="img/icons/sets/ic_search_black_24px.svg" class="name" ng-click="applySearch()"></md-icon>
+			</md-input-container>
+
+			<div class="table" ng-show="!isLoading">
+				<table ng-class="descriptionService.sections.main.searchTable.tableClass" ng-style="descriptionService.sections.main.searchTable.tableStyle">
 					<thead>
 						<tr>
 							<th style="width: 5%; min-width: 30px"></th>

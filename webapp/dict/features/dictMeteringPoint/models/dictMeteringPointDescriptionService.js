@@ -77,13 +77,13 @@
   	            responsiveTableFieldBuilder.build({
 		            name: "code",
 		            desc: "Код",
-		            headerStyle: "width: 10%",
+		            headerStyle: "width: 15%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Наименование",
-		            headerStyle: "width: 30%",
+		            headerStyle: "width: 35%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
@@ -93,9 +93,9 @@
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "orgName",
+		            name: "orgShortName",
 		            desc: "Филиал",
-		            headerStyle: "width: 30%",
+		            headerStyle: "width: 20%",
 	            })
 			];
 			
@@ -529,12 +529,14 @@
                             }),
 
               				fieldBuilder.build({
-            					name: "businessPartnerName1",
+            					name: "businessPartnerShortName1",
                                 controlValue: "businessPartnerId1",
             					labelDesc: "Компания 1",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
             					dictName: "dictBusinessPartner",
+                                dictValueName: "id",
+                                dictDisplayName: "shortName",
                                 panel: "boundary",
                                 editable: true,
                                 control: "input"
@@ -550,12 +552,14 @@
                             }),
 
               				fieldBuilder.build({
-            					name: "businessPartnerName2",
+            					name: "businessPartnerShortName2",
                                 controlValue: "businessPartnerId2",
             					labelDesc: "Компания 2",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
             					dictName: "dictBusinessPartner",
+                                dictValueName: "id",
+                                dictDisplayName: "shortName",
                                 panel: "boundary",
                                 editable: true,
                                 control: "input"
