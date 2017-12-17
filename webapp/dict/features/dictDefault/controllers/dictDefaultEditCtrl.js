@@ -43,6 +43,8 @@ angular.module("dictApp")
 					else {
 						if (descriptionService.parentField)
 							newItem = dataService.findById(newItem[descriptionService.parentField], newItem[descriptionService.childField]);
+						else
+                            newItem = dataService.findById(newItem["id"]);
 					}
 
 					if ($scope.action=="create")
