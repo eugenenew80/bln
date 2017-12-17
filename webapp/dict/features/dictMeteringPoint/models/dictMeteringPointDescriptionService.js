@@ -530,7 +530,7 @@
               				fieldBuilder.build({
             					name: "businessPartnerShortName1",
                                 controlValue: "businessPartnerId1",
-            					labelDesc: "Компания 1",
+            					labelDesc: "Бизнес партнер 1 на границе раздела",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
             					dictName: "dictBusinessPartner",
@@ -543,7 +543,7 @@
 
                             fieldBuilder.build({
                                 name: "responsibilityZone1",
-                                labelDesc: "Зона отвестсвенности",
+                                labelDesc: "Зона отвестсвенности бизнес партнера 1",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 panel: "boundary",
@@ -553,7 +553,7 @@
               				fieldBuilder.build({
             					name: "businessPartnerShortName2",
                                 controlValue: "businessPartnerId2",
-            					labelDesc: "Компания 2",
+            					labelDesc: "Бизнес партнер 2 на границе раздела",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",					
             					dictName: "dictBusinessPartner",
@@ -566,7 +566,7 @@
 
                             fieldBuilder.build({
                                 name: "responsibilityZone2",
-                                labelDesc: "Зона отвестсвенности",
+                                labelDesc: "Зона отвестсвенности бизнес партнера 2",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 panel: "boundary",
