@@ -1,4 +1,4 @@
-<md-input-container layout="row" class="md-block">
+<md-input-container layout="row">
 	<label>{{field.label.desc}}</label>
 	<input type="text"
 		   id="{{control.name}}"
@@ -7,6 +7,7 @@
 		   ng-required="control.required"
 		   ng-disabled="!control.editable"
 		   ng-dblclick="search()"
+		   flex
 	/>
 	<md-icon md-svg-src="img/icons/sets/ic_search_black_24px.svg" class="name" ng-click="search()"></md-icon>
 </md-input-container>

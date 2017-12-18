@@ -1,4 +1,4 @@
-<md-input-container layout="row" class="md-block" ng-if="!control.dict">
+<md-input-container layout="row" class="md-block">
 	<label>{{field.label.desc}}</label>
 	<textarea type="text"
 		   	id="{{control.name}}"
@@ -6,5 +6,6 @@
 			rows="2"
 		   	ng-model="currentElement[control.name]"
 		   	ng-required="control.required"
+			flex
 	/>
 </md-input-container>
