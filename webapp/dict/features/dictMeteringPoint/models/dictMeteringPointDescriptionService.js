@@ -547,7 +547,8 @@
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 panel: "boundary",
-                                editable: true
+                                editable: true,
+                                control: "textarea"
                             }),
 
               				fieldBuilder.build({
@@ -570,7 +571,8 @@
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 panel: "boundary",
-                                editable: true
+                                editable: true,
+                                control: "textarea"
                             }),
 
               				fieldBuilder.build({

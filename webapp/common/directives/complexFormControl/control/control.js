@@ -30,29 +30,25 @@ angular.module("common")
 				scope.templateURL="common/directives/complexFormControl/control/";
 				switch(scope.control.control) {
 					case "input":
-						if(scope.control.dataType=="string")
+						if(scope.control.dataType=="string" && !scope.control.dict)
 							scope.templateURL=scope.templateURL + "stringInput.html";
+						else if(scope.control.dataType=="string" && scope.control.dict)
+							scope.templateURL=scope.templateURL + "stringInputSearch.html";
 						else if(scope.control.dataType=="integer")
 							scope.templateURL=scope.templateURL + "integerInput.html";
 						else if(scope.control.dataType=="number")
 							scope.templateURL=scope.templateURL + "numberInput.html";
 						else if(scope.control.dataType=="date")
 							scope.templateURL=scope.templateURL + "dateInput.html";
-                        else if(scope.control.dataType=="datetime")
-                            scope.templateURL=scope.templateURL + "dateTimeInput.html";
+						else if(scope.control.dataType=="datetime")
+							scope.templateURL=scope.templateURL + "dateTimeInput.html";
 						else
 							scope.templateURL=scope.templateURL + "stringInput.html";
 
 						break;
 
 					case "select":
-						if (scope.control.dataType=="object")
-							scope.templateURL=scope.templateURL + "objectSelect.html";
-						else if	(scope.control.dataType=="objectId")
-							scope.templateURL=scope.templateURL + "objectIdSelect.html";
-						else
-							scope.templateURL=scope.templateURL + "objectSelect.html";
-
+                        scope.templateURL=scope.templateURL + "select.html";
 						break;
 
 					case "checkbox":
@@ -67,33 +63,9 @@ angular.module("common")
 						scope.templateURL=scope.templateURL + "stringTextArea.html";
 						break;
 
-					case "typehead":
-						if (scope.control.dataType=="object")
-							scope.templateURL=scope.templateURL + "objectTypeHead.html";
-						else if	(scope.control.dataType=="objectId")
-							scope.templateURL=scope.templateURL + "objectIdTypeHead.html";
-						else
-							scope.templateURL=scope.templateURL + "objectTypeHead.html";
-
-						break;
-
-					case "listCheckBox":
-						scope.templateURL=scope.templateURL + "listCheckBox.html";
-						break;
-
-					case "listCheckBoxSelect":
-						scope.templateURL=scope.templateURL + "listCheckBoxSelect.html";
-						break;
-
 					default:
 						scope.templateURL=scope.templateURL + "stringInput.html";
 				}
-
-
-				if (scope.control.label)
-					scope.control.labelVisible=true;
-				else
-					scope.control.labelVisible=false;
 
 
 				//Bootstrap UI datepicker options
