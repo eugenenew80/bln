@@ -1,18 +1,6 @@
-<div ng-if="field.name!='energyObjectType'">
-    <simple-control
+<simple-control
         element="currentElement"
         form="form"
         field="field"
-        control="control"
-        ng-repeat="control in field.controls | filter: {visible: true}"
-    />
-</div>
-
-<div ng-if="field.name=='energyObjectType'">
-    <simple-control
-            element="currentElement"
-            form="form"
-            field="field"
-            control="field.controls[0]"
-    />
-</div>
+        control="field.controls[0]"
+/>
