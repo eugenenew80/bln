@@ -180,14 +180,20 @@
                 responsiveTableFieldBuilder.build({
                     name: "name",
                     desc: "Наименование",
-                    headerStyle: "width: 50%",
+                    headerStyle: "width: 40%",
                 }),
 
                 responsiveTableFieldBuilder.build({
                     name: "manufacturer",
                     desc: "Производитель",
-                    headerStyle: "width: 40%",
+                    headerStyle: "width: 30%",
                 }),
+
+                responsiveTableFieldBuilder.build({
+                    name: "serialNuber",
+                    desc: "Серийный №",
+                    headerStyle: "width: 20%",
+                })
             ];
             var searchTableActions = tableActionsDef;
             var searchRowActions = rowActionsDef;
