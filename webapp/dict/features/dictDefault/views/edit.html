@@ -7,7 +7,7 @@
 	      </div>
 	    </md-toolbar>
 
-		<md-dialog-content ng-if="form.panels.length>1">
+		<md-dialog-content ng-if="form.panels.length>1" style="min-width: 400px">
 			<md-tabs md-dynamic-height md-border-bottom>
 				<md-tab label="{{panel.title}}" ng-repeat="panel in form.panels" >
 					<md-content class="md-padding">
@@ -17,7 +17,7 @@
 			</md-tabs>
 		</md-dialog-content>
 
-		<md-dialog-content ng-if="form.panels.length<=1" class="md-padding">
+		<md-dialog-content ng-if="form.panels.length<=1" class="md-padding" style="{{form.style}}">
 			<md-input-container layout="row" ng-if="form.autoFill">
 				<label>{{form.autoFill.tooltip}}</label>
 				<input type="text" ng-disabled="true" ng-readonly="true" />

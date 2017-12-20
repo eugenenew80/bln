@@ -15,6 +15,13 @@
                     labelClass: "col-sm-2",
                     controlClass: "col-sm-4"
 				}),
+
+				fieldBuilder.build({
+					name: "serialNumber",
+					labelDesc: "Серийный №",
+                    labelClass: "col-sm-2",
+                    controlClass: "col-sm-4"
+				}),
 			];
         	
         	
