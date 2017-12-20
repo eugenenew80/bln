@@ -5,6 +5,9 @@
 		   name="{{control.controlName}}"
 		   ng-model="currentElement[control.name]"
 		   ng-required="control.required"
+		   ng-disabled="!control.editable"
+		   ng-dblclick="search()"
 		   flex
 	/>
+	<md-icon md-svg-src="img/icons/sets/ic_search_black_24px.svg" class="name" ng-click="search()"></md-icon>
 </md-input-container>

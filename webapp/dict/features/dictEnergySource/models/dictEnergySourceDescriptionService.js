@@ -337,8 +337,31 @@
             					required: true,
                                 panel: "base",
                                 editable: true            						
-            				}),	
-            				
+            				}),
+
+                            fieldBuilder.build({
+                                name: "energyNodeId",
+                                labelDesc: "Энергоузел",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                dictName: "dictEnergyNode",
+                                panel: "base",
+                                editable: true
+                            }),
+
+                            fieldBuilder.build({
+                                name: "energyDistrictId",
+                                labelDesc: "Энергорайон",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                dictName: "dictEnergyDistrict",
+                                dictParams: {
+                                    energyNodeId: "@energyNodeId"
+                                },
+                                panel: "base",
+                                editable: true
+                            }),
+
             				fieldBuilder.build({
             					name: "installedPower",
             					labelDesc: "Установленная мощность, МВт",
