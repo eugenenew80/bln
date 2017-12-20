@@ -76,23 +76,22 @@
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Тип счетчика",
-		            headerStyle: "width: 50%",
+		            headerStyle: "width: 40%",
 	            }),
 
-  	            responsiveTableFieldBuilder.build({
-		            name: "manufacturer",
-		            desc: "Производитель",
-		            headerStyle: "width: 20%",
-	            }),
+                responsiveTableFieldBuilder.build({
+                    name: "serialNumber",
+                    desc: "Серийный №",
+                    headerStyle: "width: 20%",
+                }),
 
   	            responsiveTableFieldBuilder.build({
 		            name: "businessPartnerShortName",
 		            desc: "Владелец",
-		            headerStyle: "width: 20%",
-	            }),
+		            headerStyle: "width: 30%",
+	            })
 			];
-			
-		
+
 			
             //List actions after search
             var tableActionsDef = [
@@ -179,20 +178,20 @@
             var searchTableFields = [
                 responsiveTableFieldBuilder.build({
                     name: "name",
-                    desc: "Наименование",
+                    desc: "Тип счетчика",
                     headerStyle: "width: 40%",
                 }),
 
                 responsiveTableFieldBuilder.build({
-                    name: "manufacturer",
-                    desc: "Производитель",
-                    headerStyle: "width: 30%",
+                    name: "serialNumber",
+                    desc: "Серийный №",
+                    headerStyle: "width: 20%",
                 }),
 
                 responsiveTableFieldBuilder.build({
-                    name: "serialNuber",
-                    desc: "Серийный №",
-                    headerStyle: "width: 20%",
+                    name: "businessPartnerShortName",
+                    desc: "Владелец",
+                    headerStyle: "width: 30%",
                 })
             ];
             var searchTableActions = tableActionsDef;

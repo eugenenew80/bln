@@ -21,14 +21,20 @@
   	            responsiveTableFieldBuilder.build({
 		            name: "meterName",
 		            desc: "Наименование",
-		            headerStyle: "width: 50%",
+		            headerStyle: "width: 40%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "meterManufacturer",
+		            name: "meterSerialNumber",
 		            desc: "Серийный номер",
-		            headerStyle: "width: 40%",
+		            headerStyle: "width: 20%",
 	            }),
+
+                responsiveTableFieldBuilder.build({
+                    name: "meterBusinessPartnerShortName",
+                    desc: "Владелец",
+                    headerStyle: "width: 30%",
+                })
 			];
 
 

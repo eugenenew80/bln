@@ -193,7 +193,7 @@
                     
                     trigger: "button",
 					button: buttonBuilder.build({
-						caption: "Точки учёта",
+						caption: "Точки учёта для баланса",
 						tooltip: "Открыть список точек учёта",
 						glyphicon: "glyphicon-list-alt"
 					})

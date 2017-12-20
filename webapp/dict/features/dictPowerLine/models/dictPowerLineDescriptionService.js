@@ -74,13 +74,18 @@
             //List fields description for table
 			var tableFieldsDef = [
   	            responsiveTableFieldBuilder.build({
+		            name: "code",
+		            desc: "Код линии",
+		            headerStyle: "width: 20%",
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Наименование",
-		            headerStyle: "width: 90%",
+		            headerStyle: "width: 70%",
 	            })
 			];
-			
-		
+
 			
             //List actions after search
             var tableActionsDef = [
