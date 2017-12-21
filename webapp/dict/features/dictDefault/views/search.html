@@ -18,6 +18,7 @@
 					   id="txtSearch"
 					   name="txtSearch"
 					   ng-model="searchValue"
+					   ng-keypress="onKeyDown($event)"
 				/>
 				<md-icon md-svg-src="img/icons/sets/ic_search_black_24px.svg" class="name" ng-click="applySearch()"></md-icon>
 			</md-input-container>

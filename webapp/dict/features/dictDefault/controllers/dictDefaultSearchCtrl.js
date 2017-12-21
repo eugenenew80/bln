@@ -59,6 +59,12 @@ angular.module("dictApp")
             );
         }
 
+        $scope.onKeyDown = function($event) {
+            if ($event.keyCode==13)
+                $scope.applySearch();
+        }
+
+
         //Selected row index
         var selectedRowIndex=1;
         $scope.setSelectedRow=function(newRowIndex) { selectedRowIndex=newRowIndex;};
