@@ -220,7 +220,8 @@
                                 "maxCurrent",
                                 "minCurrent",
                                 "ratedCurrent1",
-                                "ratedCurrent2"
+                                "ratedCurrent2",
+                                "accuracyClass"
                             ]
                         },
 

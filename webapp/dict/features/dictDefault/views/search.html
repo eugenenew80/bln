@@ -22,7 +22,7 @@
 				<md-icon md-svg-src="img/icons/sets/ic_search_black_24px.svg" class="name" ng-click="applySearch()"></md-icon>
 			</md-input-container>
 
-			<div class="table" ng-show="!isLoading">
+			<div class="table" ng-show="!isLoading" ng-dblclick="ok()">
 				<table ng-class="descriptionService.sections.main.searchTable.tableClass" ng-style="descriptionService.sections.main.searchTable.tableStyle">
 					<thead>
 						<tr>

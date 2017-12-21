@@ -18,11 +18,16 @@
 			
             //List fields description for table
 			var tableFieldsDef = [
+  	            responsiveTableFieldBuilder.build({
+		            name: "bankName",
+		            desc: "Банк",
+		            headerStyle: "width: 45%",
+	            }),
 
   	            responsiveTableFieldBuilder.build({
 		            name: "bankAccountNumber",
 		            desc: "Банковский счёт",
-		            headerStyle: "width: 90%",
+		            headerStyle: "width: 45%",
 	            })
 			];
 			
@@ -213,16 +218,19 @@
                         
                         fields: [
 
-            				fieldBuilder.build({
-            					name: "bankId",
-            					labelDesc: "Банк",
+                            fieldBuilder.build({
+                                name: "bankName",
+                                controlValue: "bankId",
+                                labelDesc: "Банк",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
-                                required: true,
                                 dictName: "dictBank",
+                                dictValueName: "id",
+                                dictDisplayName: "name",
                                 panel: "base",
-                                editable: true
-            				}),
+                                editable: true,
+                                control: "input"
+                            }),
 
             				fieldBuilder.build({
             					name: "bankAccountNumber",
