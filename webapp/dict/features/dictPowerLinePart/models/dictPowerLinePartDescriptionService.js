@@ -240,7 +240,7 @@
                             fieldBuilder.build({
                                 name: "businessPartnerShortName",
                                 controlValue: "businessPartnerId",
-                                labelDesc: "Когмпания-владелец",
+                                labelDesc: "Компания-владелец",
                                 labelClass: "col-sm-4",
                                 controlClass: "col-sm-8",
                                 dictName: "dictBusinessPartner",
