@@ -316,17 +316,7 @@
 		                    templateURL: "common/directives/complexView/complexViewTable/complexViewTableTemplate.html",
 		                    tableClass: "table table-hover table-condensed table-bordered",
 		                    tableStyle: "table-layout: fixed; word-wrap: break-word;",
-		                    rowsPerPage: 10,
-
-		                    liveSearch: {
-		                    	enabled: true,
-		                    	text: "Быстрый поиск"
-		                    },
-
-		                    search: {
-		                    	enabled: true,
-		                    	text: "Панель фильтров"
-		                    },
+                            autoFill: true,
 
 		                    //fields
 		                    fields: searchTableFields,

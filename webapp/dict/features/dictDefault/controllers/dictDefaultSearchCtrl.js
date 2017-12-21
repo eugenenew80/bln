@@ -1,8 +1,11 @@
 angular.module("dictApp")
 	.controller("defaultSearchCtrl", function ($scope, $mdDialog, $mdToast, $mdDialog, $timeout, descriptionService) {
         var dataService = descriptionService.dataService;
+        var autoFill = true;
+        if (descriptionService.sections.main.searchTable)
+            autoFill = descriptionService.sections.main.searchTable.autoFill;
 
-	    $scope.data = {};
+        $scope.data = {};
         $scope.searchValue = "";
         $scope.descriptionService = descriptionService;
         $scope.descriptionService.sections.main.searchTable = $scope.descriptionService.sections.main.searchTable || $scope.descriptionService.sections.main.table;
@@ -61,5 +64,6 @@ angular.module("dictApp")
         $scope.setSelectedRow=function(newRowIndex) { selectedRowIndex=newRowIndex;};
         $scope.getSelectedRow=function() { return selectedRowIndex; };
 
-        $scope.applySearch();
+        if (autoFill)
+            $scope.applySearch();
 	});
