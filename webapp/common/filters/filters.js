@@ -158,7 +158,7 @@
 					console.log(value);
 					
 					if (angular.isString(value) && value!="")
-						filtered = $filter("startsWith")(filtered, key, value);
+						filtered = $filter("contains")(filtered, key, value);
 				});
 				
 				return filtered;
@@ -175,6 +175,21 @@
 				return letterMatch.test(item[field].substring(0, letter.length))
 			});		    
 		  };
-		});		
+		})
+
+
+		.filter('contains', function () {
+		  return function (items, field, letter) {
+		    var letterMatch = new RegExp(letter, 'i');
+1
+			return items.filter(function(item) {
+				if (!item[field])
+					return false;
+				return letterMatch.test(item[field]);
+			});
+		  };
+		})
+
+	;
 				
 })();	
