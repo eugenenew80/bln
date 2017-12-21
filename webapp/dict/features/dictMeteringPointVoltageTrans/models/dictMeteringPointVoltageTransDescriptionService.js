@@ -292,26 +292,6 @@
                                 panel: "base",
                                 editable: true
             				}),
-
-            				fieldBuilder.build({
-            					name: "minVoltage",
-            					labelDesc: "Минимальное напряжение в классе точности, %",
-                                labelClass: "col-sm-8",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "base",
-                                editable: true
-            				}),
-
-            				fieldBuilder.build({
-            					name: "maxVoltage",
-            					labelDesc: "Максимальное напряжение в классе точности, %",
-                                labelClass: "col-sm-8",
-                                controlClass: "col-sm-4",
-                                controlDataType: "number",
-                                panel: "base",
-                                editable: true
-            				}),
             				
             				fieldBuilder.build({
             					name: "startDate",
