@@ -168,7 +168,20 @@
 				},
                 
             ];
-            
+
+
+            //Description for search form
+
+            var searchTableFields = [
+                responsiveTableFieldBuilder.build({
+                    name: "shortName",
+                    desc: "Краткое наименование",
+                    headerStyle: "width: 90%",
+                })
+            ];
+            var searchTableActions = tableActionsDef;
+            var searchRowActions = rowActionsDef;
+
 
             //return description service
             return {
@@ -241,10 +254,43 @@
                                 type: "actions",
                                 items: rowActionsDef                             
                             }
-	                		
-		                }
-		                		               
-                	}                	
+		                },
+
+                        searchTable: {
+                            type: "table",
+                            data: "elements",
+                            tableType: "responsive",
+                            templateURL: "common/directives/complexView/complexViewTable/complexViewTableTemplate.html",
+                            tableClass: "table table-hover table-condensed table-bordered",
+                            tableStyle: "table-layout: fixed; word-wrap: break-word;",
+                            rowsPerPage: 10,
+
+                            liveSearch: {
+                                enabled: true,
+                                text: "Быстрый поиск"
+                            },
+
+                            search: {
+                                enabled: true,
+                                text: "Панель фильтров"
+                            },
+
+                            //fields
+                            fields: searchTableFields,
+
+                            //table actions
+                            tableActions: {
+                                type: "actions",
+                                items: searchTableActions
+                            },
+
+                            //row actions
+                            rowActions: {
+                                type: "actions",
+                                items: searchRowActions
+                            }
+                        }
+                	}
                 },
 
                 //Modal forms
