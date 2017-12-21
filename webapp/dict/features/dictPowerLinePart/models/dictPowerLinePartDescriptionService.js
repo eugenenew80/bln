@@ -271,6 +271,20 @@
                                 editable: true
             				}),
 
+                            fieldBuilder.build({
+                                name: "orgShortName",
+                                controlValue: "orgId",
+                                labelDesc: "Заинтересованный филиал",
+                                labelClass: "col-sm-4",
+                                controlClass: "col-sm-8",
+                                dictName: "dictOrganization",
+                                dictValueName: "id",
+                                dictDisplayName: "shortName",
+                                panel: "base",
+                                editable: true,
+                                control: "input"
+                            }),
+
             				fieldBuilder.build({
             					name: "startDate",
             					labelDesc: "Дата с",
