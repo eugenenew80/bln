@@ -276,7 +276,7 @@
             				
             				fieldBuilder.build({
             					name: "ratedVoltage1",
-            					labelDesc: "Номинальное напряжение в первичной обмотки, А",
+            					labelDesc: "Номинальное напряжение в первичной обмотки, В",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
@@ -286,7 +286,7 @@
             				
             				fieldBuilder.build({
             					name: "ratedVoltage2",
-            					labelDesc: "Номинальное напряжение во вторичной обмотки, А",
+            					labelDesc: "Номинальное напряжение во вторичной обмотки, В",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",
