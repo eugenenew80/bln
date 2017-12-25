@@ -22,7 +22,6 @@ angular.module("dictApp")
             );
         }
 
-        var origElement = angular.copy($scope.currentElement);
 		var dataService=descriptionService.dataService;
 		$scope.data = {};
         $scope.descriptionService = descriptionService;
@@ -32,9 +31,12 @@ angular.module("dictApp")
 
         //Save the current element and switch to table mode
         $scope.actions.save = function () {
+            var offset = new Date().getTimezoneOffset();
             angular.forEach(form.fields, function(field, key) {
-                if (field.controls[0].dataType=="date" && angular.isDefined($scope.currentElement[field.name]) && !angular.isDefined(origElement[field.name]))
-                    $scope.currentElement[field.name].addHours(6);
+                if (field.controls[0].dataType=="date" && $scope.currentElement[field.name]) {
+                    if ($scope.currentElement[field.name].getHours && $scope.currentElement[field.name].getHours()==0)
+                        $scope.currentElement[field.name].addHours(-offset/60);
+                }
             })
 
         	dataService[$scope.action]($scope.currentElement).$promise.then(
