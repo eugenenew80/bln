@@ -23,6 +23,17 @@ angular.module("common")
 					});
                 };
 
+
+				scope.clear = function () {
+					if (!scope.control.dict)
+						return;
+
+					scope.currentElement[scope.control.name] = null;
+					scope.currentElement[scope.control.value] = null;
+					scope.form.$setDirty();
+                };
+
+
 				scope.fieldValue=idField;
 				scope.fieldDisplayName=scope.control.dictDisplayName;
 				scope.fieldValueName=scope.control.dictValueName || idField;

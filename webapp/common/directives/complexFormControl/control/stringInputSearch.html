@@ -1,5 +1,7 @@
-<md-input-container layout="row">
+<md-input-container layout="row" class="md-icon-float md-icon-right">
 	<label>{{field.label.desc}}</label>
+
+	<md-icon md-svg-src="img/icons/sets/ic_clear_black_24px.svg" class="name" ng-click="clear()"></md-icon>
 	<input type="text"
 		   id="{{control.name}}"
 		   name="{{control.controlName}}"
