@@ -344,7 +344,7 @@
 
             				fieldBuilder.build({
             					name: "po",
-            					labelDesc: "Удельная зарядная мощность, кВар",
+            					labelDesc: "Удельная емкостная проводимость, См/км",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",

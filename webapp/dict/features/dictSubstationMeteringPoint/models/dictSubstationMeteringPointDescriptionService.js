@@ -18,11 +18,16 @@
 			
             //List fields description for table
 			var tableFieldsDef = [
-
   	            responsiveTableFieldBuilder.build({
 		            name: "meteringPointName",
 		            desc: "Точка учёта",
-		            headerStyle: "width: 70%",
+		            headerStyle: "width: 50%",
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "meteringTypeName",
+		            desc: "Группа учёта",
+		            headerStyle: "width: 20%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
