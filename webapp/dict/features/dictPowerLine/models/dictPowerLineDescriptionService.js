@@ -344,7 +344,7 @@
 
             				fieldBuilder.build({
             					name: "po",
-            					labelDesc: "Удельная емкостная проводимость, x10e-6 См/км",
+            					labelDesc: "Удельная емкостная проводимость, x10&#8310; См/км",
                                 labelClass: "col-sm-8",
                                 controlClass: "col-sm-4",
                                 controlDataType: "number",

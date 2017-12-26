@@ -1,5 +1,5 @@
 <md-input-container layout="row">
-	<label>{{field.label.desc}}</label>
+	<label ng-bind-html="field.label.desc | unsafe"></label>
 	<input
 		id="{{control.name}}"
 		name="{{control.controlName}}"
