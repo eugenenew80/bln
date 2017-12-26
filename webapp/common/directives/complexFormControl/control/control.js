@@ -78,6 +78,7 @@ angular.module("common")
 						scope.templateURL=scope.templateURL + "stringInput.html";
 				}
 
+                scope.templateURL = scope.templateURL + "?version=v4";
 
 				//Bootstrap UI datepicker options
 				scope.datepicker={
