@@ -69,7 +69,14 @@
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Наименование",
-		            headerStyle: "width: 90%",
+		            headerStyle: "width: 80%",
+	            }),
+
+  	            responsiveTableFieldBuilder.build({
+		            name: "lastUpdateDate",
+		            desc: "Когда изменена",
+		            headerStyle: "width: 10%",
+                    dataType: "datetime"
 	            })
 			];
 			

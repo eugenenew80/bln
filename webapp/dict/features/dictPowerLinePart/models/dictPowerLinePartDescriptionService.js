@@ -22,25 +22,17 @@
   	            responsiveTableFieldBuilder.build({
 		            name: "name",
 		            desc: "Наименование",
-		            headerStyle: "width: 70%",
+		            headerStyle: "width: 80%",
 	            }),
 
   	            responsiveTableFieldBuilder.build({
-		            name: "startDate",
-		            desc: "Дата с",
+		            name: "lastUpdateDate",
+		            desc: "Когда изменена",
 		            headerStyle: "width: 10%",
-		            dataType: "date"
-	            }),
-	            
-  	            responsiveTableFieldBuilder.build({
-		            name: "endDate",
-		            desc: "Дата по",
-		            headerStyle: "width: 10%",
-		            dataType: "date"
-	            }) 	            
+                    dataType: "datetime"
+	            })
 			];
-			
-		
+
 			
             //List actions after search
             var tableActionsDef = [
